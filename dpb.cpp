@@ -42,7 +42,7 @@ int main( int argc, char *args[]){
         ss >> in;
         lcd.clear();
         lcd.write(in);
-    }else
+    }else{
         lcd.write("0,1 Æ\n",200);
         lcd.write("1,1\n",200);
         lcd.write("Fjerde linje?\n",200);
