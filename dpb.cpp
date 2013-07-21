@@ -35,36 +35,32 @@ int main( int argc, char *args[]){
     lcd.defChar(hd44780::CCHAR2, dmid);
     lcd.defChar(hd44780::CCHAR3, dright);
     
-
-    lcd.write("0,1 Æ\n",200);
-    lcd.write("1,1\n",200);
-    lcd.write("Fjerde linje?\n",200);
-    lcd.write("meh...." ,200);
-    lcd.write(a,200);
-    lcd.write("laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaangt!\n\n", 20);
-    lcd.write( hd44780::CCHAR0 );
-
-    lcd.clear();
-
-    lcd.write(10,1, hd44780::CCHAR0);
-    lcd.write(9,2, hd44780::CCHAR1);
-    lcd.write(10,2, hd44780::CCHAR2);
-    lcd.write(11,2, hd44780::CCHAR3);
-    lcd.write(9,3, hd44780::CCHAR4);
-    lcd.write(10,3, hd44780::CCHAR5);
-    lcd.write(11,3, hd44780::CCHAR6);
-    lcd.write(12,3, "DPB, dpb");
-    
-
-    
-    
     if (argc > 1){
         string in;
         stringstream ss;
-        ss << *args;
+        ss << args[1];
         ss >> in;
         lcd.clear();
         lcd.write(in);
+    }else
+        lcd.write("0,1 Æ\n",200);
+        lcd.write("1,1\n",200);
+        lcd.write("Fjerde linje?\n",200);
+        lcd.write("meh...." ,200);
+        lcd.write(a,200);
+        lcd.write("laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaangt!\n\n", 20);
+        lcd.write( hd44780::CCHAR0 );
+    
+        lcd.clear();
+    
+        lcd.write(10,1, hd44780::CCHAR0);
+        lcd.write(9,2, hd44780::CCHAR1);
+        lcd.write(10,2, hd44780::CCHAR2);
+        lcd.write(11,2, hd44780::CCHAR3);
+        lcd.write(9,3, hd44780::CCHAR4);
+        lcd.write(10,3, hd44780::CCHAR5);
+        lcd.write(11,3, hd44780::CCHAR6);
+        lcd.write(12,3, "DPB, dpb");
     }
 
     return 0;
