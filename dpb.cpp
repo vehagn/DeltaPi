@@ -2,6 +2,7 @@
 #include <rpi-hw/utils.hpp>
 #include <rpi-hw/time.hpp>
 #include <rpi-hw/display/hd44780.hpp>
+#include "cstdlib"
 
 using namespace rpihw;
 using namespace rpihw::display;
@@ -15,6 +16,8 @@ int main( int argc, char *args[]){
     lcd.write(1, 1, "1,1");
     lcd.write(6, 3, "Fjerde linje?");
     lcd.write(4, 2, "meh...." );
+
+
 
 
     return 0;
