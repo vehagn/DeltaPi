@@ -61,7 +61,7 @@ int main( int argc, char *args[]){
     if (argc > 1){
         string in;
         stringstream ss;
-        ss << args;
+        ss << *args;
         ss >> in;
         lcd.clear();
         lcd.write(in);
