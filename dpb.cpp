@@ -38,10 +38,13 @@ int main( int argc, char *args[]){
     if (argc > 1){
         string in;
         stringstream ss;
-        ss << args[1];
-        ss >> in;
         lcd.clear();
-        lcd.write(in);
+        for (int i = 1; i <= argc; i++){
+            ss << args[i];
+            ss >> in;  
+            lcd.write(in);
+            lcd.write(' ');
+        }
     }else{
         lcd.write("0,1 Æ\n",200);
         lcd.write("1,1\n",200);
