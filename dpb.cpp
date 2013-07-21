@@ -51,6 +51,11 @@ int main( int argc, char *args[]){
     lcd.write(10,3, hd44780::CCHAR5);
     lcd.write(11,3, hd44780::CCHAR6);
     lcd.write(12,3, "DPB, dpb");
+    
+    if (argc > 1){
+        lcd.clear();
+        lcd.write(args);
+    }
 
     return 0;
 }
