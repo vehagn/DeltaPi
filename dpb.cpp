@@ -35,7 +35,7 @@ int main( int argc, char *args[]){
     lcd.write("Fjerde linje?\n",200);
     lcd.write("meh...." ,200);
     lcd.write(a,200);
-    lcd.write("laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaangt!\n\n", 200);
+    lcd.write("laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaangt!\n\n", 20);
     lcd.write( hd44780::CCHAR0 );
 
     lcd.clear();
