@@ -45,7 +45,7 @@ int main( int argc, char *args[]){
     lcd.write(10,1, hd44780::CCHAR1);
     lcd.write(9,2, hd44780::CCHAR2);
     lcd.write(10,2, hd44780::CCHAR3);
-    lcd.write(11,2, hd44780::CCHAR4,500);
+    lcd.write(11,2, hd44780::CCHAR4);
     
     lcd.clear();
 
