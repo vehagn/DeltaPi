@@ -11,7 +11,9 @@ int main( int argc, char *args[]){
     hd44780 lcd(14, 15, 24, 25, 8, 7);
     lcd.init(20, 4);
 
-    lcd.write(0, 1, "Hello, World!");
+    lcd.write(0, 0, "0,1 Æ");
+    lcd.write(1, 1, "1,1");
+    lcd.write(3, 6, "Fjerde linje?")
 
 
     return 0;
