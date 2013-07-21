@@ -3,6 +3,9 @@
 #include <rpi-hw/time.hpp>
 #include <rpi-hw/display/hd44780.hpp>
 #include <cstdlib>
+#include <sstream>
+#include <string>
+
 
 using namespace rpihw;
 using namespace rpihw::display;
@@ -52,9 +55,14 @@ int main( int argc, char *args[]){
     lcd.write(11,3, hd44780::CCHAR6);
     lcd.write(12,3, "DPB, dpb");
     
-    string in = (string)args;
+
+    
     
     if (argc > 1){
+        string in;
+        stringstream ss;
+        ss << args;
+        ss >> in;
         lcd.clear();
         lcd.write(in);
     }
