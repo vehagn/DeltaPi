@@ -52,7 +52,7 @@ int main( int argc, char *args[]){
     lcd.write(11,3, hd44780::CCHAR6);
     lcd.write(12,3, "DPB, dpb");
     
-    string in = args;
+    string in = (string)args;
     
     if (argc > 1){
         lcd.clear();
