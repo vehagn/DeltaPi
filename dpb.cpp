@@ -50,7 +50,7 @@ int main( int argc, char *args[]){
     lcd.write(9,3, hd44780::CCHAR4);
     lcd.write(10,3, hd44780::CCHAR5);
     lcd.write(11,3, hd44780::CCHAR6);
-    lcd.write(12,3, "DPB, dpb")
+    lcd.write(12,3, "DPB, dpb");
 
     return 0;
 }
