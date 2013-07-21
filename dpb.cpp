@@ -13,7 +13,7 @@ int main( int argc, char *args[]){
 
     lcd.write(0, 0, "0,1 Æ");
     lcd.write(1, 1, "1,1");
-    lcd.write(3, 6, "Fjerde linje?");
+    lcd.write(6, 3, "Fjerde linje?");
 
 
     return 0;
