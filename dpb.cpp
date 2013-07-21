@@ -93,10 +93,10 @@ int main( int argc, char *args[]){
     lcd.write(6,2,hd44780::CCHAR0);
     
     uint8_t delta_BRR[8]    = {0x18, 0x1c, 0x1e, 0x1f, 0x1f, 0x1e, 0x00, 0x00};
-    lcd.defChar(hd44780::CCHAR0, delta_BRL);
+    lcd.defChar(hd44780::CCHAR0, delta_BRR);
     lcd.write(7,2,hd44780::CCHAR0);
     
-    lcd.write(2,3,"-DELTA-",500)
+    lcd.write(2,3,"-DELTA-",500);
 
 
     return 0;
