@@ -16,12 +16,12 @@ int main( int argc, char *args[]){
     string a = "En streng!";
     lcd.setAutoscroll( hd44780::HSCROLL_LINE );
 
-    lcd.write(0, 0, "0,1 Æ");
-    lcd.write(1, 1, "1,1");
-    lcd.write(6, 3, "Fjerde linje?");
-    lcd.write(4, 2, "meh...." );
-    lcd.write(5, 0, a);
-    lcd.write(0, 1, "laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaangt!", 200);
+    lcd.write("0,1 Æ",200);
+    lcd.write("1,1",200);
+    lcd.write("Fjerde linje?",200);
+    lcd.write("meh...." ,200);
+    lcd.write(a,200);
+    lcd.write("laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaangt!", 200);
 
 
 
