@@ -20,7 +20,7 @@ int main( int argc, char *args[]){
     lcd.write(6, 3, "Fjerde linje?");
     lcd.write(4, 2, "meh...." );
     lcd.write(5, 0, a);
-    lcd.write(0, 1, "laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaangt!");
+    lcd.write(0, 1, "laaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaangt!", 200);
 
 
 
