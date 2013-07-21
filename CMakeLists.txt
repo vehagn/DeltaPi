@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 2.6)
 
 # Set the compiler flags
-add_definitions(-Wall -ansi -pedantic - pedantic-errors -std=c++11)
+add_definitions(-Wall -ansi -pedantic -pedantic-errors -std=c++11)
 
 # Find dependencies
 find_package(RpiHw REQUIRED)
