@@ -1,20 +1,21 @@
 # CMake's configuration
 
 # Set the minimum required version of CMake for this project
-cmake_minimum_required( VERSION 2.6 )
+cmake_minimum_required(VERSION 2.6)
 
-# Find Rpi-hw library on the operating system
-find_package( RpiHw )
+# Set the compiler flags
+add_definitions(-Wall -ansi -pedantic - pedantic-errors -std=c++11)
 
-# Check if the library was found
-if (RpiHw_FOUND)
-    # Set the path to the header files
-    include_directories( ${RpiHw_INCLUDE_DIRS} )
+# Find dependencies
+find_package(RpiHw REQUIRED)
+find_package(Freetype REQUIRED)
+find_package(GraphicsMagick++ REQUIRED)
 
-    # Compile the project
-    add_executable( dpb ${CMAKE_SOURCE_DIR} dpb.cpp )
+# Set the path to the header files
+include_directories(${RpiHw_INCLUDE_DIRS})
+  
+# Build
+add_executable(dpb ${CMAKE_SOURCE_DIR}/dpb.cpp)
+target_link_libraries(dpb ${RpiHw_LIBRARIES})
 
-    # Link the library to the project
-    target_link_libraries( dpb ${RpiHw_LIBRARIES} )
-endif()
 
