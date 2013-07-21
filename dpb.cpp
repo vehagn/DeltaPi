@@ -14,6 +14,7 @@ int main( int argc, char *args[]){
     lcd.init(20, 4);
 
     string a = "En streng!";
+    lcd.setAutoscroll( hd44780::HSCROLL_LINE );
 
     lcd.write(0, 0, "0,1 Æ");
     lcd.write(1, 1, "1,1");
