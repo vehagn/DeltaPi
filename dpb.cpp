@@ -70,9 +70,9 @@ int main( int argc, char *args[]){
     
     char c;
     do {
-        c = getc();
+        c = getchar();
         lcd.write(c);
-    }while (c != '\n');
+    }while (c != '.');
 
     return 0;
 }
