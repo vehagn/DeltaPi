@@ -11,6 +11,7 @@
 
 char getch() {
         char buf = 0;
+        /*
         struct termios old = {0};
         if (tcgetattr(0, &old) < 0)
                 perror("tcsetattr()");
@@ -26,7 +27,20 @@ char getch() {
         old.c_lflag |= ECHO;
         if (tcsetattr(0, TCSADRAIN, &old) < 0)
                 perror ("tcsetattr ~ICANON");
-        return (buf);
+        return (buf);*/     
+        struct termios old_tio, new_tio;
+        unsigned char c;
+        
+        tcgetattr(STDIN_FILENO,&old_tio);
+        new_tio=old_tio;
+        new_tio.c_lflag &= (~ICANON);
+        tcsetattr(STDIN_FILENO,TCSANOW,&new_tio);
+
+        if (read(0, &buf, 1) < 0)
+                perror ("read()");
+
+         tcsetattr(STDIN_FILENO,TCSANOW,&old_tio);
+         return (buf);     
 }
 
 
