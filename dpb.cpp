@@ -36,7 +36,7 @@ int main( int argc, char *args[]){
     lcd.defChar(hd44780::CCHAR2, dmid);
     lcd.defChar(hd44780::CCHAR3, dright);
     
-    if (argc > 1){
+/*    if (argc > 1){
         string in;
         stringstream ss;
         lcd.clear();
@@ -65,12 +65,13 @@ int main( int argc, char *args[]){
         lcd.write(10,3, hd44780::CCHAR5);
         lcd.write(11,3, hd44780::CCHAR6);
         lcd.write(12,3, "DPB, dpb");
-    }
+    }*/
     lcd.clear();
     
     char c;
     do {
         c = getchar();
+        putchar(c);
         lcd.write(c);
     }while (c != '\n');
 
