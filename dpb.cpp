@@ -70,8 +70,7 @@ int main( int argc, char *args[]){
     
     char c;
     do {
-        c = getchar();
-        putchar(c);
+        c = getc();
         lcd.write(c);
     }while (c != '\n');
 
