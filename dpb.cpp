@@ -68,7 +68,7 @@ int main( int argc, char *args[]){
     }*/
     lcd.clear();
     
-    char c[2] = 'a\n';
+    char c[2] = ['a', '\n'];
     do {
         c[0] = getchar();
         lcd.write(c[0]);
