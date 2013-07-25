@@ -108,7 +108,7 @@ int main( int argc, char *args[]){
     int i = 0;
     do {
         c = getch();
-        lcd.write(i%20,0,c);
+        lcd.write(i++%20,0,c);
     }while (c != '\n');
 
     return 0;
