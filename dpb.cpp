@@ -10,7 +10,7 @@
 #include <termios.h>
 
 char getch() {
-        char buf = 0;
+        
         /*
         struct termios old = {0};
         if (tcgetattr(0, &old) < 0)
@@ -29,7 +29,7 @@ char getch() {
                 perror ("tcsetattr ~ICANON");
         return (buf);*/     
         struct termios old_tio, new_tio;
-        unsigned char c;
+        unsigned char buf = 0;
         
         tcgetattr(STDIN_FILENO,&old_tio);
         new_tio=old_tio;
@@ -104,12 +104,12 @@ int main( int argc, char *args[]){
     }*/
     lcd.clear();
     
-    char c[2];
-    c[1] = '\n';
+    unsigned char c;
+    int i = 0;
     do {
-        c[0] = getch();
-        lcd.write(c);
-    }while (c[0] != '\n');
+        c = getch();
+        lcd.write(i%20,0,c);
+    }while (c != '\n');
 
     return 0;
 }
