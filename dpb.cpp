@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <sstream>
 #include <string>
+#include <stdio.h>
 
 
 using namespace rpihw;
@@ -65,6 +66,13 @@ int main( int argc, char *args[]){
         lcd.write(11,3, hd44780::CCHAR6);
         lcd.write(12,3, "DPB, dpb");
     }
+    lcd.clear();
+    
+    char c;
+    do {
+        c = getchar();
+        lcd.write(c);
+    }while (c != '\n');
 
     return 0;
 }
