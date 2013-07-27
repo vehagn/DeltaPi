@@ -1,5 +1,27 @@
 #include "header.h"
 
+char getch(){
+        struct termios old_tio, new_tio;
+        char buf = 0;
+        
+        tcgetattr(STDIN_FILENO,&old_tio);
+        new_tio=old_tio;
+        new_tio.c_lflag &= (~ICANON);
+        tcsetattr(STDIN_FILENO,TCSANOW,&new_tio);
+
+        if (read(0, &buf, 1) < 0)
+                perror ("read()");
+
+         tcsetattr(STDIN_FILENO,TCSANOW,&old_tio);
+         return (buf);     
+	
+}
+void printfl(char strbuf[], hd44780 &lcd){
+	printf("%s", strbuf);
+	lcd.write(strbuf);
+}
+
+
 void beerMode(map<const int,Entry> *entries){
 	string input;
 	int card = -1;
