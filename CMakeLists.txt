@@ -3,13 +3,6 @@
 # Set the minimum required version of CMake for this project
 cmake_minimum_required(VERSION 2.6)
 
-CC=g++
-CFLAGS=-g -c -Wall -o standalone -Wl,-Bdynamic 
-MYSQLINCLUDE = -I/usr/local/include/mysql
-MYSQLINCLUDESP = -I/usr/local/include/
-LDFLAGS = -L/usr/local/lib/mysql -lmysqlclient -lmysqlcppconn
-LDFLAGSSP = -L/usr/local/lib
-
 # Set the compiler flags
 add_definitions(-Wall -ansi -pedantic -pedantic-errors -std=c++11)
 
@@ -36,7 +29,8 @@ add_library(classes classes.cpp)
 add_executable(DeltaPi DeltaPi.cpp)
 SET_TARGET_PROPERTIES(DeltaPi PROPERTIES
 			LINK_FLAGS "${MYSQLCPPCONN_LINK_FLAGS_ENV} ${MYSQL_LINK_FLAGS}"
-			COMPILE_FLAGS "${MYSQLCPPCONN_COMPILE_FLAGS_ENV} ${MYSQL_CXXFLAGS}")
+			COMPILE_FLAGS "${MYSQLCPPCONN_COMPILE_FLAGS_ENV} ${MYSQL_CXXFLAGS},
+			-Wl,-Bdynamic -lmysqlcppconn")
 target_link_libraries(DeltaPi classes functions mysql
 			${RpiHw_LIBRARIES} ${MY_TARGET_LINK_LIBRARIES} ${MY_GCOV_LINK_LIBRARIES}
   			${MYSQLCPPCONN_STLPORT_LIB} ${MYSQLCPPCONN_BOOST_SYSTEM_LIBS}
