@@ -13,7 +13,7 @@ int main(int argc, char* argv[]){
 	
 	char strbuf[256];
 	
-	strbuf = entries.find(10993472)->second.getFirstName();
+	strbuf = entries.find(10993472)->second.getFirstName().c_str();
 	
 	//sprintf(strbuf, "%s", buf);
 	printfl(strbuf, lcd);
