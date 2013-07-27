@@ -82,12 +82,12 @@ int retrieveSQL(map<const int,Entry> &entries){
 
 		while (res->next()){
 			Entry person(	res->getInt("id"), 
-							res->getString("last_name").c_str(), 
-							res->getString("first_name").c_str(), 
-							res->getInt("tab"), 
-							res->getInt("cash"), 
-							res->getInt("spent"), 
-							res->getString("comment").c_str(), 
+					res->getString("last_name").c_str(), 
+					res->getString("first_name").c_str(), 
+					res->getInt("tab"), 
+					res->getInt("cash"), 
+					res->getInt("spent"), 
+					res->getString("comment").c_str());				
 			entries[res->getInt("id")] = person;
 		}
 
