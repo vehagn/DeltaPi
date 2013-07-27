@@ -10,7 +10,7 @@ void beerMode(map<const int,Entry> *entries){
 
         card = beerScan(entries,card);
         if (card > 0){
-            entries->find(card)->second.printLine();
+            //entries->find(card)->second.printLine();
             cout << "Current balance: "; entries->find(card)->second.printBalance();
             cout << "\n\nAmount (use \"+amount\" to deposit): ";
             getline(cin,input);
@@ -40,7 +40,7 @@ int beerScan(map<const int,Entry> *entries, int card){
 		}
 	}else{
 		if (entries->find(card) == entries->end()){
-			coutc(red,"Card ID not found!\n");
+			printf("Card ID not found!\n");
 			return -1;
 		}else{
 			return card;
