@@ -99,7 +99,7 @@ void openTab(string, map<const int,Entry> *);
 void exportHTML(map<const int,Entry> *);
 
 char getch();
-void printfl(char*, hd44780*);
+void printfl(char*, hd44780);
 
 
 //Misc
