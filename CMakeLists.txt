@@ -26,9 +26,10 @@ add_library(classes classes.cpp)
 # Build
 #add_executable(dpb dpb.cpp)
 add_executable(DeltaPi DeltaPi.cpp)
-target_link_libraries(DeltaPi ${RpiHw_LIBRARIES} ${MY_TARGET_LINK_LIBRARIES} ${MY_GCOV_LINK_LIBRARIES}
-  					  ${MYSQLCPPCONN_STLPORT_LIB} ${MYSQLCPPCONN_BOOST_SYSTEM_LIBS}
-						  ${MYSQLCPPCONN_BOOST_THREAD_LIBS} ${MYSQLCPPCONN_ICU_LIBRARY} ${Boost_LIBRARIES})
+target_link_libraries(DeltaPi classes functions mysql 
+			${RpiHw_LIBRARIES} ${MY_TARGET_LINK_LIBRARIES} ${MY_GCOV_LINK_LIBRARIES}
+  			${MYSQLCPPCONN_STLPORT_LIB} ${MYSQLCPPCONN_BOOST_SYSTEM_LIBS}
+			${MYSQLCPPCONN_BOOST_THREAD_LIBS} ${MYSQLCPPCONN_ICU_LIBRARY} ${Boost_LIBRARIES})
 
 
 
