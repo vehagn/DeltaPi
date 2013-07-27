@@ -19,12 +19,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${MYSQLCPPCONN_SOURCE_DIR}/cppconn)
 link_directories(${MYSQL_DIR}/lib/opt)
 
-SET(MY_TARGET_LINK_LIBRARIES mysqlcppconn)
-
-#SET(MY_TARGET_LINK_LIBRARIES mysqlcppconn-static) 
-#IF(MYSQLCLIENT_STATIC_BINDING)
-#	SET(MY_TARGET_LINK_LIBRARIES ${MY_TARGET_LINK_LIBRARIES} mysqlclient_r)
-#ENDIF(MYSQLCLIENT_STATIC_BINDING)
+#set(MY_TARGET_LINK_LIBRARIES mysqlcppconn)
 
 # Add librares
 add_library(mysql mysql.cpp)
@@ -34,10 +29,7 @@ add_library(classes classes.cpp)
 # Build
 #add_executable(dpb dpb.cpp)
 add_executable(DeltaPi DeltaPi.cpp)
-SET_TARGET_PROPERTIES(DeltaPi PROPERTIES
-			LINK_FLAGS "${MYSQLCPPCONN_LINK_FLAGS_ENV} ${MYSQL_LINK_FLAGS}"
-			COMPILE_FLAGS "${MYSQLCPPCONN_COMPILE_FLAGS_ENV} ${MYSQL_CXXFLAGS}")
-target_link_libraries(DeltaPi classes functions mysql
+target_link_libraries(DeltaPi classes functions mysql mysqlcppconn
 			${RpiHw_LIBRARIES} ${MY_TARGET_LINK_LIBRARIES} ${MY_GCOV_LINK_LIBRARIES}
   			${MYSQLCPPCONN_STLPORT_LIB} ${MYSQLCPPCONN_BOOST_SYSTEM_LIBS}
 			${MYSQLCPPCONN_BOOST_THREAD_LIBS} ${MYSQLCPPCONN_ICU_LIBRARY} ${Boost_LIBRARIES})
