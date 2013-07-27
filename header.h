@@ -13,20 +13,20 @@
 #include <time.h>
 
 /* MySQL Connector/C++ specific headers */
-/*#include <cppconn/driver.h>
+#include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/resultset.h>
-#include <cppconn/statement.h>*/
+#include <cppconn/statement.h>
 
-#include <driver.h>
+//#include <driver.h>
 #include <connection.h>
-#include <statement.h>
+//#include <statement.h>
 #include <stdexcept>
 #include <prepared_statement.h>
-#include <resultset.h>
+//#include <resultset.h>
 #include <metadata.h>
 #include <resultset_metadata.h>
-#include <exception.h>
+//#include <exception.h>
 #include <warning.h>
 
 #define DBHOST "mysql.stud.ntnu.no" //Database host
