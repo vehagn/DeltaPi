@@ -26,10 +26,10 @@
 #include <cppconn/resultset_metadata.h>
 #include <cppconn/warning.h>
 
-#define DBHOST "mysql.stud.ntnu.no" //Database host
-#define USER "delta_root" //Database user
-#define PASSWORD "Delta_xx" //Database password
-#define DATABASE "delta_base" //Database directory
+#define DBHOST "ftp.domeneshop.no" //Database host
+#define USER "deltahouse" //Database user
+#define PASSWORD "k4ffeD3lta" //Database password
+#define DATABASE "deltahouse" //Database directory
 
 /*
 TO DO:
