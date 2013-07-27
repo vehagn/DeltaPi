@@ -20,7 +20,7 @@ int updateSQL(int id, string field, int int_value){
 
 		/* Create a connection */
 		//driver = get_driver_instance();
-   		driver = mysql::get_driver_instance();
+   		driver = get_driver_instance();
 		con = driver->connect(DBHOST, USER, PASSWORD);
 		
 		/* Connect to the MySQL test database */
@@ -73,7 +73,7 @@ int retrieveSQL(map<const int,Entry> &entries){
 
 		/* Create a connection */
 		//driver = get_driver_instance();  
-   		driver = sql::mysql::get_driver_instance();
+   		driver = get_driver_instance();
 		con = driver->connect(DBHOST, USER, PASSWORD);
 		/* Connect to the MySQL test database */
 		con->setSchema(DATABASE);
