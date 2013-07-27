@@ -37,7 +37,7 @@ update database connection info (encrypted file)
 */
 
 using namespace std;
-//using namespace sql;
+using namespace sql;
 
 const int maxCredit = 200; //Maximum allowed credit
 
