@@ -17,17 +17,12 @@
 #include <cppconn/exception.h>
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
-
-//#include <driver.h>
-#include <connection.h>
-//#include <statement.h>
-#include <stdexcept>
-#include <prepared_statement.h>
-//#include <resultset.h>
-#include <metadata.h>
-#include <resultset_metadata.h>
-//#include <exception.h>
-#include <warning.h>
+#include <cppconn/connection.h>
+#include <cppconn/stdexcept>
+#include <cppconn/prepared_statement.h>
+#include <cppconn/metadata.h>
+#include <cppconn/resultset_metadata.h>
+#include <cppconn/warning.h>
 
 #define DBHOST "mysql.stud.ntnu.no" //Database host
 #define USER "delta_root" //Database user
