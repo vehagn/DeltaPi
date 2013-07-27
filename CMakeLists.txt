@@ -20,7 +20,7 @@ link_directories(${MYSQLCPPCONN_SOURCE_DIR}/cppconn)
 link_directories(${MYSQL_DIR}/lib/opt)
 
 # Add librares
-add_library(mysql mysql.cpp)
+#add_library(mysql mysql.cpp)
 add_library(functions functions.cpp)
 add_library(classes classes.cpp)
 
