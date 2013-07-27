@@ -1,5 +1,4 @@
 /* Standard C++ headers */
-#include <afxinet.h>
 #include <algorithm>
 #include <cstdlib>
 #include <fstream>
