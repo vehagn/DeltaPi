@@ -15,6 +15,12 @@
 
 //#include <afxinet.h> WINDOWS FILE!!!
 
+/* Rpi-hw headers */
+#include <rpi-hw.hpp>
+#include <rpi-hw/utils.hpp>
+#include <rpi-hw/time.hpp>
+#include <rpi-hw/display/hd44780.hpp>
+
 /* MySQL Connector/C++ specific headers */
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
@@ -38,6 +44,8 @@ update database connection info (encrypted file)
 
 using namespace std;
 using namespace sql;
+using namespace rpihw;
+using namespace rpihw::display;
 
 const int maxCredit = 200; //Maximum allowed credit
 
@@ -87,6 +95,9 @@ void beerMode(string, map<const int,Entry> *);
 void openTab(string, map<const int,Entry> *);
 
 void exportHTML(map<const int,Entry> *);
+
+char getch();
+void printfl(char*, hd44780);
 
 
 //Misc
