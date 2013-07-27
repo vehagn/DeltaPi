@@ -16,9 +16,9 @@ char getch(){
          return (buf);     
 	
 }
-void printfl(char strbuf[], hd44780 &lcd ){
-	printf("%s", strbuf);
-	lcd.write(strbuf);
+void printfl(string str, hd44780 &lcd ){
+	printf("%s", str.c_str());
+	lcd.write(str);
 }
 
 
