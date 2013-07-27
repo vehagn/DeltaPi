@@ -19,7 +19,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${MYSQLCPPCONN_SOURCE_DIR}/cppconn)
 link_directories(${MYSQL_DIR}/lib/opt)
 
-SET(MY_TARGET_LINK_LIBRARIES lmysqlcppconn)
+SET(MY_TARGET_LINK_LIBRARIES mysqlcppconn)
 
 #SET(MY_TARGET_LINK_LIBRARIES mysqlcppconn-static) 
 #IF(MYSQLCLIENT_STATIC_BINDING)
