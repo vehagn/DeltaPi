@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <string>
 #include <time.h>
+#include <string.h>
 
 //#include <afxinet.h> WINDOWS FILE!!!
 
