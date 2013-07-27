@@ -12,6 +12,8 @@
 #include <string>
 #include <time.h>
 
+#include <boost/afxinet.h>
+
 /* MySQL Connector/C++ specific headers */
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
