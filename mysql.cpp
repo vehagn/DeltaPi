@@ -1,5 +1,7 @@
 #include "header.h"
 
+using namespce sql;
+
 int updateSQL(int id, string field, int int_value){
 	
 	int n;
