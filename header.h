@@ -18,7 +18,6 @@
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
 #include <cppconn/connection.h>
-#include <cppconn/stdexcept>
 #include <cppconn/prepared_statement.h>
 #include <cppconn/metadata.h>
 #include <cppconn/resultset_metadata.h>
