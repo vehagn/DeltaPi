@@ -11,13 +11,10 @@ int main(int argc, char* argv[]){
 	retrieveSQL(entries);
 	entries.erase(0);
 	
-	char strbuf[256];
-	
-	strbuf = entries.find(10993472)->second.getFirstName().c_str();
+	string str = entries.find(10993472)->second.getFirstName().c_str();
 	
 	//sprintf(strbuf, "%s", buf);
-	printfl(strbuf, lcd);
-
+	printfl(str, lcd);
 
 	return 0;
 }
