@@ -97,8 +97,8 @@ bool checkAlnum(string);
 
 char* str2char(string);
 
-void connectToTheWired(LPCTSTR pszURL);
-void talkToTheWired(LPCTSTR pszURL);
+/*void connectToTheWired(LPCTSTR pszURL);
+void talkToTheWired(LPCTSTR pszURL);*/
 
 //SQL
 int retrieveSQL(map<const int,Entry> &);
