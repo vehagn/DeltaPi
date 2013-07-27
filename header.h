@@ -12,6 +12,8 @@
 #include <string>
 #include <time.h>
 #include <string.h>
+#include <termios.h>
+#include <unistd.h>
 
 //#include <afxinet.h> WINDOWS FILE!!!
 
