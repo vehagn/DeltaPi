@@ -16,8 +16,8 @@ void beerMode(map<const int,Entry> *entries){
             getline(cin,input);
             entries->find(card)->second.setBalance(input);
             cout << "\nNew balance: ";  entries->find(card)->second.printBalance(); cout << endl;
-            updateSQL(card,"cash","",entries->find(card)->second.getCash());
-            updateSQL(card,"spent","",entries->find(card)->second.getSpent());
+            updateSQL(card,"cash",entries->find(card)->second.getCash());
+            updateSQL(card,"spent",entries->find(card)->second.getSpent());
         }else{
 			cout << "Incorrect input, type 'help' for more information" << endl;
 		}
