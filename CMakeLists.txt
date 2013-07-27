@@ -16,8 +16,8 @@ find_package(Boost REQUIRED)
 include_directories(${RpiHw_INCLUDE_DIRS})
 include_directories(${MYSQLCPPCONN_SOURCE_DIR})
 include_directories(${Boost_INCLUDE_DIRS})
-link_directories(${MYSQLCPPCONN_SOURCE_DIR}/cppconn)
-link_directories(${MYSQL_DIR}/lib/opt)
+#link_directories(${MYSQLCPPCONN_SOURCE_DIR}/cppconn)
+#link_directories(${MYSQL_DIR}/lib/opt)
 
 #set(MY_TARGET_LINK_LIBRARIES mysqlcppconn)
 
@@ -30,9 +30,7 @@ add_library(classes classes.cpp)
 #add_executable(dpb dpb.cpp)
 add_executable(DeltaPi DeltaPi.cpp)
 target_link_libraries(DeltaPi classes functions mysql mysqlcppconn
-			${RpiHw_LIBRARIES} ${MY_TARGET_LINK_LIBRARIES} ${MY_GCOV_LINK_LIBRARIES}
-  			${MYSQLCPPCONN_STLPORT_LIB} ${MYSQLCPPCONN_BOOST_SYSTEM_LIBS}
-			${MYSQLCPPCONN_BOOST_THREAD_LIBS} ${MYSQLCPPCONN_ICU_LIBRARY} ${Boost_LIBRARIES})
+			${RpiHw_LIBRARIES} ${Boost_LIBRARIES})
 
 
 
