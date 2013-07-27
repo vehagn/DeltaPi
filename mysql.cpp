@@ -4,13 +4,8 @@ int updateSQL(int id, string field, int int_value){
 	
 	int n;
 	enum FIELDS{
-		id_num,
-		last_name,
-		first_name,
-		tab,
 		cash,
-		spent,
-		comment};
+		spent};
 
 	try {
 		Driver *driver;
