@@ -12,7 +12,7 @@
 #include <string>
 #include <time.h>
 
-#include <boost/afxinet.h>
+//#include <afxinet.h> WINDOWS FILE!!!
 
 /* MySQL Connector/C++ specific headers */
 #include <cppconn/driver.h>
