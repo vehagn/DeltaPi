@@ -10,12 +10,24 @@ add_definitions(-Wall -ansi -pedantic -pedantic-errors -std=c++11)
 find_package(RpiHw REQUIRED)
 find_package(Freetype REQUIRED)
 find_package(GraphicsMagick++ REQUIRED)
+find_package(Boost)
 
 # Set the path to the header files
 include_directories(${RpiHw_INCLUDE_DIRS})
-  
+include_directories(${MYSQLCPPCONN_SOURCE_DIR})
+include_directories(${Boost_INCLUDE_DIRS})
+link_directories(${MYSQLCPPCONN_SOURCE_DIR}/cppconn)
+
+# Add librares
+add_library(mysql mysql.cpp)
+add_library(functions functions.cpp)
+add_library(classes classes.cpp)
+
 # Build
-add_executable(dpb ${CMAKE_SOURCE_DIR}/dpb.cpp)
-target_link_libraries(dpb ${RpiHw_LIBRARIES})
+add_executable(dpb dpb.cpp)
+target_link_libraries(dpb ${RpiHw_LIBRARIES} ${MY_TARGET_LINK_LIBRARIES} ${MY_GCOV_LINK_LIBRARIES}
+  					  ${MYSQLCPPCONN_STLPORT_LIB} ${MYSQLCPPCONN_BOOST_SYSTEM_LIBS}
+						  ${MYSQLCPPCONN_BOOST_THREAD_LIBS} ${MYSQLCPPCONN_ICU_LIBRARY} ${Boost_LIBRARIES})
+
 
 
