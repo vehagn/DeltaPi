@@ -1,7 +1,5 @@
 #include "header.h"
 
-using namespace sql;
-
 int updateSQL(int id, string field, int int_value){
 	
 	int n;
@@ -21,7 +19,8 @@ int updateSQL(int id, string field, int int_value){
 		map<const int,Entry>::iterator it;
 
 		/* Create a connection */
-		driver = get_driver_instance();
+		driver = sql::mysql::get_driver_instance();
+		//driver = get_driver_instance();
 		con = driver->connect(DBHOST, USER, PASSWORD);
 		/* Connect to the MySQL test database */
 		con->setSchema(DATABASE);
@@ -72,7 +71,8 @@ int retrieveSQL(map<const int,Entry> &entries){
 		ResultSet *res;
 
 		/* Create a connection */
-		driver = get_driver_instance();
+		driver = sql::mysql::get_driver_instance();
+		//driver = get_driver_instance();
 		con = driver->connect(DBHOST, USER, PASSWORD);
 		/* Connect to the MySQL test database */
 		con->setSchema(DATABASE);
