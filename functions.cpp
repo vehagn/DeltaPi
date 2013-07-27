@@ -48,7 +48,7 @@ int beerScan(map<const int,Entry> *entries, int card){
 	}return 0;
 }
 
-void connectToTheWired(LPCTSTR pszURL){
+/*void connectToTheWired(LPCTSTR pszURL){
 	CInternetSession session(_T("sessionID"));
 	CStdioFile* pFile = NULL;
 	CHAR szBuff[1024];
@@ -98,7 +98,7 @@ void connectToTheWired(LPCTSTR pszURL){
 			pEx->GetErrorMessage(pszError, 64);
 			_tprintf_s(_T("%63s"), pszError);
 		}
-}
+}*/
 
 char* str2char(string s){
 
