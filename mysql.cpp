@@ -1,6 +1,6 @@
 #include "header.h"
 
-using namespce sql;
+using namespace sql;
 
 int updateSQL(int id, string field, int int_value){
 	
