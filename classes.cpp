@@ -10,7 +10,7 @@ Entry::Entry(){
 	this->spent = 0;
 	
 	this->comment = "";
-};
+}
 Entry::~Entry(){
 
 }
@@ -23,7 +23,7 @@ Entry::Entry(int cardID, string lastName, string firstName, bool tab, int cash, 
 	this->cash = cash;
 
 	this->comment = comment;
-};
+}
 int Entry::getID(){
 	return this->cardId;
 }
@@ -66,7 +66,7 @@ void Entry::setBalance(string operation){
 				this->spent += *number;
 			}else{
 				printf("\n\tNot enough money! \a\a\n");
-				printf("Max credit is %i kr for this card.\n", this->tab*maxCredit));
+				printf("Max credit is %i kr for this card.\n", this->tab*maxCredit);
 			}
 		}else{
 			printf("Invalid input, input must be an integer less than 501\n");
