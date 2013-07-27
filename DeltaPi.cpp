@@ -13,7 +13,9 @@ int main(int argc, char* argv[]){
 	
 	char strbuf[256];
 	
-	sprintf(strbuf, "%s", entries.find(10993472)->second.getNameFirstLast());
+	string buf = entries.find(10993472)->second.getNameFirstLast();
+	
+	sprintf(strbuf, "%s", buf);
 	printfl(strbuf, &lcd);
 
 
