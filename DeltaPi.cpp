@@ -33,10 +33,10 @@ int main(int argc, char* argv[]){
 		//printfl("Scan card: ", lcd);
 		//dev.setCursor(hd44780::CURSOR_SOLID | hd44780::CURSOR_BLINKING);
 		scanCard(entries, card, lcd);
-		pause(lcd, 5);
+		pause(5);
 
 
-	}while (true);
+	}while (card != -1);
 
 	return 0;
 }
