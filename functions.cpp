@@ -91,7 +91,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	string input;
 	int *amount = new int(0);
 	moveAndClearLine(0,3,lcd);
-	printfl("Prefix + to deposit");
+	printfl("Prefix + to deposit", lcd);
 	
 	moveAndClearLine(0,2,lcd);
 	printfl("Amount:", lcd);
@@ -100,7 +100,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	
 	if (input.substr(0,1) == "+"){
 		input.erase(0,1);
-		if ((*amount = atoi(input.c_str())) && (*amount =< maxAmount)){
+		if ((*amount = atoi(input.c_str())) && (*amount <= maxAmount)){
 			entries.find(card)->second.depositCash(*amount);
 			moveAndClearLine(0,1,lcd);
 			moveAndClearLine(0,2,lcd);
@@ -118,7 +118,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			printfl(buf, lcd);
 		}
 	}else{
-		if ((*amount = abs(atoi(input.c_str()))) && (*amount =< maxAmount)){
+		if ((*amount = abs(atoi(input.c_str()))) && (*amount <= maxAmount)){
 			if ((entries.find(card)->second.getCash() - *amount) >= -((entries.find(card)->second.getTab()*maxCredit))){
 				entries.find(card)->second.withdrawCash(*amount);
 				entries.find(card)->second.increaseSpent(*amount);
