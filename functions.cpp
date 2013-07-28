@@ -35,7 +35,7 @@ void getLine(char buf[], hd44780 &lcd){
 }
 void printfl(string str, hd44780 &lcd){
 	printf("%s", str.c_str());
-	lcd.write(str,10);
+	lcd.write(str,500);
 }
 
 char* str2char(string s){
