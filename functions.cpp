@@ -50,10 +50,10 @@ char* str2char(string s){
 void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	string input;
 	char buf[128];
-	//lcd.clear();
+
 	do{
-		moveAndClearLine(0,0, lcd);
-		printfl("Scan:", lcd); //printf("\n");
+		moveAndClearLine(0,0,lcd);
+		printfl("Scan:", lcd);
 		getLine(buf, lcd);
 		input = buf;
 		stringstream checkIfNumber(input);
@@ -79,7 +79,7 @@ void printInfo(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	sprintf(buf, "%s", entries.find(card)->second.getFirstName().c_str());
 	printfl(buf, lcd);
 	lcd.move(0, 1);
-	sprintf(buf, "Balance: %i kr", entries.find(card)->second.getCash());
+	sprintf(buf, "Balance: %ikr", entries.find(card)->second.getCash());
 	printfl(buf, lcd);
 }
 void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
@@ -88,20 +88,20 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	int *amount = new int(0);
 	
 	lcd.move(0,2);
-	printfl("Amount:", lcd); //printf("\n");
+	printfl("Amount:", lcd);
 	getLine(buf, lcd);
 	input = buf;
-	//stringstream checkIfNumber(input);
 	
 	if (input.substr(0,1) == "+"){
 		input.erase(0,1);
 		if ((*amount = atoi(input.c_str())) && (*amount < maxAmount)){
 			entries.find(card)->second.depositCash(*amount);
+			moveAndClearLine(0,1,lcd);
 			moveAndClearLine(0,2,lcd);
-			sprintf(buf, "%i kr deposited.", *amount);
+			sprintf(buf, "%ikr deposited.", *amount);
 			printfl(buf, lcd);
 			moveAndClearLine(0,3,lcd);
-			sprintf(buf, "New balance:%i", entries.find(card)->second.getCash());
+			sprintf(buf, "New balance: %ikr", entries.find(card)->second.getCash());
 			printfl(buf, lcd);
 			printf("\n");
 		}else{
@@ -116,6 +116,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			if ((entries.find(card)->second.getCash() - *amount) >= -((entries.find(card)->second.getTab()*maxCredit))){
 				entries.find(card)->second.withdrawCash(*amount);
 				entries.find(card)->second.increaseSpent(*amount);
+				moveAndClearLine(0,1,lcd);
 				moveAndClearLine(0,2,lcd);
 				sprintf(buf, "%i kr withdrawn.", *amount);
 				printfl(buf, lcd);
@@ -134,6 +135,8 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			printfl(buf, lcd); //printf("\n");
 		}
 	}
+	updateSQL(int card, "cash", entries.find(card)->decong.getCash());
+	updateSQL(int card, "spent", entries.find(card)->decong.getSpent());
 }
 
 /*void beerMode(map<const int,Entry> *entries){
