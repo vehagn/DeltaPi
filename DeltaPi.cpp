@@ -16,11 +16,11 @@ int main(int argc, char* argv[]){
 	
 	//sprintf(strbuf, "%s", buf);
 	lcd.move(5,0);
-	printfl(str, lcd);
+	printfl(str, lcd); printf("\n");
 	
 	string str = entries.find(10993472)->second.getLastName().c_str();
 	lcd.move(5,1);
-	printfl(str, lcd);
+	printfl(str, lcd); printf("\n");
 
 	return 0;
 }
