@@ -125,13 +125,14 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 				moveAndClearLine(0,2,lcd);
 				printfl("Not enough money!\n",lcd);
 			}
-		}else
+		}else{
 			moveAndClearLine(0,2,lcd);
 			printfl("Invalid input!\n", lcd);
 			moveAndClearLine(0,3,lcd);
 			sprintf(buf, "Input int <= %i\n", maxAmount);
 			printfl(buf, lcd);
 		}
+	}
 }
 
 /*void beerMode(map<const int,Entry> *entries){
