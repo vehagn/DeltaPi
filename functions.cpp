@@ -140,6 +140,13 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 				moveAndClearLine(0,2,lcd);
 				printfl("Not enough money!",lcd);
 			}
+		}else if (*amount == 0){
+			moveAndClearLine(0,1,lcd);
+			printfl("You used 0.", lcd);
+			moveAndClearLine(0,2,lcd);
+			printfl("It's not very ", lcd);
+			moveAndClearLine(0,3,lcd);
+			printfl("effective...", lcd);	
 		}else{
 			moveAndClearLine(0,2,lcd);
 			printfl("Invalid input!", lcd);
