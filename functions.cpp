@@ -50,7 +50,7 @@ char* str2char(string s){
 void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	string input;
 	char buf[128];
-	lcd.clear();
+	//lcd.clear();
 	do{
 		moveAndClearLine(0,0, lcd);
 		printfl("Card:", lcd); printf("\n\r");
