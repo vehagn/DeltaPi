@@ -94,7 +94,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	printfl("Amount:", lcd);
 	moveAndClearLine(0,3,lcd);
 	printfl("Prefix + to deposit.", lcd);
-	lcd.move(0,7);
+	lcd.move(7,3);
 	getLine(buf, lcd);
 	input = buf;
 	
