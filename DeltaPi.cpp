@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
 	printfl(buf, lcd);
 	
 	str = entries.find(10993472)->second.getLastName().c_str();
-	lcd.move(5,1);
+	lcd.move(10,1);
 	printfl(buf, lcd);
 
 	return 0;
