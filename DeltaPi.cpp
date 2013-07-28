@@ -33,6 +33,7 @@ int main(int argc, char* argv[]){
 		//printfl("Scan card: ", lcd);
 		//dev.setCursor(hd44780::CURSOR_SOLID | hd44780::CURSOR_BLINKING);
 		scanCard(entries, card, lcd);
+		time::sleep(5);
 		if (card > 10){
 			printInfo(entries, card, lcd);
 		}

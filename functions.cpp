@@ -71,7 +71,7 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 
 	do{
 		moveAndClearLine(0,0, lcd);
-		printfl("Card: ", lcd);
+		printfl("Card: \n", lcd);
 		getLine(buf, lcd);
 		input = buf;
 		stringstream checkIfNumber(input);
@@ -103,7 +103,7 @@ void printInfo(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	sprintf(buf, "%s\n", entries.find(card)->second.getFirstName().c_str());
 	printfl(buf, lcd);
 	lcd.move(0, 1);
-	sprintf(buf, "Balance: %i\n", entries.find(card)->second.getCash());
+	sprintf(buf, "Balance: %i kr\n", entries.find(card)->second.getCash());
 	printfl(buf, lcd);
 }
 
