@@ -51,7 +51,7 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 
 	do{
 		lcd.move(0,0);
-		printfl("Scan card: ", lcd); lcd.write("         "); lcd.move(11,0);
+		printfl("Scan:", lcd); lcd.write("         "); lcd.move(5,0);
 		lcd.setCursor(hd44780::CURSOR_SOLID | hd44780::CURSOR_BLINKING);
 		getline(cin, input);
 		stringstream checkIfNumber(input);
@@ -62,8 +62,6 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 		else{
 			lcd.move(0,1);
 			printfl("Invalid input!\n",lcd);
-			lcd.move(0,2);
-			printfl("Only numbers are recognized.",lcd);
 		}
 
 		if (entries.find(card) == entries.end()){
@@ -72,6 +70,7 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			return -1;
 		}
 		else{
+			lcd.move(0,1);
 			printfl(entries.find(card)->second.getFirstName().c_str(), lcd);
 			return card;
 		}

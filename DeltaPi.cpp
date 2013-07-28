@@ -12,7 +12,7 @@ int main(int argc, char* argv[]){
 	retrieveSQL(entries);
 	entries.erase(0);
 	
-	string str;
+	/*string str;
 	str = entries.find(10993472)->second.getFirstName();
 	
 	char buf[256];	
@@ -23,7 +23,7 @@ int main(int argc, char* argv[]){
 	
 	str = entries.find(10993472)->second.getLastName().c_str();
 	lcd.move(10,1);
-	printfl(buf, lcd);
+	printfl(buf, lcd);*/
 
 	string input;
 	int card = 0;
