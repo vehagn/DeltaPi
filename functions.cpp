@@ -34,7 +34,7 @@ void getLine(char buf[], hd44780 &lcd){
 	lcd.setCursor( hd44780::NO_CURSOR );
 }
 void printfl(string str, hd44780 &lcd){
-	printf("%s", str.c_str());
+	printf("%s\n", str.c_str());
 	lcd.write(str,10);
 }
 
@@ -53,7 +53,7 @@ void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	//lcd.clear();
 	do{
 		moveAndClearLine(0,0, lcd);
-		printfl("Card:", lcd); printf("\n\r");
+		printfl("Scan:", lcd); //printf("\n");
 		getLine(buf, lcd);
 		input = buf;
 		stringstream checkIfNumber(input);
@@ -61,14 +61,14 @@ void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			if (card == -1){return;}		
 			if (entries.find(card) == entries.end()){
 				moveAndClearLine(0, 1, lcd);
-				printfl("Card ID not found!\n",lcd);
+				printfl("Card ID not found!",lcd);
 			}else{
 				return;
 			}
 		}
 		else{
 			moveAndClearLine(0, 1, lcd);
-			printfl("Invalid input!\n",lcd);
+			printfl("Invalid input!",lcd);
 		}
 	}while (true);
 	return;
@@ -76,10 +76,10 @@ void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 void printInfo(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	char buf[128];
 	lcd.clear(); lcd.move(0, 0);
-	sprintf(buf, "%s\n", entries.find(card)->second.getFirstName().c_str());
+	sprintf(buf, "%s", entries.find(card)->second.getFirstName().c_str());
 	printfl(buf, lcd);
 	lcd.move(0, 1);
-	sprintf(buf, "Balance: %i kr\n", entries.find(card)->second.getCash());
+	sprintf(buf, "Balance: %i kr", entries.find(card)->second.getCash());
 	printfl(buf, lcd);
 }
 void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
@@ -88,7 +88,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	int *amount = new int(0);
 	
 	lcd.move(0,2);
-	printfl("Amount:", lcd); printf("\n\r");
+	printfl("Amount:", lcd); //printf("\n");
 	getLine(buf, lcd);
 	input = buf;
 	//stringstream checkIfNumber(input);
@@ -98,16 +98,17 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 		if ((*amount = atoi(input.c_str())) && (*amount < maxAmount)){
 			entries.find(card)->second.depositCash(*amount);
 			moveAndClearLine(0,2,lcd);
-			sprintf(buf, "%i kr deposited.\n", *amount);
+			sprintf(buf, "%i kr deposited.", *amount);
 			printfl(buf, lcd);
 			moveAndClearLine(0,3,lcd);
-			sprintf(buf, "New balance:%i\n", entries.find(card)->second.getCash());
+			sprintf(buf, "New balance:%i", entries.find(card)->second.getCash());
 			printfl(buf, lcd);
+			printf("\n");
 		}else{
 			moveAndClearLine(0,2,lcd);
-			printfl("Invalid input!\n", lcd);
+			printfl("Invalid input!", lcd);
 			moveAndClearLine(0,3,lcd);
-			sprintf(buf, "Input int <= %i\n", maxAmount);
+			sprintf(buf, "Input int <= %i", maxAmount);
 			printfl(buf, lcd);
 		}
 	}else{
@@ -116,21 +117,21 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 				entries.find(card)->second.withdrawCash(*amount);
 				entries.find(card)->second.increaseSpent(*amount);
 				moveAndClearLine(0,2,lcd);
-				sprintf(buf, "%i kr withdrawn.\n", *amount);
+				sprintf(buf, "%i kr withdrawn.", *amount);
 				printfl(buf, lcd);
 				moveAndClearLine(0,3,lcd);
 				sprintf(buf, "New balance:%i kr", entries.find(card)->second.getCash());
-				printfl(buf, lcd); printf("\n");
+				printfl(buf, lcd); //printf("\n");
 			}else{
 				moveAndClearLine(0,2,lcd);
-				printfl("Not enough money!\n",lcd);
+				printfl("Not enough money!",lcd);
 			}
 		}else{
 			moveAndClearLine(0,2,lcd);
-			printfl("Invalid input!\n\0", lcd);
+			printfl("Invalid input!", lcd);
 			moveAndClearLine(0,3,lcd);
 			sprintf(buf, "Input int <= %i", maxAmount);
-			printfl(buf, lcd); printf("\n");
+			printfl(buf, lcd); //printf("\n");
 		}
 	}
 }
