@@ -1,5 +1,11 @@
 #include "header.h"
 
+void moveAndClearLine(int i, int j, hd44780 &lcd){
+	lcd.move(i, j);
+	lcd.write("                    ");
+	lcd.move(i,j);
+}
+
 char getch(){
         struct termios old_tio, new_tio;
         char buf = 0;
@@ -16,7 +22,17 @@ char getch(){
          return (buf);     
 	
 }
-void printfl(string str, hd44780 &lcd ){
+void getLine(char buf[], hd44780 &lcd){
+	char c;
+	int i = 0;
+	do{
+		c = getch();
+		buf[i++] = c;
+		lcd.write(c);
+	}while (c != '\n');
+}
+
+void printfl(string str, hd44780 &lcd){
 	printf("%s", str.c_str());
 	lcd.write(str);
 }
@@ -52,28 +68,29 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 
 	do{
 		lcd.move(0,0);
-		printfl("Card:", lcd); lcd.write("               "); lcd.move(5,0);
+		printfl("Card: ", lcd); lcd.write("               "); lcd.move(5,0);
 		lcd.setCursor(hd44780::CURSOR_SOLID | hd44780::CURSOR_BLINKING);
-		getline(cin, input);
+		getLine(input, lcd);
 		stringstream checkIfNumber(input);
 		sprintf(buf,"%s\n" ,input.c_str());
 		printfl(buf, lcd);
 		if (checkIfNumber >> card){
+			if (card == -1){return card};
 			break;
 		}
 		else{
-			lcd.move(0,1);
+			moveAndClearLine(0, 1, lcd);
 			printfl("Invalid input!\n",lcd);
 		}
 	}while (true);
 
 	if (entries.find(card) == entries.end()){
-		lcd.move(0,1);
+		moveAndClearLine(0, 1, lcd);
 		printfl("Card ID not found!\n",lcd);
-		return -1;
+		return -2;
 	}
 	else{
-		lcd.move(0,1);
+		moveAndClearLine(0,1, lcd);
 		printfl(entries.find(card)->second.getFirstName().c_str(), lcd);
 		return card;
 	}
