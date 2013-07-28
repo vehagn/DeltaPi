@@ -70,7 +70,8 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 		lcd.move(0,0);
 		printfl("Card: ", lcd); lcd.write("               "); lcd.move(5,0);
 		lcd.setCursor(hd44780::CURSOR_SOLID | hd44780::CURSOR_BLINKING);
-		getLine(input, lcd);
+		getLine(buf, lcd);
+		input = buf;
 		stringstream checkIfNumber(input);
 		sprintf(buf,"%s\n" ,input.c_str());
 		printfl(buf, lcd);
