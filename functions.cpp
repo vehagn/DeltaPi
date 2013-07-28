@@ -90,11 +90,11 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	char buf[128];
 	string input;
 	int *amount = new int(0);
-	moveAndClearLine(0,3,lcd);
-	printfl("Prefix + to deposit", lcd);
-	
 	moveAndClearLine(0,2,lcd);
 	printfl("Amount:", lcd);
+	moveAndClearLine(0,3,lcd);
+	printfl("Prefix + to deposit.", lcd);
+	lcd.move(0,7);
 	getLine(buf, lcd);
 	input = buf;
 	
