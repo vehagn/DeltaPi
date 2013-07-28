@@ -49,7 +49,8 @@ using namespace sql;
 using namespace rpihw;
 using namespace rpihw::display;
 
-const int maxCredit = 200; //Maximum allowed credit
+const int maxCredit = 200; //Maximum allowed credit.
+const int maxAmount = 500; //Maximum allowed transfer.
 
 
 //Entry
@@ -80,6 +81,10 @@ public:
 
 	int getCash();
 	long getSpent();
+	
+	void depositCash(int);
+	void withdrawCash(int);
+	void increaseSpent(int);
 
 	string getComment();
 

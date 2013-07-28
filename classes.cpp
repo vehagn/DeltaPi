@@ -18,10 +18,8 @@ Entry::Entry(int cardID, string lastName, string firstName, bool tab, int cash, 
 	this->cardId = cardID;
 	this->firstName = firstName;
 	this->lastName = lastName;
-
 	this->tab = tab;
 	this->cash = cash;
-
 	this->comment = comment;
 }
 int Entry::getID(){
@@ -49,6 +47,16 @@ long Entry::getSpent(){
 string Entry::getComment(){
 	return this->comment;
 }
+void Entry::depositCash(int amount){
+	this->cash += amount;
+}
+void Entry::withdrawCash(int amount){
+	this->cash -= amount;
+}
+void Entry::increaseSpent(int amount){
+	this->spent += amount;
+} 
+
 void Entry::setBalance(string operation, hd44780 &lcd){
 	int *number = new int(0);
 

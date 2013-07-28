@@ -36,6 +36,7 @@ int main(int argc, char* argv[]){
 		time::sleep(5);
 		if (card > 10){
 			printInfo(entries, card, lcd);
+			transaction(entries, card, lcd);
 		}
 		time::sleep(5);
 

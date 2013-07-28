@@ -40,7 +40,6 @@ void printfl(string str, hd44780 &lcd){
 	lcd.write(str);
 }
 
-
 void beerMode(map<const int,Entry> *entries){
 	string input;
 	int card = -1;
@@ -105,15 +104,53 @@ void printInfo(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	char buf[128];
 	string input;
-	int amount;
+	int *amount = new int(0);
 	
-	lcd.move(0, 2);
+	lcd.move(0,2);
 	printfl("Amount:", lcd); printf("\n\r");
 	getLine(buf, lcd);
 	input = buf;
-	stringstream checkIfNumber(input);
-	entries->find(card)->second.setBalance(input, lcd);
+	//stringstream checkIfNumber(input);
 	
+	if (input.substr(0,1) == "+"){
+		input.erase(0,1);
+		if ((*amount = atoi(input.c_str())) && (*amount < maxAmount)){
+			entries.find(card)->second.depositCash(amount);
+			moveAndClearLine(0,2);
+			sprintf(buf, "%i kr deposited.\n", *amount);
+			printfl(buf, lcd);
+			moveAndClearLine(0,3);
+			sprintf(buf, "New balance:%i\n", entries.find(card)->second.getCash());
+			printfl(buf, lcd);
+		}else{
+			moveAndClearLine(0,2);
+			printfl("Invalid input!\n", lcd);
+			moveAndCleatLine(0,3);
+			sprintf(buf, "Input int <= %i\n", maxAmount);
+			printfl(buf, lcd);
+		}
+	}else{
+		if ((*amount = abs(atoi(input.c_str()))) && (*amount < maxAmount)){
+			if ((entries.find(card)->second.getCash() - *amount) >= -((entries.find(card)->second.getTab()*maxCredit))){
+				entries.find(card)->second.withdrawCash(*amount);
+				entries.find(card)->second.increaseSpent(*amount);
+				moveAndClearLine(0,2);
+				sprintf(buf, "%i kr withdrawn.\n", *amount);
+				printfl(buf, lcd);
+				moveAndClearLine(0,3);
+				sprintf(buf, "New balance:%i\n", entries.find(card)->second.getCash());
+				printfl(buf, lcd);
+			}else{
+				moveAndClearLine(0,2);
+				printfl("Not enough money!\n");
+			}
+		}else
+			moveAndClearLine(0,2);
+			printfl("Invalid input!\n", lcd);
+			moveAndCleatLine(0,3);
+			sprintf(buf, "Input int <= %i\n", maxAmount);
+			printfl(buf, lcd);
+		}
 }
 
 /*int beerScan(map<const int,Entry> &entries, int card){
