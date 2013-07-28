@@ -30,7 +30,7 @@ void getLine(char buf[], hd44780 &lcd){
 		buf[(i++)%128] = c;
 		lcd.write(c);
 	}while (c != '\n');
-	c[i%128] = '\0';
+	buf[i%128] = '\0';
 }
 
 void printfl(string str, hd44780 &lcd){
