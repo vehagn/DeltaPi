@@ -98,7 +98,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	getLine(buf, lcd);
 	input = buf;
 	
-	if (input == "0\0"){
+	if (input.c_str() == '0'){
 		moveAndClearLine(0,1,lcd);
 		printfl("You used 0.", lcd);
 		moveAndClearLine(0,2,lcd);
