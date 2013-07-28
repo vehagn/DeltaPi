@@ -155,8 +155,8 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			printfl(buf, lcd);
 		}
 	}
-	updateSQL(card, "cash", entries.find(card)->second.getCash());
-	updateSQL(card, "spent", entries.find(card)->second.getSpent());
+	updateSQL(card, "cash", entries.find(card)->second.getCash(), lcd);
+	updateSQL(card, "spent", entries.find(card)->second.getSpent(), lcd);
 }
 
 /*void beerMode(map<const int,Entry> *entries){
