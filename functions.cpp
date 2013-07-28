@@ -48,14 +48,16 @@ void beerMode(map<const int,Entry> *entries){
 
 int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	string input;
+	char buf[64];
 
 	do{
 		lcd.move(0,0);
-		printfl("Scan:", lcd); lcd.write("         "); lcd.move(5,0);
+		printfl("Card:", lcd); lcd.write("               "); lcd.move(5,0);
 		lcd.setCursor(hd44780::CURSOR_SOLID | hd44780::CURSOR_BLINKING);
 		getline(cin, input);
 		stringstream checkIfNumber(input);
-		printfl(input, lcd);
+		sprintf(buf,"%s\n" ,input);
+		printfl(buf, lcd);
 		if (checkIfNumber >> card){
 			break;
 		}
@@ -63,19 +65,18 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			lcd.move(0,1);
 			printfl("Invalid input!\n",lcd);
 		}
+	}while (true);
 
-		if (entries.find(card) == entries.end()){
-			lcd.move(0,1);
-			printfl("Card ID not found!\n",lcd);
-			return -1;
-		}
-		else{
-			lcd.move(0,1);
-			printfl(entries.find(card)->second.getFirstName().c_str(), lcd);
-			return card;
-		}
-	}while (card > 0);
-	return card;
+	if (entries.find(card) == entries.end()){
+		lcd.move(0,1);
+		printfl("Card ID not found!\n",lcd);
+		return -1;
+	}
+	else{
+		lcd.move(0,1);
+		printfl(entries.find(card)->second.getFirstName().c_str(), lcd);
+		return card;
+	}
 }
 
 /*int beerScan(map<const int,Entry> &entries, int card){
