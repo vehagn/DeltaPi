@@ -65,23 +65,23 @@ void beerMode(map<const int,Entry> *entries){
 	}while (true);
 }
 
-int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
+void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	string input;
 	char buf[128];
 	lcd.clear();
 	do{
 		moveAndClearLine(0,0, lcd);
-		printfl("Card: ", lcd); printf("\n\r");
+		printfl("Card:", lcd); printf("\n\r");
 		getLine(buf, lcd);
 		input = buf;
 		stringstream checkIfNumber(input);
 		if (checkIfNumber >> card){
-			if (card == -1){return -1;}		
+			if (card == -1){return;}		
 			if (entries.find(card) == entries.end()){
 				moveAndClearLine(0, 1, lcd);
 				printfl("Card ID not found!\n",lcd);
 			}else{
-				return card;
+				return;
 			}
 		}
 		else{
@@ -89,7 +89,7 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			printfl("Invalid input!\n",lcd);
 		}
 	}while (true);
-	return card;
+	return;
 }
 
 void printInfo(map<const int, Entry> &entries, int &card, hd44780 &lcd){
@@ -100,6 +100,19 @@ void printInfo(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	lcd.move(0, 1);
 	sprintf(buf, "Balance: %i kr\n", entries.find(card)->second.getCash());
 	printfl(buf, lcd);
+}
+
+void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
+	char buf[128];
+	string input;
+	int amount;
+	
+	lcd.move(0, 2);
+	printfl("Amount:", lcd); printf("\n\r");
+	getLine(buf, lcd);
+	input = buf;
+	stringstream checkIfNumber(input);
+	
 }
 
 /*int beerScan(map<const int,Entry> &entries, int card){
