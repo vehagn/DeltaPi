@@ -56,7 +56,7 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 		lcd.setCursor(hd44780::CURSOR_SOLID | hd44780::CURSOR_BLINKING);
 		getline(cin, input);
 		stringstream checkIfNumber(input);
-		sprintf(buf,"%s\n" ,input);
+		sprintf(buf,"%s\n" ,input.c_str());
 		printfl(buf, lcd);
 		if (checkIfNumber >> card){
 			break;
