@@ -137,6 +137,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 				sprintf(buf, "New balance:%i kr", entries.find(card)->second.getCash());
 				printfl(buf, lcd);
 			}else{
+				moveAndClearLine(0,3,lcd);
 				moveAndClearLine(0,2,lcd);
 				printfl("Not enough money!",lcd);
 			}
