@@ -77,25 +77,20 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 		input = buf;
 		stringstream checkIfNumber(input);
 		if (checkIfNumber >> card){
-			if (card == -1){return card;}
-			break;
+			if (card == -1){return -1;}		
+			if (entries.find(card) == entries.end()){
+				moveAndClearLine(0, 1, lcd);
+				printfl("Card ID not found!\n",lcd);
+			}else{
+				return card;
+			}
 		}
 		else{
 			moveAndClearLine(0, 1, lcd);
 			printfl("Invalid input!\n",lcd);
 		}
 	}while (true);
-
-	if (entries.find(card) == entries.end()){
-		moveAndClearLine(0, 1, lcd);
-		printfl("Card ID not found!\n",lcd);
-		return -2;
-	}
-	else{
-		//moveAndClearLine(0,1, lcd);
-		//printfl(entries.find(card)->second.getFirstName().c_str(), lcd);
-		return card;
-	}
+	return card;
 }
 
 void printInfo(map<const int, Entry> &entries, int &card, hd44780 &lcd){
