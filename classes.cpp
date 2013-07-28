@@ -25,7 +25,6 @@ Entry::Entry(int cardID, string lastName, string firstName, bool tab, int cash, 
 int Entry::getID(){
 	return this->cardId;
 }
-
 string Entry::getNameFirstLast(){
 	return this->firstName + " " + this->lastName;
 }
