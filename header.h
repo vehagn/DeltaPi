@@ -91,7 +91,7 @@ public:
 };
 
 //Actions
-int scanCard(map<const int,Entry>&, int&);
+int scanCard(map<const int,Entry>&, int&, hd44780&);
 void beerMode(string, map<const int,Entry> *);
 
 void openTab(string, map<const int,Entry> *);

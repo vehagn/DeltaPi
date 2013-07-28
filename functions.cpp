@@ -30,7 +30,7 @@ void beerMode(map<const int,Entry> *entries){
 		cout << endl << "Scan card: ";
 		getline(cin,input);
 
-        card = beerScan(entries,card);
+       // card = beerScan(entries,card);
         if (card > 0){
             //entries->find(card)->second.printLine();
             cout << "Current balance: "; entries->find(card)->second.printBalance();
