@@ -56,71 +56,62 @@ const int maxAmount = 500; //Maximum allowed transfer.
 //Entry
 class Entry{
 private:
-
 	int cardId;
 	string firstName;
 	string lastName;
-
-	bool tab;
+	string comment;
 	int cash;
 	long spent;
-
-	string comment;
-
+	bool tab;
 public:
 	Entry();
 	~Entry();
 	Entry(int, string, string, bool, int, long, string);
 
 	void setInfo(map<const int,Entry> *);
-
 	int getID();
 	string getNameFirstLast();
 	string getFirstName();
 	string getLastName();
+	string getComment();
 
 	int getCash();
 	long getSpent();
+	bool getTab();
 	
 	void depositCash(int);
 	void withdrawCash(int);
 	void increaseSpent(int);
-
-	string getComment();
-
-	bool getTab();
 	void openTab(bool);
 
-	void printBalance();
-	void setBalance(string);
+	/*void printBalance();
+	void setBalance(string);*/
 };
 
-//Actions
+//Functions
 void moveAndClearLine(int, int, hd44780&);
+char getch();
 void getLine(char[], hd44780&);
+void printfl(string, hd44780&);
+
+char* str2char(string);
+
 
 void scanCard(map<const int, Entry>&, int&, hd44780&);
 void printInfo(map<const int, Entry>&, int&, hd44780&);
 void transaction(map<const int, Entry>&, int&, hd44780&);
+/*void openTab(string, map<const int,Entry> *);
 
 void beerMode(string, map<const int,Entry> *);
-
-void openTab(string, map<const int,Entry> *);
-
 void exportHTML(map<const int,Entry> *);
 
-char getch();
-void printfl(string, hd44780&);
 
-
-//Misc
 int beerScan(map<const int,Entry> &, int);
-
 int getCard(map<const int,Entry> *);
 int checkLogin(time_t *,int*);
-bool checkAlnum(string);
+bool checkAlnum(string);*/
 
-char* str2char(string);
+
 
 /*void connectToTheWired(LPCTSTR pszURL);
 void talkToTheWired(LPCTSTR pszURL);*/

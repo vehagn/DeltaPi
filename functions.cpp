@@ -5,7 +5,6 @@ void moveAndClearLine(int i, int j, hd44780 &lcd){
 	lcd.write("                    ");
 	lcd.move(i,j);
 }
-
 char getch(){
         struct termios old_tio, new_tio;
         char buf = 0;
@@ -34,34 +33,18 @@ void getLine(char buf[], hd44780 &lcd){
 	buf[i%128] = '\0';
 	lcd.setCursor( hd44780::NO_CURSOR );
 }
-
 void printfl(string str, hd44780 &lcd){
 	printf("%s", str.c_str());
 	lcd.write(str);
 }
 
-void beerMode(map<const int,Entry> *entries){
-	string input;
-	int card = -1;
+char* str2char(string s){
 
-	do{
-		cout << endl << "Scan card: ";
-		getline(cin,input);
+	char *c=new char[s.size()+1];
+	c[s.size()]=0;
+	memcpy(c,s.c_str(),s.size());
 
-       // card = beerScan(entries,card);
-        if (card > 0){
-            //entries->find(card)->second.printLine();
-            cout << "Current balance: "; entries->find(card)->second.printBalance();
-            cout << "\n\nAmount (use \"+amount\" to deposit): ";
-            getline(cin,input);
-            entries->find(card)->second.setBalance(input);
-            cout << "\nNew balance: ";  entries->find(card)->second.printBalance(); cout << endl;
-            updateSQL(card,"cash",entries->find(card)->second.getCash());
-            updateSQL(card,"spent",entries->find(card)->second.getSpent());
-        }else{
-			cout << "Incorrect input, type 'help' for more information" << endl;
-		}
-	}while (true);
+	return c;
 }
 
 void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
@@ -90,7 +73,6 @@ void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	}while (true);
 	return;
 }
-
 void printInfo(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	char buf[128];
 	lcd.clear(); lcd.move(0, 0);
@@ -100,7 +82,6 @@ void printInfo(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	sprintf(buf, "Balance: %i kr\n", entries.find(card)->second.getCash());
 	printfl(buf, lcd);
 }
-
 void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	char buf[128];
 	string input;
@@ -153,6 +134,29 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 		}
 }
 
+/*void beerMode(map<const int,Entry> *entries){
+	string input;
+	int card = -1;
+
+	do{
+		cout << endl << "Scan card: ";
+		getline(cin,input);
+
+       // card = beerScan(entries,card);
+        if (card > 0){
+            //entries->find(card)->second.printLine();
+            cout << "Current balance: "; entries->find(card)->second.printBalance();
+            cout << "\n\nAmount (use \"+amount\" to deposit): ";
+            getline(cin,input);
+            entries->find(card)->second.setBalance(input);
+            cout << "\nNew balance: ";  entries->find(card)->second.printBalance(); cout << endl;
+            updateSQL(card,"cash",entries->find(card)->second.getCash());
+            updateSQL(card,"spent",entries->find(card)->second.getSpent());
+        }else{
+			cout << "Incorrect input, type 'help' for more information" << endl;
+		}
+	}while (true);
+}*/
 /*int beerScan(map<const int,Entry> &entries, int card){
 	string cmd;
 	if (card == 0){		
@@ -228,12 +232,3 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			_tprintf_s(_T("%63s"), pszError);
 		}
 }*/
-
-char* str2char(string s){
-
-	char *c=new char[s.size()+1];
-	c[s.size()]=0;
-	memcpy(c,s.c_str(),s.size());
-
-	return c;
-}
