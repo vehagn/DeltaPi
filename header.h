@@ -94,8 +94,9 @@ public:
 void moveAndClearLine(int, int, hd44780&);
 void getLine(char[], hd44780&);
 
-int scanCard(map<const int, Entry>&, int&, hd44780&);
+void scanCard(map<const int, Entry>&, int&, hd44780&);
 void printInfo(map<const int, Entry>&, int&, hd44780&);
+void transaction
 
 void beerMode(string, map<const int,Entry> *);
 
