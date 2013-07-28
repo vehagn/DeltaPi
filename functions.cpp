@@ -112,6 +112,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	getLine(buf, lcd);
 	input = buf;
 	stringstream checkIfNumber(input);
+	entries->find(card)->second.setBalance(input, lcd);
 	
 }
 
