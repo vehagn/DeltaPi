@@ -57,7 +57,7 @@ void Entry::increaseSpent(int amount){
 	this->spent += amount;
 } 
 
-void Entry::setBalance(string operation, hd44780 &lcd){
+/*void Entry::setBalance(string operation){
 	int *number = new int(0);
 
 	if (operation.substr(0,1) == "+"){
@@ -80,7 +80,7 @@ void Entry::setBalance(string operation, hd44780 &lcd){
 			printf("Invalid input, input must be an integer less than 501\n");
 		}
 	}
-}
+}*/
 void Entry::printBalance(){
 		printf("%i kr",this->getCash());
 }
