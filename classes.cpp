@@ -49,7 +49,7 @@ long Entry::getSpent(){
 string Entry::getComment(){
 	return this->comment;
 }
-void Entry::setBalance(string operation){
+void Entry::setBalance(string operation, hd44780 &lcd){
 	int *number = new int(0);
 
 	if (operation.substr(0,1) == "+"){
