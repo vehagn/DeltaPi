@@ -68,11 +68,10 @@ void beerMode(map<const int,Entry> *entries){
 int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	string input;
 	char buf[128];
-	printf("Card: ");
 	lcd.clear();
 	do{
 		moveAndClearLine(0,0, lcd);
-		printfl("Card: ", lcd);
+		printfl("Card: ", lcd); printf("\n\r");
 		getLine(buf, lcd);
 		input = buf;
 		stringstream checkIfNumber(input);
