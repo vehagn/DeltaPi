@@ -41,6 +41,6 @@ int main(int argc, char* argv[]){
 
 
 	}while (card != -1);
-
+	lcd.clear();
 	return 0;
 }
