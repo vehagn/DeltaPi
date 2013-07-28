@@ -16,14 +16,14 @@ int main(int argc, char* argv[]){
 	str = entries.find(10993472)->second.getFirstName();
 	
 	char buf[256];	
-	sprintf(buf, "%s", str.c_str());
+	sprintf(buf, "%s\n", str.c_str());
 	
 	lcd.move(5,0);
-	printfl(buf, lcd); printf("\n");
+	printfl(buf, lcd);
 	
 	str = entries.find(10993472)->second.getLastName().c_str();
 	lcd.move(5,1);
-	printfl(buf, lcd); printf("\n");
+	printfl(buf, lcd);
 
 	return 0;
 }
