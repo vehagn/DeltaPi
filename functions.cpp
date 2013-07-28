@@ -110,7 +110,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			sprintf(buf, "New balance: %ikr", entries.find(card)->second.getCash());
 			printfl(buf, lcd);
 			printf("\n");
-		}else if (*amount == 0){
+		}else if(buf[1] == '0'){
 			moveAndClearLine(0,1,lcd);
 			printfl("You used 0.", lcd);
 			moveAndClearLine(0,2,lcd);
@@ -141,7 +141,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 				moveAndClearLine(0,2,lcd);
 				printfl("Not enough money!",lcd);
 			}
-		}else if (*amount == 0){
+		}else if (buf[0] == '0'){
 			moveAndClearLine(0,1,lcd);
 			printfl("You used 0.", lcd);
 			moveAndClearLine(0,2,lcd);
