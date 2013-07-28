@@ -13,15 +13,17 @@ int main(int argc, char* argv[]){
 	entries.erase(0);
 	
 	string str;
-	str = entries.find(10993472)->second.getFirstName().c_str();
+	str = entries.find(10993472)->second.getFirstName();
 	
-	//sprintf(strbuf, "%s", buf);
+	char buf[256];	
+	sprintf(buf, "%s", str.c_str());
+	
 	lcd.move(5,0);
-	printfl(str, lcd); printf("\n");
+	printfl(buf, lcd); printf("\n");
 	
 	str = entries.find(10993472)->second.getLastName().c_str();
 	lcd.move(5,1);
-	printfl(str, lcd); printf("\n");
+	printfl(buf, lcd); printf("\n");
 
 	return 0;
 }
