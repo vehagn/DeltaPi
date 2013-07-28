@@ -89,7 +89,7 @@ void printInfo(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	char buf[128];
 	string input;
-	int *amount = new int(0);
+	int *amount = new int(-1);
 	moveAndClearLine(0,2,lcd);
 	printfl("Amount:", lcd);
 	moveAndClearLine(0,3,lcd);
