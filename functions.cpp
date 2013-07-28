@@ -25,12 +25,14 @@ char getch(){
 void getLine(char buf[], hd44780 &lcd){
 	char c;
 	int i = 0;
+	lcd.setCursor( hd44780::CURSOR_SOLID | hd44780::CURSOR_BLINKING );
 	do{
 		c = getch();
 		buf[(i++)%128] = c;
 		lcd.write(c);
 	}while (c != '\n');
 	buf[i%128] = '\0';
+	lcd.setCursor( hd44780::NO_CURSOR );
 }
 
 void printfl(string str, hd44780 &lcd){
@@ -68,9 +70,8 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	char buf[128];
 
 	do{
-		lcd.move(0,0);
-		printfl("Card: ", lcd); lcd.write("              "); lcd.move(5,0);
-		lcd.setCursor(hd44780::CURSOR_SOLID | hd44780::CURSOR_BLINKING);
+		lcd.clear(); lcd.move(0,0);
+		printfl("Card:", lcd);
 		getLine(buf, lcd);
 		input = buf;
 		stringstream checkIfNumber(input);
