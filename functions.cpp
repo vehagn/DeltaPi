@@ -74,8 +74,6 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 		getLine(buf, lcd);
 		input = buf;
 		stringstream checkIfNumber(input);
-		sprintf(buf,"%s\n" ,input.c_str());
-		printfl(buf, lcd);
 		if (checkIfNumber >> card){
 			if (card == -1){return card;}
 			break;
