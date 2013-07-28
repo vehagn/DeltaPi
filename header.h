@@ -101,7 +101,7 @@ void getLine(char[], hd44780&);
 
 void scanCard(map<const int, Entry>&, int&, hd44780&);
 void printInfo(map<const int, Entry>&, int&, hd44780&);
-void transaction
+void transaction(map<const int, Entry>&, int&, hd44780&);
 
 void beerMode(string, map<const int,Entry> *);
 
