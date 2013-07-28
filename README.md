@@ -12,3 +12,6 @@ C++ 1.1.3
 
 sudo bash -c "echo /usr/local/lib/ > /etc/ld.so.conf.d/local.conf"<br>
 sudo /sbin/ldconfig
+
+sudo chown root ./DeltaPi <br>
+sudo chmod 4755 ./DeltaPi
