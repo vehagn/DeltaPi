@@ -128,7 +128,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 				printfl(buf, lcd);
 				moveAndClearLine(0,3,lcd);
 				sprintf(buf, "New balance:%i kr", entries.find(card)->second.getCash());
-				printfl(buf, lcd); //printf("\n");
+				printfl(buf, lcd);
 			}else{
 				moveAndClearLine(0,2,lcd);
 				printfl("Not enough money!",lcd);
@@ -138,7 +138,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			printfl("Invalid input!", lcd);
 			moveAndClearLine(0,3,lcd);
 			sprintf(buf, "Input int <= %i", maxAmount);
-			printfl(buf, lcd); //printf("\n");
+			printfl(buf, lcd);
 		}
 	}
 	updateSQL(card, "cash", entries.find(card)->second.getCash());
