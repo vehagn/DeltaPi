@@ -97,16 +97,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	lcd.move(7,2);
 	getLine(buf, lcd);
 	input = buf;
-	
-	if (input.c_str() == 0){
-		moveAndClearLine(0,1,lcd);
-		printfl("You used 0.", lcd);
-		moveAndClearLine(0,2,lcd);
-		printfl("It's not very ", lcd);
-		moveAndClearLine(0,3,lcd);
-		printfl("effective...", lcd);
-	}
-	
+
 	if (input.substr(0,1) == "+"){
 		input.erase(0,1);
 		if ((*amount = atoi(input.c_str())) && (*amount <= maxAmount)){
@@ -119,6 +110,13 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			sprintf(buf, "New balance: %ikr", entries.find(card)->second.getCash());
 			printfl(buf, lcd);
 			printf("\n");
+		}else if (*amount == 0){
+			moveAndClearLine(0,1,lcd);
+			printfl("You used 0.", lcd);
+			moveAndClearLine(0,2,lcd);
+			printfl("It's not very ", lcd);
+			moveAndClearLine(0,3,lcd);
+			printfl("effective...", lcd);
 		}else{
 			moveAndClearLine(0,2,lcd);
 			printfl("Invalid input!", lcd);
