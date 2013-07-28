@@ -117,5 +117,5 @@ bool checkAlnum(string);*/
 void talkToTheWired(LPCTSTR pszURL);*/
 
 //SQL
-int retrieveSQL(map<const int,Entry> &);
-int updateSQL(int, string, int);
+int retrieveSQL(map<const int,Entry> &, hd44780 &lcd);
+int updateSQL(int, string, int, hd44780 &lcd);

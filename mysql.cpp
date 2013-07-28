@@ -1,6 +1,6 @@
 #include "header.h"
 
-int retrieveSQL(map<const int,Entry> &entries){
+int retrieveSQL(map<const int,Entry> &entries, hd44780 &lcd){
 
 	Entry person;
 
@@ -43,10 +43,12 @@ int retrieveSQL(map<const int,Entry> &entries){
 		cout << "(" << __FUNCTION__ << ") on line "
 		<< __LINE__ << endl;
 		cout << "# ERR: " << e.what() << endl;
+		lcd.clear();
+		lcd.write("Error retrieving SQL\ndatabase.\nAre you connected to\nthe internet?",200);
 	}
 	return EXIT_SUCCESS;
 }
-int updateSQL(int id, string field, int int_value){
+int updateSQL(int id, string field, int int_value, hd44780 &lcd){
 	
 	int n;
 	enum FIELDS{
@@ -95,6 +97,8 @@ int updateSQL(int id, string field, int int_value){
 	cout << "(" << __FUNCTION__ << ") on line "
 		<< __LINE__ << endl;
 		cout << "# ERR: " << e.what() << endl;
+		lcd.clear();
+		lcd.write("Error updating SQL\ndatabase.\nAre you connected to\nthe internet?",200);
 	}
 
 	return EXIT_SUCCESS;
