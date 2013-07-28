@@ -25,5 +25,16 @@ int main(int argc, char* argv[]){
 	lcd.move(10,1);
 	printfl(buf, lcd);
 
+	string input;
+	int card = 0;
+
+	do{
+		//printfl("Scan card: ", lcd);
+		//dev.setCursor(hd44780::CURSOR_SOLID | hd44780::CURSOR_BLINKING);
+		scanCard(entries, card, lcd);
+
+
+	}while (true);
+
 	return 0;
 }

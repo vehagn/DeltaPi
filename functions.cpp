@@ -46,7 +46,40 @@ void beerMode(map<const int,Entry> *entries){
 	}while (true);
 }
 
-int beerScan(map<const int,Entry> *entries, int card){
+int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
+	string input;
+
+	do{
+		lcd.move(0,0);
+		printfl("Scan card: ", lcd); lcd.write("         "); lcd.move(11,0);
+		lcd.setCursor(hd44780::CURSOR_SOLID | hd44780::CURSOR_BLINKING);
+		getline(cin, input);
+		stringstream checkIfNumber(input);
+		printfl(input, lcd);
+		if (checkIfNumber >> card){
+			break;
+		}
+		else{
+			lcd.move(0,1);
+			printfl("Invalid input!\n",lcd);
+			lcd.move(0,2);
+			printfl("Only numbers are recognized.",lcd);
+		}
+
+		if (entries->find(card) == entries->end()){
+			lcd.move(0,1);
+			printfl("Card ID not found!\n",lcd);
+			return -1;
+		}
+		else{
+			printfl(entries.find(card)->second.getFirstName().c_str(), lcd);
+			return card;
+		}
+	}while (card > 0);
+
+}
+
+/*int beerScan(map<const int,Entry> &entries, int card){
 	string cmd;
 	if (card == 0){		
 		while (true) {
@@ -68,7 +101,7 @@ int beerScan(map<const int,Entry> *entries, int card){
 			return card;
 		}
 	}return 0;
-}
+}*/
 
 /*void connectToTheWired(LPCTSTR pszURL){
 	CInternetSession session(_T("sessionID"));

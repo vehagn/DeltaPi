@@ -91,7 +91,7 @@ public:
 };
 
 //Actions
-void scanCard(map<const int,Entry> *, int);
+int scanCard(map<const int,Entry>&, int&);
 void beerMode(string, map<const int,Entry> *);
 
 void openTab(string, map<const int,Entry> *);
@@ -103,7 +103,7 @@ void printfl(string, hd44780&);
 
 
 //Misc
-int beerScan(map<const int,Entry> *, int);
+int beerScan(map<const int,Entry> &, int);
 
 int getCard(map<const int,Entry> *);
 int checkLogin(time_t *,int*);
