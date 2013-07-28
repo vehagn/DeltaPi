@@ -27,9 +27,10 @@ void getLine(char buf[], hd44780 &lcd){
 	int i = 0;
 	do{
 		c = getch();
-		buf[i++] = c;
+		buf[(i++)%128] = c;
 		lcd.write(c);
 	}while (c != '\n');
+	c[i%128] = '\0';
 }
 
 void printfl(string str, hd44780 &lcd){
@@ -64,7 +65,7 @@ void beerMode(map<const int,Entry> *entries){
 
 int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	string input;
-	char buf[64];
+	char buf[128];
 
 	do{
 		lcd.move(0,0);
