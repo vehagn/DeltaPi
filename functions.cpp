@@ -24,18 +24,18 @@ char getch(){
 void getLine(char buf[], hd44780 &lcd){
 	char c;
 	int i = 0;
-	lcd.setCursor( hd44780::CURSOR_SOLID | hd44780::CURSOR_BLINKING );
+	lcd.setCursor(hd44780::CURSOR_BLINKING);
 	do{
 		c = getch();
 		buf[(i++)%128] = c;
 		lcd.write(c);
 	}while (c != '\n');
 	buf[i%128] = '\0';
-	lcd.setCursor( hd44780::NO_CURSOR );
+	lcd.setCursor(hd44780::NO_CURSOR);
 }
 void printfl(string str, hd44780 &lcd){
 	printf("%s\n", str.c_str());
-	lcd.write(str,10);
+	lcd.write(str);
 }
 
 char* str2char(string s){
@@ -94,7 +94,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	printfl("Amount:", lcd);
 	moveAndClearLine(0,3,lcd);
 	printfl("Prefix + to deposit.", lcd);
-	lcd.move(7,3);
+	lcd.move(7,2);
 	getLine(buf, lcd);
 	input = buf;
 	

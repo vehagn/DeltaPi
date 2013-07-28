@@ -11,7 +11,7 @@ int main(int argc, char* argv[]){
 	lcd.setAutoscroll(hd44780::HSCROLL_LINE | hd44780::VSCROLL);
 
 	uint8_t blank[8]		= {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-	lcd.defChar(hd44780::CCHAR0, blank);
+	lcd.defChar(hd44780::CCHAR2, blank);
 
 	retrieveSQL(entries);
 	entries.erase(0);
