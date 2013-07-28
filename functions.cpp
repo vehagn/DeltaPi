@@ -35,7 +35,7 @@ void getLine(char buf[], hd44780 &lcd){
 }
 void printfl(string str, hd44780 &lcd){
 	printf("%s", str.c_str());
-	lcd.write(str,500);
+	lcd.write(str,10);
 }
 
 char* str2char(string s){
@@ -119,7 +119,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 				sprintf(buf, "%i kr withdrawn.\n", *amount);
 				printfl(buf, lcd);
 				moveAndClearLine(0,3,lcd);
-				sprintf(buf, "New balance:%i", entries.find(card)->second.getCash());
+				sprintf(buf, "New balance:%i kr", entries.find(card)->second.getCash());
 				printfl(buf, lcd); printf("\n");
 			}else{
 				moveAndClearLine(0,2,lcd);
