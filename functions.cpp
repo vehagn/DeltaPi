@@ -66,7 +66,7 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			printfl("Only numbers are recognized.",lcd);
 		}
 
-		if (entries->find(card) == entries->end()){
+		if (entries.find(card) == entries.end()){
 			lcd.move(0,1);
 			printfl("Card ID not found!\n",lcd);
 			return -1;
@@ -76,7 +76,7 @@ int scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			return card;
 		}
 	}while (card > 0);
-
+	return card;
 }
 
 /*int beerScan(map<const int,Entry> &entries, int card){
