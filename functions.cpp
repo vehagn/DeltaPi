@@ -60,14 +60,18 @@ void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 		if (checkIfNumber >> card){
 			if (card == -1){return;}		
 			if (entries.find(card) == entries.end()){
-				moveAndClearLine(0, 1, lcd);
+				moveAndClearLine(0,3,lcd);
+				moveAndClearLine(0,2,lcd);
+				moveAndClearLine(0,1,lcd);
 				printfl("Card ID not found!",lcd);
 			}else{
 				return;
 			}
 		}
 		else{
-			moveAndClearLine(0, 1, lcd);
+			moveAndClearLine(0,3,lcd);
+			moveAndClearLine(0,2,lcd);
+			moveAndClearLine(0,1,lcd);
 			printfl("Invalid input!",lcd);
 		}
 	}while (true);
@@ -86,15 +90,17 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	char buf[128];
 	string input;
 	int *amount = new int(0);
+	moveAndClearLine(0,3,lcd);
+	printfl("Prefix + to deposit");
 	
-	lcd.move(0,2);
+	moveAndClearLine(0,2,lcd);
 	printfl("Amount:", lcd);
 	getLine(buf, lcd);
 	input = buf;
 	
 	if (input.substr(0,1) == "+"){
 		input.erase(0,1);
-		if ((*amount = atoi(input.c_str())) && (*amount < maxAmount)){
+		if ((*amount = atoi(input.c_str())) && (*amount =< maxAmount)){
 			entries.find(card)->second.depositCash(*amount);
 			moveAndClearLine(0,1,lcd);
 			moveAndClearLine(0,2,lcd);
@@ -112,7 +118,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			printfl(buf, lcd);
 		}
 	}else{
-		if ((*amount = abs(atoi(input.c_str()))) && (*amount < maxAmount)){
+		if ((*amount = abs(atoi(input.c_str()))) && (*amount =< maxAmount)){
 			if ((entries.find(card)->second.getCash() - *amount) >= -((entries.find(card)->second.getTab()*maxCredit))){
 				entries.find(card)->second.withdrawCash(*amount);
 				entries.find(card)->second.increaseSpent(*amount);

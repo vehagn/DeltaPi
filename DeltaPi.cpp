@@ -8,7 +8,10 @@ int main(int argc, char* argv[]){
 	hd44780 lcd(14, 15, 24, 25, 8, 7);
    	lcd.init(20, 4);
    	lcd.clear();
-	lcd.setAutoscroll(hd44780::HSCROLL_LINE | hd44780::VSCROLL);	
+	lcd.setAutoscroll(hd44780::HSCROLL_LINE | hd44780::VSCROLL);
+
+	uint8_t blank[8]		= {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+	dev.defChar(hd44780::CCHAR0, blank);
 
 	retrieveSQL(entries);
 	entries.erase(0);
