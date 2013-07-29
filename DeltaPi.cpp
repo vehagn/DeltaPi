@@ -19,9 +19,9 @@ int main(int argc, char* argv[]){
 	int card = 0;
 
 	do{
-		if (kbhit()){
-			scanCard(entries, card, lcd);
-		}
+
+		scanCard(entries, card, lcd);
+
 		if (card > 10){
 			printInfo(entries, card, lcd);
 			transaction(entries, card, lcd);
