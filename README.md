@@ -15,3 +15,16 @@ sudo /sbin/ldconfig
 
 sudo chown root ./DeltaPi <br>
 sudo chmod 4755 ./DeltaPi
+
+$ nano ~/startup.sh
+
+#!/bin/bash<br>
+/etc/local/DeltaPi
+
+$ chmod ugo+x startup.sh
+
+$ nano ~/.bashrc
+
+# Run the startup bash script:<br>
+echo starting DeltaPi<br>
+bash startup.sh
