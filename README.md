@@ -29,7 +29,7 @@ sleep 2<br>
 shutdown -h now
 
 $ chmod ugo+x startup.sh<br>
-$ sudo chown root:your_user_name /sbin/shutdown && sudo chmod 4770 /sbin/shutdown
+$ sudo chown root:USERNAME /sbin/shutdown && sudo chmod 4770 /sbin/shutdown
 
 $ nano ~/.bashrc
 
@@ -45,4 +45,4 @@ comment out a line:<br>
 "1:2345:respawn:/sbin/ getty 115200 tty1"  => "#1:2345:respawn:/sbin/ getty 115200 tty1"
 
 add:<br>
-1:2345:respawn:/bin/login -f pi tty1</dev/tty1>/dev/tty1 2>&1
+1:2345:respawn:/bin/login -f USERNAME tty1</dev/tty1>/dev/tty1 2>&1
