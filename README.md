@@ -23,9 +23,9 @@ sudo chmod 4755 ./DeltaPi
 $ nano ~/startup.sh
 
  #!/bin/bash<br>
-sleep 5
-/etc/local/DeltaPi
-sleep 2
+sleep 5<br>
+/etc/local/DeltaPi<br>
+sleep 2<br>
 shutdown -h now
 
 $ chmod ugo+x startup.sh<br>
