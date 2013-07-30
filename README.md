@@ -32,3 +32,13 @@ $ nano ~/.bashrc
  # Run the startup bash script:<br>
 echo starting DeltaPi<br>
 bash startup.sh
+
+#Autologin
+
+sudo nano /etc/inittab
+
+comment out a line:<br>
+"1:2345:respawn:/sbin/ getty 115200 tty1"  => "#1:2345:respawn:/sbin/ getty 115200 tty1"
+
+add:<br>
+1:2345:respawn:/bin/login -f pi tty1</dev/tty1>/dev/tty1 2>&1
