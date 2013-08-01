@@ -1,6 +1,7 @@
 Partslist:
 
 Raspberry Pi: 300 NOK
+SD-Card:       50 NOK
 LCD:           50 NOK
 Battery:      100 NOK
 Keypad + hub: 100 NOK
@@ -8,4 +9,4 @@ Card Reader:   50 NOK
 WiFi dongle:   50 NOK
 Case:          50 NOK
 
-Total:        700 NOK
+Total:        650 NOK
