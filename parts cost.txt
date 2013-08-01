@@ -1,8 +1,8 @@
 Partslist:
 
 Raspberry Pi: 300 NOK
-LCD:			     50 NOK
-Battery: 		  100 NOK
+LCD:            50 NOK
+Battery:      100 NOK
 Keypad + hub: 100 NOK
 Card Reader:	 50 NOK
 WiFi dongle:	 50 NOK
