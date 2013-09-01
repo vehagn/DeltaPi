@@ -25,9 +25,10 @@ add_library(functions functions.cpp)
 add_library(classes classes.cpp)
 
 # Build
-#add_executable(dpb dpb.cpp)
 add_executable(DeltaPi DeltaPi.cpp)
+add_executable(EpsilonPi EpsilonPi.cpp)
 target_link_libraries(DeltaPi classes functions mysql mysqlcppconn ${RpiHw_LIBRARIES} ${Boost_LIBRARIES})
+target_link_libraries(EpsilonPi classes functions mysql mysqlcppconn ${RpiHw_LIBRARIES} ${Boost_LIBRARIES})
 
 
 

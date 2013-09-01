@@ -19,7 +19,6 @@ int main(int argc, char* argv[]){
 	int card = 0;
 
 	do{
-
 		scanCard(entries, card, lcd);
 
 		if (card > 10){
@@ -28,5 +27,6 @@ int main(int argc, char* argv[]){
 		}
 	}while (card != -1);
 	lcd.clear();
+	
 	return 0;
 }

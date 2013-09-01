@@ -21,6 +21,7 @@
 #include <rpi-hw.hpp>
 #include <rpi-hw/utils.hpp>
 #include <rpi-hw/time.hpp>
+#include <rpi-hw/gpio.hpp>
 #include <rpi-hw/display/hd44780.hpp>
 
 /* MySQL Connector/C++ specific headers */
