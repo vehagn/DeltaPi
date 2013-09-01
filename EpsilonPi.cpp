@@ -20,6 +20,7 @@ int main(int argc, char* argv[]){
 	FILE *coffeeFile;
 	time_t coffeeTime = 0;
 	time_t coffeePress = 0;
+	time(&coffeePress);
 	int coffeePots = 0;
 	
 	time_t startTime = 0;
