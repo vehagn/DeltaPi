@@ -17,7 +17,7 @@ int main(int argc, char* argv[]){
 	
 	bool coffee = false;
 	bool coffe_prev = !coffee;
-	FILE *coffeeFile
+	FILE *coffeeFile;
 	time_t coffeeTime = 0;
 	int coffeePots = 0;
 	
