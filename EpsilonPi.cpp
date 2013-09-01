@@ -4,12 +4,12 @@ int main(int argc, char* argv[]){
 	
 	gpio io;
 	//Office
-	io.setup(11, gpio::INPUT);
-	io.setup(4, gpio::OUTPUT);
+	io.setup(11, rpihw::gpio::INPUT);
+	io.setup(4, rpihw::gpio::OUTPUT);
 	
 	//Coffee
-	io.setup(10, gpio::INPUT);
-	io.setup(22, gpio::OUTPUT);
+	io.setup(10, rpihw::gpio::INPUT);
+	io.setup(22, rpihw::gpio::OUTPUT);
 	
 	bool office = false;
 	bool coffee = false;
@@ -20,18 +20,18 @@ int main(int argc, char* argv[]){
 		coffee = io.read(10);
 		
 		if (office){
-			io.write(4, gpio::HIGH);
+			io.write(4, rpihw::gpio::HIGH);
 		}else{
-			io.write(4, gpio::LOW);
+			io.write(4, rpihw::gpio::LOW);
 		}
 		
 		if (coffee){
 			time(&coffeeTime);
 		}
 		if (difftime(time(NULL),coffeeTime) < 1*10){
-			io.write(22, gpio::HIGH);
+			io.write(22, rpihw::gpio::HIGH);
 		}else{
-			io.write(22, gpio::LOW);
+			io.write(22, rpihw::gpio::LOW);
 		}		
 	}	
 	return 0;
