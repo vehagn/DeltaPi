@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
 		
 		if office{
 			io.write(4, gpio::HIGH);
-		}else
+		}else{
 			io.write(4, gpio::LOW);
 		}
 		
