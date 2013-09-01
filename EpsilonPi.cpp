@@ -15,7 +15,7 @@ int main(int argc, char* argv[]){
 	bool office_prev = !office;
 	FILE *officeFile;
 	
-	bool coffee = false;
+	bool coffee = true;
 	bool coffee_prev = !coffee;
 	FILE *coffeeFile;
 	time_t coffeeTime = 0;
@@ -59,6 +59,7 @@ int main(int argc, char* argv[]){
 					coffeePots = 0;
 					time(&startTime);
 				}
+				printf("%i COFFEE PRESS!\n",coffeePots);
 				coffeePots++;
 				strftime(buf,64,"%d. %B %Y %T",timeinfo1);
 				coffeeFile = fopen("coffee.txt","w");
