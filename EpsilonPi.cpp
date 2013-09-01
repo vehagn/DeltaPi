@@ -55,7 +55,7 @@ int main(int argc, char* argv[]){
 				coffee_prev = coffee;
 				timeinfo1 = localtime(&coffeeTime);
 				timeinfo2 = localtime(&startTime);
-				if (timeinfo1.tm_yday != timeinfo2.tm_yday){
+				if (timeinfo1->tm_yday != timeinfo2->tm_yday){
 					coffeePots = 0;
 					time(&startTime);
 				}
