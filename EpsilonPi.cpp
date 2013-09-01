@@ -54,6 +54,7 @@ int main(int argc, char* argv[]){
 		if (difftime(time(NULL),coffeeTime) <= 1*10){
 			io.write(22, rpihw::gpio::HIGH);
 			if ((coffee_prev != coffee) && (difftime(coffeePress,coffeeTime) > 2)){
+				time(&coffeePress);
 				coffee_prev = coffee;
 				timeinfo1 = localtime(&coffeeTime);
 				timeinfo2 = localtime(&startTime);
@@ -72,7 +73,7 @@ int main(int argc, char* argv[]){
 			io.write(22, rpihw::gpio::LOW);
 			if (coffee_prev != coffee){
 				coffee_prev = coffee;
-				time(&coffeePress);
+				//time(&coffeePress);
 				//timeinfo1 = localtime(&coffeePress);
 				//strftime(buf,64,"%d. %B %Y %T",timeinfo1);
 				//printf("PRESS TIME: %s \n",buf);
