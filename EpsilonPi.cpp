@@ -8,7 +8,7 @@ int main(int argc, char* argv[]){
 	
 	while (true){
 		value = io.read(11);
-		time::sleep(10);
+		time::sleep(1);
 		
 		printf("GPIO 11: %s\n",(value)?("HIGH"):("LOW"));	
 	}
