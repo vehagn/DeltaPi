@@ -54,7 +54,7 @@ int main(int argc, char* argv[]){
 		if (difftime(time(NULL),coffeeTime) <= 1*10){
 			io.write(22, rpihw::gpio::HIGH);
 			if ((coffee_prev != coffee)){
-				printf("Difftime: %i\n",difftime(coffeeTime,coffeePress));
+				printf("Difftime: %i\n",difftime(coffeePress,coffeeTime));
 				time(&coffeePress);
 				coffee_prev = coffee;
 				timeinfo1 = localtime(&coffeeTime);
