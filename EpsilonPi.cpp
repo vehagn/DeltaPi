@@ -28,7 +28,10 @@ int main(int argc, char* argv[]){
 		if (coffee){
 			time(&coffeeTime);
 		}
-		if (difftime(time(NULL),coffeeTime) < 1*10){
+		printf("Coffee: %s\n",(coffee)?("ON"):("OFF"));
+		rpihw::time::sleep(1);
+		
+		if (difftime(time(NULL),coffeeTime) >= 1*10){
 			io.write(22, rpihw::gpio::HIGH);
 		}else{
 			io.write(22, rpihw::gpio::LOW);
