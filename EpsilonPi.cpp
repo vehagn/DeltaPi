@@ -53,6 +53,7 @@ int main(int argc, char* argv[]){
 		}	
 		if (difftime(time(NULL),coffeeTime) <= 1*10){
 			io.write(22, rpihw::gpio::HIGH);
+			printf("Difftime: %i",difftime(coffeeTime,coffeePress));
 			if ((coffee_prev != coffee) && (difftime(coffeeTime,coffeePress) > 2)){
 				time(&coffeePress);
 				coffee_prev = coffee;
