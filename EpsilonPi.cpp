@@ -25,13 +25,13 @@ int main(int argc, char* argv[]){
 			io.write(4, rpihw::gpio::LOW);
 		}
 		
-		if (coffee){
+		if (!coffee){
 			time(&coffeeTime);
 		}
-		printf("Coffee: %s\n",(coffee)?("ON"):("OFF"));
+		printf("Coffee: %s\n",(coffee)?("HIGH"):("LOW"));
 		rpihw::time::sleep(1);
 		
-		if (difftime(time(NULL),coffeeTime) >= 1*10){
+		if (difftime(time(NULL),coffeeTime) <= 1*10){
 			io.write(22, rpihw::gpio::HIGH);
 		}else{
 			io.write(22, rpihw::gpio::LOW);
