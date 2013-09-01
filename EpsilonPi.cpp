@@ -52,6 +52,7 @@ int main(int argc, char* argv[]){
 		}	
 		if ((difftime(time(NULL),coffeeTime) <= 1*10) && (difftime(coffeePress,coffeeTime) > 2)){
 			io.write(22, rpihw::gpio::HIGH);
+			time(&coffeePress);
 			if (coffee_prev != coffee){
 				coffee_prev = coffee;
 				timeinfo1 = localtime(&coffeeTime);
@@ -66,13 +67,15 @@ int main(int argc, char* argv[]){
 				coffeeFile = fopen("coffee.txt","w");
 				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
 				fclose(coffeeFile);
-			}
-			
+			}	
 		}else{
 			io.write(22, rpihw::gpio::LOW);
 			if (coffee_prev != coffee){
 				coffee_prev = coffee;
-				time(&coffeePress);
+				//time(&coffeePress);
+				//timeinfo1 = localtime(&coffeePress);
+				//strftime(buf,64,"%d. %B %Y %T",timeinfo1);
+				//printf("PRESS TIME: %s \n",buf);
 			}
 		}
 		
