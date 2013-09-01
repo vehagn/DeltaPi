@@ -26,9 +26,9 @@ int main(int argc, char* argv[]){
 		}
 		
 		if (coffee){
-			time(&coffeTime);
+			time(&coffeeTime);
 		}
-		if (difftime(time(NULL),coffeTime) < 1*10){
+		if (difftime(time(NULL),coffeeTime) < 1*10){
 			io.write(22, gpio::HIGH);
 		}else{
 			io.write(22, gpio::LOW);
