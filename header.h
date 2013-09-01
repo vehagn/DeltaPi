@@ -35,7 +35,7 @@
 #include <cppconn/resultset_metadata.h>
 #include <cppconn/warning.h>
 
-#define DBHOST " //Database host
+#define DBHOST "" //Database host
 #define USER "deltahouse" //Database user
 #define PASSWORD "" //Database password
 #define DATABASE "deltahouse" //Database directory
