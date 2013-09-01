@@ -47,8 +47,9 @@ update database connection info (encrypted file)
 
 using namespace std;
 using namespace sql;
-using namespace rpihw;
+using namespace rpihw::iface;
 using namespace rpihw::display;
+using namespace rpihw::utils;
 
 const int maxCredit = 200; //Maximum allowed credit.
 const int maxAmount = 500; //Maximum allowed transfer.
