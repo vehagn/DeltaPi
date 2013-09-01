@@ -50,6 +50,7 @@ using namespace sql;
 using namespace rpihw::iface;
 using namespace rpihw::display;
 using namespace rpihw::utils;
+using namespace rpihw::gpio;
 
 const int maxCredit = 200; //Maximum allowed credit.
 const int maxAmount = 500; //Maximum allowed transfer.
