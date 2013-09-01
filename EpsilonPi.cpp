@@ -51,7 +51,7 @@ int main(int argc, char* argv[]){
 		if (!coffee){
 			time(&coffeeTime);
 		}	
-		if ((difftime(time(NULL),coffeeTime) <= 1*10) && (difftime(coffeePress,coffeeTime) > 2)){
+		if ((difftime(time(NULL),coffeeTime) <= 1*10) && (difftime(coffeePress,coffeeTime) < 2)){
 			io.write(22, rpihw::gpio::HIGH);
 			time(&coffeePress);
 			if (coffee_prev != coffee){
