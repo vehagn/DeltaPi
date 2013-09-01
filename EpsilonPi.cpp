@@ -19,16 +19,16 @@ int main(int argc, char* argv[]){
 		office = io.read(11);
 		coffee = io.read(10);
 		
-		if office{
+		if (office){
 			io.write(4, gpio::HIGH);
 		}else{
 			io.write(4, gpio::LOW);
 		}
 		
-		if coffe{
+		if (coffee){
 			time(&coffeTime);
 		}
-		if difftime(time(NULL),coffeTime) < 1*10{
+		if (difftime(time(NULL),coffeTime) < 1*10){
 			io.write(22, gpio::HIGH);
 		}else{
 			io.write(22, gpio::LOW);
