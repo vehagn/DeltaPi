@@ -1,0 +1,5 @@
+LCD A:	47
+LCD V0:	4.7k
+
+Diodes:	1k
+Buttons: 10k + 1k
