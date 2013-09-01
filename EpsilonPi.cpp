@@ -16,7 +16,7 @@ int main(int argc, char* argv[]){
 	FILE *officeFile;
 	
 	bool coffee = false;
-	bool coffe_prev = !coffee;
+	bool coffee_prev = !coffee;
 	FILE *coffeeFile;
 	time_t coffeeTime = 0;
 	int coffeePots = 0;
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]){
 			io.write(22, rpihw::gpio::HIGH);
 			if (coffee_prev != coffee){
 				coffee_prev = coffee;
-				if (coffeeTime.tm_yday != startTime.tm_yday){
+				if (localtime(coffeeTime).tm_yday != localtime(startTime).tm_yday){
 					coffeePots = 0;
 					time(&startTime);
 				}
