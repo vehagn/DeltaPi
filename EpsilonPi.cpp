@@ -2,7 +2,7 @@
 
 int main(int argc, char* argv[]){
 	
-	gpio io;
+	rpihw::gpio io;
 	//Office
 	io.setup(11, rpihw::gpio::INPUT);
 	io.setup(4, rpihw::gpio::OUTPUT);
