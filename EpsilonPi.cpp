@@ -23,6 +23,8 @@ int main(int argc, char* argv[]){
 	
 	time_t startTime = 0;
 	time(&startTime);
+	struct tm * timeinfo1;
+	struct tm * timeinfo2;
 	
 	while (true){
 		if (office){
@@ -50,13 +52,15 @@ int main(int argc, char* argv[]){
 			io.write(22, rpihw::gpio::HIGH);
 			if (coffee_prev != coffee){
 				coffee_prev = coffee;
-				if (localtime(coffeeTime).tm_yday != localtime(startTime).tm_yday){
+				timeinfo1 = localtime(coffeeTime);
+				timeinfo2  = localtime(startTime);
+				if (timeinfo1.tm_yday != timeinfo2.tm_yday){
 					coffeePots = 0;
 					time(&startTime);
 				}
 				coffeePots++;
 				char buf [64];
-				strftime(buf,64,"%d. %B %Y %T",localtime(%coffeeTime));
+				strftime(buf,64,"%d. %B %Y %T",timeinfo1);
 				coffeeFile = fopen("coffee.txt","w");
 				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
 				delete[] buf;
