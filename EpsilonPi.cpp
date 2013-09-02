@@ -64,7 +64,7 @@ int main(int argc, char* argv[]){
 				}
 				coffeePots++;
 				strftime(buf,64,"%d. %B %Y %T",timeinfo1);
-				coffeeFile = fopen("/var/www/deltahouse/coffee.txt","w");
+				coffeeFile = fopen("/var/www/coffee.txt","w");
 				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
 				fclose(coffeeFile);
 			}	
