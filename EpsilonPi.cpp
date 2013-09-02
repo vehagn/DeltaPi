@@ -1,6 +1,12 @@
 #include "header.h"
+#include <unistd.h>
+#include <err.h>
 
 int main(int argc, char* argv[]){
+	
+	if(daemon(0,0) == -1)
+		err(1, NULL);
+	
 	rpihw::gpio io;
 	
 	//Office ports
