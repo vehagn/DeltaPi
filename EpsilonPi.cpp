@@ -57,9 +57,9 @@ int main(int argc, char* argv[]){
 		if (!coffee){
 			time(&coffeeTime);
 		}	
-		if ((int)difftime(time(NULL),coffeeTime) <= 1*10){
+		if ((int)difftime(time(NULL),coffeeTime) <= 30*60){
 			io.write(22, rpihw::gpio::HIGH);
-			if ((coffee_prev != coffee) && (int)difftime(coffeeTime,coffeePress) > 9){
+			if ((coffee_prev != coffee) && (int)difftime(coffeeTime,coffeePress) >= 30){
 				char buf [64];
 				time(&coffeePress);
 				coffee_prev = coffee;
