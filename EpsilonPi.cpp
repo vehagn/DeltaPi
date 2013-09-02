@@ -40,7 +40,7 @@ int main(int argc, char* argv[]){
 			io.write(4, rpihw::gpio::HIGH);
 			if (office_prev != office){
 				office_prev = office;
-				officeFile = fopen("/var/www/office.txt","w");
+				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				fprintf(officeFile,"0");
 				fclose(officeFile);
 			}
@@ -48,7 +48,7 @@ int main(int argc, char* argv[]){
 			io.write(4, rpihw::gpio::LOW);
 			if (office_prev != office){
 				office_prev = office;
-				officeFile = fopen("/var/www/office.txt","w");
+				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				fprintf(officeFile,"1024");
 				fclose(officeFile);
 			}
@@ -72,10 +72,10 @@ int main(int argc, char* argv[]){
 				timeinfo1 = localtime(&coffeePress);
 				coffeePots++;
 				strftime(buf,64,"%d. %B %Y %T",timeinfo1);
-				coffeeFile = fopen("/var/www/coffee.txt","w");
+				coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","w");
 				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
 				fclose(coffeeFile);
-				coffeeLog = fopen("/var/www/coffee_log.txt","a");
+				coffeeLog = fopen("/var/www/pi.deltahouse.no/public_html/coffee_log.txt","a");
 				fprintf(coffeeLog,"%i:%s\n",coffeePots,buf);
 				fclose(coffeeLog);
 			}	
