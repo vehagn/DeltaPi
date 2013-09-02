@@ -48,3 +48,13 @@ comment out a line:<br>
 
 add:<br>
 1:2345:respawn:/bin/login -f USERNAME tty1</dev/tty1>/dev/tty1 2>&1
+
+#Webserver
+sudo addgroup www-data<br>
+sudo adduser www-data www-data<br>
+sudo mkdir /var/www<br>
+sudo chown -R www-data:www-data /var/www<br>
+
+sudo apt-get install apache2
+
+sudo chown 640 "FILE"
