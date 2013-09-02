@@ -22,7 +22,7 @@ int main(int argc, char* argv[]){
 	FILE *officeFile;
 	
 	bool coffee = true;
-	bool coffee_prev = !coffee;
+	bool coffee_prev = coffee;
 	FILE *coffeeFile;
 	FILE *coffeeLog;
 	time_t coffeeTime = 0;
@@ -58,8 +58,9 @@ int main(int argc, char* argv[]){
 			time(&coffeeTime);
 		}	
 		if ((int)difftime(time(NULL),coffeeTime) <= 30*60){
-			io.write(22, rpihw::gpio::HIGH);
+			//io.write(22, rpihw::gpio::HIGH);
 			if ((coffee_prev != coffee) && (int)difftime(coffeeTime,coffeePress) >= 30){
+			io.write(22, rpihw::gpio::HIGH);
 				char buf [64];
 				time(&coffeePress);
 				coffee_prev = coffee;
@@ -75,7 +76,7 @@ int main(int argc, char* argv[]){
 				coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","w");
 				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
 				fclose(coffeeFile);
-				coffeeLog = fopen("/var/www/pi.deltahouse.no/public_html/coffee_log.txt","a");
+				coffeeLog = fopen("/var/www/pi.deltahouse.no/public_html/coffee_log.txt","a+");
 				fprintf(coffeeLog,"%i:%s\n",coffeePots,buf);
 				fclose(coffeeLog);
 			}	
