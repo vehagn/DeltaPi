@@ -33,7 +33,6 @@ int main(int argc, char* argv[]){
 	time(&startTime);
 	struct tm * timeinfo1;
 	struct tm * timeinfo2;
-	char buf [64];
 	
 	while (true){
 		if (office){
@@ -41,7 +40,7 @@ int main(int argc, char* argv[]){
 			if (office_prev != office){
 				office_prev = office;
 				officeFile = fopen("/var/www/office.txt","w");
-				fprintf(officeFile,"1");
+				fprintf(officeFile,"0");
 				fclose(officeFile);
 			}
 		}else{
@@ -49,7 +48,7 @@ int main(int argc, char* argv[]){
 			if (office_prev != office){
 				office_prev = office;
 				officeFile = fopen("/var/www/office.txt","w");
-				fprintf(officeFile,"0");
+				fprintf(officeFile,"1024");
 				fclose(officeFile);
 			}
 		}
@@ -60,6 +59,7 @@ int main(int argc, char* argv[]){
 		if ((int)difftime(time(NULL),coffeeTime) <= 1*10){
 			io.write(22, rpihw::gpio::HIGH);
 			if ((coffee_prev != coffee) && (int)difftime(coffeeTime,coffeePress) > 9){
+				char buf [64];
 				time(&coffeePress);
 				coffee_prev = coffee;
 				timeinfo1 = localtime(&coffeeTime);
@@ -68,6 +68,7 @@ int main(int argc, char* argv[]){
 					coffeePots = 0;
 					time(&startTime);
 				}
+				timeinfo1 = localtime(&coffeePress);
 				coffeePots++;
 				strftime(buf,64,"%d. %B %Y %T",timeinfo1);
 				coffeeFile = fopen("/var/www/coffee.txt","w");
