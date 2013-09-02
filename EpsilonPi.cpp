@@ -25,9 +25,6 @@ int main(int argc, char* argv[]){
 	bool coffee_prev = !coffee;
 	FILE *coffeeFile;
 	FILE *coffeeLog;
-	coffeeLog = fopen("/var/www/coffee_log.txt","w");
-	fprintf(coffeeLog,"");
-	fclose(coffeeLog);
 	time_t coffeeTime = 0;
 	time_t coffeePress = 0;
 	time(&coffeePress);
