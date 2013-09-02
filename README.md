@@ -58,3 +58,5 @@ sudo chown -R www-data:www-data /var/www<br>
 sudo apt-get install apache2
 
 sudo chown 640 "FILE"
+
+https://www.digitalocean.com/community/articles/how-to-set-up-apache-virtual-hosts-on-ubuntu-12-04-lts
