@@ -51,7 +51,7 @@ int main(int argc, char* argv[]){
 			io.write(4, rpihw::gpio::LOW);
 			if (office_prev != office){
 				office_prev = office;
-				officeFile = fopen("office.txt","w");
+				officeFile = fopen("/home/delta/deltahouse/office.txt","w");
 				fprintf(officeFile,"0");
 				fclose(officeFile);
 			}
@@ -73,7 +73,7 @@ int main(int argc, char* argv[]){
 				}
 				coffeePots++;
 				strftime(buf,64,"%d. %B %Y %T",timeinfo1);
-				coffeeFile = fopen("coffee.txt","w");
+				coffeeFile = fopen("/home/delta/deltahouse/coffee.txt","w");
 				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
 				fclose(coffeeFile);
 			}	
