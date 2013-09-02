@@ -22,12 +22,12 @@ int main(int argc, char* argv[]){
 	FILE *officeFile;
 	
 	bool coffee = true;
-	bool coffee_prev = coffee;
+	bool coffee_prev = !coffee;
 	FILE *coffeeFile;
 	FILE *coffeeLog;
 	time_t coffeeTime = 0;
 	time_t coffeePress = 0;
-	time(&coffeePress);
+	//time(&coffeePress);
 	int coffeePots = 0;
 	
 	time_t startTime = 0;
