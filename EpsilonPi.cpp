@@ -34,7 +34,7 @@ int main(int argc, char* argv[]){
 			io.write(4, rpihw::gpio::HIGH);
 			if (office_prev != office){
 				office_prev = office;
-				officeFile = fopen("/home/delta/deltahouse/office.txt","w");
+				officeFile = fopen("office.txt","w");
 				fprintf(officeFile,"1");
 				fclose(officeFile);
 			}
@@ -42,7 +42,7 @@ int main(int argc, char* argv[]){
 			io.write(4, rpihw::gpio::LOW);
 			if (office_prev != office){
 				office_prev = office;
-				officeFile = fopen("/home/delta/deltahouse/office.txt","w");
+				officeFile = fopen("office.txt","w");
 				fprintf(officeFile,"0");
 				fclose(officeFile);
 			}
@@ -64,7 +64,7 @@ int main(int argc, char* argv[]){
 				}
 				coffeePots++;
 				strftime(buf,64,"%d. %B %Y %T",timeinfo1);
-				coffeeFile = fopen("/home/delta/deltahouse/coffee.txt","w");
+				coffeeFile = fopen("coffee.txt","w");
 				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
 				fclose(coffeeFile);
 			}	
@@ -72,10 +72,6 @@ int main(int argc, char* argv[]){
 			io.write(22, rpihw::gpio::LOW);
 			if (coffee_prev != coffee){
 				coffee_prev = coffee;
-				//time(&coffeePress);
-				//timeinfo1 = localtime(&coffeePress);
-				//strftime(buf,64,"%d. %B %Y %T",timeinfo1);
-				//printf("PRESS TIME: %s \n",buf);
 			}
 		}
 		
