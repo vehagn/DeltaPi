@@ -34,7 +34,7 @@ int main(int argc, char* argv[]){
 			io.write(4, rpihw::gpio::HIGH);
 			if (office_prev != office){
 				office_prev = office;
-				officeFile = fopen("office.txt","w");
+				officeFile = fopen("/home/delta/deltahouse/office.txt","w");
 				fprintf(officeFile,"1");
 				fclose(officeFile);
 			}
