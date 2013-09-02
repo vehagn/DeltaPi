@@ -25,6 +25,9 @@ int main(int argc, char* argv[]){
 	bool coffee_prev = !coffee;
 	FILE *coffeeFile;
 	FILE *coffeeLog;
+	coffeeLog = fopen("/var/www/coffee_log.txt","w");
+	fprintf(coffeeLog,"");
+	fclose(coffeeLog);
 	time_t coffeeTime = 0;
 	time_t coffeePress = 0;
 	time(&coffeePress);
@@ -76,7 +79,7 @@ int main(int argc, char* argv[]){
 				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
 				fclose(coffeeFile);
 				coffeeLog = fopen("/var/www/coffee_log.txt","a");
-				fprintf(coffeeLog,"%i:%s",coffeePots,buf);
+				fprintf(coffeeLog,"%i:%s\n",coffeePots,buf);
 				fclose(coffeeLog);
 			}	
 		}else{
