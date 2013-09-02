@@ -1,5 +1,4 @@
 #include "header.h"
-#include <curl/curl.h>
 
 #define LOCAL_FILE      "coffee.txt"
 #define UPLOAD_FILE_AS  "coffee-uploading.txt"
