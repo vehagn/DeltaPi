@@ -11,6 +11,8 @@ sudo apt-get install libboost-all-dev
 MySQL connector<br>
 C++ 1.1.3
 
+Curl
+
 #Root access to shared libraries (for MySQL connector)
 sudo bash -c "echo /usr/local/lib/ > /etc/ld.so.conf.d/local.conf"<br>
 sudo /sbin/ldconfig
