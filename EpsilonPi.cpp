@@ -1,13 +1,5 @@
 #include "header.h"
 
-#define LOCAL_FILE      "coffee.txt"
-#define UPLOAD_FILE_AS  "coffee-uploading.txt"
-#define REMOTE_URL      "ftp://deltahouse:k4ffeD3lta@ftp.domeneshop.no/"  UPLOAD_FILE_AS
-#define RENAME_FILE_TO  "coffee.txt"
-
-ftp://username:password@myftpserver.com//data"
-
-
 int main(int argc, char* argv[]){
 	rpihw::gpio io;
 	
