@@ -24,6 +24,7 @@ int main(int argc, char* argv[]){
 	bool coffee = true;
 	bool coffee_prev = !coffee;
 	FILE *coffeeFile;
+	FILE *coffeeLog;
 	time_t coffeeTime = 0;
 	time_t coffeePress = 0;
 	time(&coffeePress);
@@ -74,6 +75,9 @@ int main(int argc, char* argv[]){
 				coffeeFile = fopen("/var/www/coffee.txt","w");
 				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
 				fclose(coffeeFile);
+				coffeeLog = fopen("/var/www/coffee_log.txt","a");
+				fprintf(coffeeLog,"%i:%s",coffeePots,buf);
+				fclose(coffeeLog);
 			}	
 		}else{
 			io.write(22, rpihw::gpio::LOW);
