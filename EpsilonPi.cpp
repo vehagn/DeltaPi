@@ -32,9 +32,8 @@ int main(int argc, char* argv[]){
 	
 	time_t startTime = 0;
 	time(&startTime);
-	int startDay = localtime(&time(NULL))->tm_yday;
-	struct tm * timeinfo1;
-	struct tm * timeinfo2;
+	int startDay = localtime(&startTime)->tm_yday;
+	struct tm * timeinfo;
 	
 	while (true){
 		if (office){
@@ -63,20 +62,21 @@ int main(int argc, char* argv[]){
 			if ((coffee_prev != coffee) && (int)difftime(coffeeTime,coffeePress) >= 30){
 			io.write(22, rpihw::gpio::HIGH);
 				char buf [64];
-				time(&coffeePress);
 				coffee_prev = coffee;
-				timeinfo1 = localtime(&coffeeTime);
-				timeinfo2 = localtime(&startTime);
-				if (timeinfo1->tm_yday != timeinfo2->tm_yday){
+				time(&coffeePress);
+				timeinfo = localtime(&coffeePress);
+				if (timeinfo->tm_yday != startDay){
 					coffeePots = 0;
 					time(&startTime);
+					startDay = localtime(&startTime)->tm_yday;
 				}
-				timeinfo1 = localtime(&coffeePress);
 				coffeePots++;
-				strftime(buf,64,"%d. %B %Y %T",timeinfo1);
+				strftime(buf,64,"%d. %B %Y %T",timeinfo);
+				
 				coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","w");
 				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
 				fclose(coffeeFile);
+				
 				coffeeLog = fopen("/var/www/pi.deltahouse.no/public_html/coffee_log.txt","a+");
 				fprintf(coffeeLog,"%i:%s\n",coffeePots,buf);
 				fclose(coffeeLog);
