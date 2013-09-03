@@ -32,6 +32,7 @@ int main(int argc, char* argv[]){
 	
 	time_t startTime = 0;
 	time(&startTime);
+	int startDay = localtime(&time(NULL))->tm_yday;
 	struct tm * timeinfo1;
 	struct tm * timeinfo2;
 	
