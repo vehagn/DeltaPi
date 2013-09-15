@@ -187,7 +187,7 @@ void printTime(hd44780 &lcd){
 	
 	time(&now);
 	timeinfo = *localtime(&now);
-	strftime(buf,64,"%H:%M:%S %a. %d. %b.\nWeek %V Year %G",&timeinfo);
+	strftime(buf,64,"%a %d %b %H:%M:%S \nWeek %V Year %G",&timeinfo);
 	
 	lcd.clear();
 	lcd.move(0,1);
