@@ -259,7 +259,7 @@ void printLastCoffee(hd44780 &lcd){
 	fread(buf,1,128,coffeeFile);
 	fclose(coffeeFile);
 	while (c != '\0')&(i < 128){
-		c = buf[i++]
+		c = buf[i++];
 	}
 	buf[i-9] = '\n'
 	printfl(buf, lcd);
