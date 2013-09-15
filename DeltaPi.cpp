@@ -24,7 +24,10 @@ int main(int argc, char* argv[]){
 		if (card > 10){
 			printInfo(entries, card, lcd);
 			transaction(entries, card, lcd);
-		} else if (card == 1){
+		}
+		else if (card == 0){
+			printHelp(lcd);
+		}else if (card == 1){
 			printSummary(entries, lcd);
 		} else if (card == 2){
 			retrieveSQL(entries, lcd);	
