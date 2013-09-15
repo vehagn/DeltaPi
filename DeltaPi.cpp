@@ -31,11 +31,11 @@ int main(int argc, char* argv[]){
 			time(&now);
 			timeinfo = *localtime(&now);
 			strftime(buf,64,"      HH:MM:SS",&timeinfo);
-			printfl(buf, &lcd);
+			printfl(buf, lcd);
 		}
 	}while (card != -1);
 	lcd.clear();
-	printfl("  Closing DeltaPi.\n\n      Goodbye!", &lcd);
+	printfl("  Closing DeltaPi.\n\n      Goodbye!", lcd);
 	
 	return 0;
 }
