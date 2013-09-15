@@ -39,7 +39,7 @@ int main(int argc, char* argv[]){
    	lcd.init(20, 4);
 	lcd.clear();
 	
-	lcd.move(0, 2);
+	lcd.move(0, 1);
 	lcd.write("EpsilonPi ver. 0.7.1");
 	
 	while (true){

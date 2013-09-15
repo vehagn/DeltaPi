@@ -17,7 +17,7 @@ int main(int argc, char* argv[]){
 	
 	int card = 0;
 	
-	lcd.move(0,1);
+	lcd.move(0,2);
 	printfl("DeltaPi ver. 0.7.1",lcd);
 	
 	do{
