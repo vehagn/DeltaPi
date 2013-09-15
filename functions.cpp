@@ -35,7 +35,7 @@ void getLine(char buf[], hd44780 &lcd){
 		if ((int)c == 127){
 			if (i > 0){
 				write(1, "\b \b", 3);
-				i--
+				i--;
 			}
 			xpos = (xpos <= startx)?(startx):(xpos-1);
 			lcd.move(xpos,starty);
