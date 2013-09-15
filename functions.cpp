@@ -205,7 +205,7 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	lcd.clear();
 	printfl("Database summary.\nGathering info...",lcd);
 	
-	for (i = entries->begin(); i != entries->end(); i++){
+	for (i = entries.begin(); i != entries.end(); i++){
 		persons++;
 		spent += i->second.getSpent();
 		if (i->second.getTab()){
