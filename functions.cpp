@@ -217,7 +217,7 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 		}else{
 			money += i->second.getCash();
 		}
-		spent += i->second.getSpent();855
+		spent += i->second.getSpent();
 	}
 	lcd.clear();
 	sprintf(buf, "Persons:    %5i", persons);
