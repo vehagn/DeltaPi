@@ -187,11 +187,11 @@ void printTime(hd44780 &lcd){
 	
 	time(&now);
 	timeinfo = *localtime(&now);
-	strftime(buf,64,"%H:%M:%S\n%a. %d. %b. W%V %g",&timeinfo);
+	strftime(buf,64,"%H:%M:%S %a. %d. %b.\nWeek %V Year %G",&timeinfo);
 	
 	lcd.clear();
 	lcd.move(0,1);
-	printfl("Current time and date:", lcd);
+	printfl("Time and date:", lcd);
 	lcd.move(0,2);
 	printfl(buf, lcd);	
 }
@@ -217,8 +217,7 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 		}else{
 			money += i->second.getCash();
 		}
-		spent += i->second.getSpent();
-		printf("%li\t%li\t%i\n",spent, i->second.getSpent(),i->second.getID());
+		spent += i->second.getSpent();855
 	}
 	lcd.clear();
 	sprintf(buf, "Persons:    %5i", persons);
