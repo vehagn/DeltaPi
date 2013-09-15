@@ -249,6 +249,7 @@ void printLastCoffee(hd44780 &lcd){
 	FILE *coffeeFile;
 	lcd.setAutoscroll(hd44780::VSCROLL);
 	char buf[128];
+	char c = 'a';
 	int i = 0;
 	
 	lcd.clear();
