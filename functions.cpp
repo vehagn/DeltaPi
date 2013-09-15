@@ -11,8 +11,8 @@ char getch(){
         
         tcgetattr(STDIN_FILENO,&old_tio);
         new_tio=old_tio;
-        new_tio.c_lflag &= (~ICANON);
-		new_tio.c_oflag &= (~ECHO);
+        new_tio.c_lflag &= ~(ICANON | ECHO);
+		//new_tio.c_lflag &= (~ECHO);
         tcsetattr(STDIN_FILENO,TCSANOW,&new_tio);
 
         if (read(0, &buf, 1) < 0)
