@@ -31,8 +31,8 @@ void getLine(char buf[], hd44780 &lcd){
 	do{
 		xpos = lcd.getXpos();
 		c = getch();
-		printf("\n%i\n",(int)c);
-		if (c == '^?'){
+		//printf("\n%i\n",(int)c);
+		if ((int)c == 127){
 			i = (i <= 0)?(0):(i-1);
 			xpos = (xpos <= startx)?(startx):(xpos-1);
 			lcd.move(xpos,starty);
