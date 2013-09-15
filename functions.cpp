@@ -190,6 +190,8 @@ void printTime(hd44780 &lcd){
 	strftime(buf,64,"%H:%M:%S",&timeinfo);
 	
 	lcd.clear();
+	lcd.move(0,1);
+	printfl("Current time:", lcd);
 	lcd.move(6,2);
 	printfl(buf, lcd);	
 }
@@ -216,6 +218,7 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 			money += i->second.getCash();
 		}
 		spent += i->second.getSpent();
+		printf("%li\t%li\n",spent, i->second.getSpent());
 	}
 	lcd.clear();
 	sprintf(buf, "Persons:    %5i", persons);

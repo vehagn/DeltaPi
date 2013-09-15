@@ -31,7 +31,7 @@ int main(int argc, char* argv[]){
 		}
 	}while (card != -1);
 	lcd.clear();
-	printfl("  Closing DeltaPi.\n\n      Goodbye!", lcd);
+	printfl("  Closing DeltaPi\n\n      Goodbye!", lcd);
 	
 	return 0;
 }
