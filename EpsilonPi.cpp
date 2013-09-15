@@ -57,7 +57,7 @@ int main(int argc, char* argv[]){
 			if (office_prev != office){
 				office_prev = office;
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
-				fprintf(officeFile,"1024\0");
+				fprintf(officeFile,"1024");
 				fclose(officeFile);
 				lcd.move(0, 3);
 				lcd.write("Office closed!      ");
@@ -83,7 +83,7 @@ int main(int argc, char* argv[]){
 				strftime(buf,64,"%d. %B %Y %T",timeinfo);
 				
 				coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","w");
-				fprintf(coffeeFile,"%i\n%s\0",coffeePots,buf);
+				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
 				fclose(coffeeFile);
 				
 				coffeeLog = fopen("/var/www/pi.deltahouse.no/public_html/coffee_log.txt","a+");
