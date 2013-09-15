@@ -2,7 +2,7 @@
 
 map<const int, Entry> entries;
 time_t now;
-struct timeinfo;
+struct tm timeinfo;
 char buf [64];
 
 int main(int argc, char* argv[]){
@@ -31,11 +31,11 @@ int main(int argc, char* argv[]){
 			time(&now);
 			timeinfo = *localtime(&now);
 			strftime(buf,64,"      HH:MM:SS",&timeinfo);
-			printfl(buf);
+			printfl(buf, &lcd);
 		}
 	}while (card != -1);
 	lcd.clear();
-	printfl("  Closing DeltaPi.\n\n      Goodbye!");
+	printfl("  Closing DeltaPi.\n\n      Goodbye!", &lcd);
 	
 	return 0;
 }
