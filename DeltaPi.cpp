@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
 			printInfo(entries, card, lcd);
 			transaction(entries, card, lcd);
 		} else if (card == 1){
-			printSummary(&entries, lcd);
+			printSummary(entries, lcd);
 		} else if (card == 5){
 			printTime(lcd);
 		}
