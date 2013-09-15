@@ -27,7 +27,7 @@ void getLine(char buf[], hd44780 &lcd){
 	lcd.setCursor(hd44780::CURSOR_BLINKING);
 	do{
 		c = getch();
-		if c == '\b'{
+		if (c == '\b'){
 			i--;
 		}else{
 			buf[(i++)%128] = c;
