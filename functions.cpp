@@ -261,7 +261,7 @@ void printLastCoffee(hd44780 &lcd){
 	while ((c != '\0')&&(i < 128)){
 		c = buf[i++];
 	}
-	buf[i-9] = '\n';
+	buf[i-10] = '\n';
 	printfl(buf, lcd);
 	lcd.setAutoscroll(hd44780::HSCROLL_LINE | hd44780::VSCROLL);
 }
