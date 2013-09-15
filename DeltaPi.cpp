@@ -27,7 +27,7 @@ int main(int argc, char* argv[]){
 		}
 	}while (card != -1);
 	lcd.clear();
-	lcd.write("Closing DeltaPi.\n  Goodbye!");
+	lcd.write("  Closing DeltaPi.\n\n      Goodbye!");
 	
 	return 0;
 }
