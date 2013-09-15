@@ -257,8 +257,8 @@ void printLastCoffee(hd44780 &lcd){
 	printfl("Last coffee:", lcd);
 	lcd.move(0,2);
 	coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","r");
-	while (buf[(i++)%128] = getc(coffeeFile) != EOF){
-		printf("%s",buf[i]);
+	while ((buf[(i++)%128] = fgetc(coffeeFile)) != EOF){
+		printf("%c",buf[i]);
 	}
 	fclose(coffeeFile);
 	printfl(buf, lcd);
