@@ -33,13 +33,15 @@ void getLine(char buf[], hd44780 &lcd){
 		xpos = lcd.getXpos();
 		c = getch();
 		if ((int)c == 127){
-			i = (i <= 0)?(0):(i-1);
+			if (i > 0){
+				write(1, "\b \b", 3);
+				i--
+			}
 			xpos = (xpos <= startx)?(startx):(xpos-1);
 			lcd.move(xpos,starty);
 			lcd.write(' ');
 			lcd.move(xpos,starty);
-			if (i > 0)
-				write(1, "\b \b", 3);
+			
 		}else{
 			buf[(i++)%128] = c;
 			lcd.write(c);
