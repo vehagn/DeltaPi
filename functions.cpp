@@ -206,7 +206,7 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	
 	for (i = entries.begin(); i != entries.end(); i++){
 		persons++;
-		spent += i->second.getSpent();
+		spent += (int)i->second.getSpent();
 		if (i->second.getTab()){
 			if (i->second.getCash() >= 0){
 				money += i->second.getCash();
@@ -220,13 +220,14 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	lcd.clear();
 	sprintf(buf, "Persons: %i", persons);
 	printfl(buf,lcd);
-	sprintf(buf, "Tot Money:  %i kr", money);
+	sprintf(buf, "Tot Money:  %5i kr", money);
 	lcd.move(0,1);
 	printfl(buf,lcd);
-	sprintf(buf, "Tot Credit: %i kr", credit);
+	sprintf(buf, "Tot Credit: %5i kr", credit);
 	lcd.move(0,2);
 	printfl(buf,lcd);
-	sprintf(buf, "Tot Spent:  %i kr", spent);
+	sprintf(buf, "Tot Spent:  %5i kr", spent);
 	lcd.move(0,3);
 	printfl(buf,lcd);
+	sleep(5);
 }
