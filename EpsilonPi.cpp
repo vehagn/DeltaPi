@@ -37,9 +37,10 @@ int main(int argc, char* argv[]){
 	
 	hd44780 lcd(14, 15, 24, 25, 8, 7);
    	lcd.init(20, 4);
+	lcd.clear();
 	
 	lcd.move(0, 2);
-	lcd.write("EpsilonPi ver. 0.7.0");
+	lcd.write("EpsilonPi ver. 0.7.1");
 	
 	while (true){
 		if (office){
@@ -49,8 +50,9 @@ int main(int argc, char* argv[]){
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				fprintf(officeFile,"0");
 				fclose(officeFile);
-				lcd.move(0, 3);
+				lcd.move(0,3);
 				lcd.write("Office open!        ");
+				lcd.move(6,0);
 			}
 		}else{
 			io.write(4, rpihw::gpio::LOW);
@@ -59,8 +61,9 @@ int main(int argc, char* argv[]){
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				fprintf(officeFile,"1024");
 				fclose(officeFile);
-				lcd.move(0, 3);
+				lcd.move(0,3);
 				lcd.write("Office closed!      ");
+				lcd.move(6,0);
 			}
 		}
 		
@@ -92,6 +95,7 @@ int main(int argc, char* argv[]){
 				
 				lcd.move(0,3);
 				lcd.write("Coffee time!        ");
+				lcd.move(6,0);
 			}	
 		}else{
 			io.write(22, rpihw::gpio::LOW);

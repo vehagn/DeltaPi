@@ -7,7 +7,6 @@ int main(int argc, char* argv[]){
 
 	hd44780 lcd(14, 15, 24, 25, 8, 7);
    	lcd.init(20, 4);
-   	lcd.clear();
 	lcd.setAutoscroll(hd44780::HSCROLL_LINE | hd44780::VSCROLL);
 
 	uint8_t blank[8]		= {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
@@ -19,7 +18,7 @@ int main(int argc, char* argv[]){
 	int card = 0;
 	
 	lcd.move(0,1);
-	printfl("DeltaPi ver. 0.7.0",lcd);
+	printfl("DeltaPi ver. 0.7.1",lcd);
 	
 	do{
 		retrieveSQL(entries, lcd);
