@@ -58,6 +58,8 @@ class hd44780 : hd44780base
 	public:
 		uint8_t getxpos(){return m_pos_x;}
 		uint8_t getypos(){return m_pos_y;}
+	friend int retrieveSQL(map<const int,Entry> &entries, hd44780 &lcd);
+	friend int updateSQL(int id, string field, int int_value, hd44780 &lcd);
 };
 
 const int maxCredit = 200; //Maximum allowed credit.
