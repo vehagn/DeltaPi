@@ -29,9 +29,9 @@ int main(int argc, char* argv[]){
 		} else if (card == 5){
 			lcd.clear();
 			time(&now);
-			timeinfo = localtime(&now);
-			strftime(buf,64,"HH:MM:SS",&timeinfo);
-			printfl("      %s",buf);
+			timeinfo = *localtime(&now);
+			strftime(buf,64,"      HH:MM:SS",&timeinfo);
+			printfl(buf);
 		}
 	}while (card != -1);
 	lcd.clear();
