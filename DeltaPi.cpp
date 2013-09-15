@@ -18,6 +18,9 @@ int main(int argc, char* argv[]){
 	
 	int card = 0;
 	
+	lcd.move(0,1);
+	printfl("DeltaPi ver. 0.7.0",lcd);
+	
 	do{
 		retrieveSQL(entries, lcd);
 		scanCard(entries, card, lcd);

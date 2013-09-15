@@ -35,6 +35,12 @@ int main(int argc, char* argv[]){
 	int startDay = localtime(&startTime)->tm_yday;
 	struct tm * timeinfo;
 	
+	hd44780 lcd(14, 15, 24, 25, 8, 7);
+   	lcd.init(20, 4);
+	
+	lcd.move(0, 2);
+	lcd.write("EpsilonPi ver. 0.7.0");
+	
 	while (true){
 		if (office){
 			io.write(4, rpihw::gpio::HIGH);
@@ -43,6 +49,8 @@ int main(int argc, char* argv[]){
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				fprintf(officeFile,"0");
 				fclose(officeFile);
+				lcd.move(0, 3);
+				lcd.write("Office open!        ");
 			}
 		}else{
 			io.write(4, rpihw::gpio::LOW);
@@ -51,6 +59,8 @@ int main(int argc, char* argv[]){
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				fprintf(officeFile,"1024\0");
 				fclose(officeFile);
+				lcd.move(0, 3);
+				lcd.write("Office closed!      ");
 			}
 		}
 		
@@ -79,6 +89,9 @@ int main(int argc, char* argv[]){
 				coffeeLog = fopen("/var/www/pi.deltahouse.no/public_html/coffee_log.txt","a+");
 				fprintf(coffeeLog,"%i:%s\n",coffeePots,buf);
 				fclose(coffeeLog);
+				
+				lcd.move(0,3);
+				lcd.write("Coffee time!        ");
 			}	
 		}else{
 			io.write(22, rpihw::gpio::LOW);
