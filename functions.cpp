@@ -197,7 +197,7 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	map<const int,Entry>::iterator i;
 	int persons = 0;
 	int money = 0;
-	int spent = 0;
+	long spent = 0;
 	int credit = 0;
 	char buf[128];
 	
@@ -218,7 +218,7 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 		}	
 	}
 	lcd.clear();
-	sprintf(buf, "Persons: %i", persons);
+	sprintf(buf, "Persons:    %5i", persons);
 	printfl(buf,lcd);
 	sprintf(buf, "Tot Money:  %5i kr", money);
 	lcd.move(0,1);
@@ -226,7 +226,7 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	sprintf(buf, "Tot Credit: %5i kr", credit);
 	lcd.move(0,2);
 	printfl(buf,lcd);
-	sprintf(buf, "Tot Spent:  %5i kr", spent);
+	sprintf(buf, "Tot Spent:  %5li kr", spent);
 	lcd.move(0,3);
 	printfl(buf,lcd);
 	sleep(5);
