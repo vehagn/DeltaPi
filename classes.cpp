@@ -55,30 +55,3 @@ void Entry::withdrawCash(int amount){
 void Entry::increaseSpent(int amount){
 	this->spent += amount;
 }
-/*void Entry::setBalance(string operation){
-	int *number = new int(0);
-
-	if (operation.substr(0,1) == "+"){
-		operation.erase(0,1);
-		if((*number = atoi(operation.c_str())) && (*number < 501)){
-			this->cash += atoi(operation.c_str());
-		}else{
-			printf("Invalid input, input must be an integer less than 501\n");
-		}
-	}else{
-		if((*number = abs(atoi(operation.c_str()))) && (*number < 501)){
-			if ((this->cash - *number) >= -(this->tab*maxCredit)){
-				this->cash -= *number;
-				this->spent += *number;
-			}else{
-				printf("\n\tNot enough money! \a\a\n");
-				printf("Max credit is %i kr for this card.\n", this->tab*maxCredit);
-			}
-		}else{
-			printf("Invalid input, input must be an integer less than 501\n");
-		}
-	}
-}
-void Entry::printBalance(){
-		printf("%i kr",this->getCash());
-}*/

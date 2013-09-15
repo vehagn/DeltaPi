@@ -54,7 +54,7 @@ using namespace rpihw::display;
 using namespace rpihw::utils;
 
 
-class hd44780 : hd44780::hd44780base
+class hd44780 : hd44780base::hd44780base
 {
 	public:
 		uint8_t getxpos(){return m_pos_x;}
