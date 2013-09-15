@@ -207,14 +207,14 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	for (i = entries.begin(); i != entries.end(); i++){
 		persons++;
 		spent += i.second.getSpent();
-		if (i.second.getTab()){
-			if (i.second.getCash() >= 0){
-				money += i.second.getCash();
+		if (i->second.getTab()){
+			if (i->second.getCash() >= 0){
+				money += i->second.getCash();
 			}else{
-				credit -= i.second.getCash();
+				credit -= i->second.getCash();
 			}		
 		}else{
-			money += i.second.getCash();
+			money += i->second.getCash();
 		}	
 	}
 	lcd.clear();
