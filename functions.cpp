@@ -11,8 +11,7 @@ char getch(){
         
         tcgetattr(STDIN_FILENO,&old_tio);
         new_tio=old_tio;
-        new_tio.c_lflag &= ~(ICANON | ECHO);
-		//new_tio.c_lflag &= (~ECHO);
+        new_tio.c_lflag &= ~(ICANON);
         tcsetattr(STDIN_FILENO,TCSANOW,&new_tio);
 
         if (read(0, &buf, 1) < 0)
@@ -29,6 +28,7 @@ void getLine(char buf[], hd44780 &lcd){
 	uint8_t startx = lcd.getXpos();
 	uint8_t starty = lcd.getYpos();	
 	uint8_t xpos;
+	printf("Raw input: ");
 	do{
 		xpos = lcd.getXpos();
 		c = getch();
@@ -39,14 +39,13 @@ void getLine(char buf[], hd44780 &lcd){
 			lcd.move(xpos,starty);
 			lcd.write(' ');
 			lcd.move(xpos,starty);
-			putchar('\b'); putchar(' '); putchar('\b');
 		}else{
 			buf[(i++)%128] = c;
 			lcd.write(c);
-			putchar(c);
 		}
 	}while (c != '\n');
 	buf[i%128] = '\0';
+	printf("\nFinal input: %s\n",buf);
 	lcd.setCursor(hd44780::NO_CURSOR);
 }
 void printfl(string str, hd44780 &lcd){
