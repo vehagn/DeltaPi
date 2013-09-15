@@ -257,7 +257,9 @@ void printLastCoffee(hd44780 &lcd){
 	printfl("Last coffee:", lcd);
 	lcd.move(0,2);
 	coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","r");
-	while ((buf[i++%128] = getc(coffeeFile)) != EOF);
+	while (fscanf(coffeeFile, "%s", buf)!=EOF){
+		printf("%s",buf);
+	}
 	fclose(coffeeFile);
 	printfl(buf, lcd);
 	lcd.setAutoscroll(hd44780::HSCROLL_LINE | hd44780::VSCROLL);
