@@ -218,7 +218,7 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 			money += i->second.getCash();
 		}
 		spent += i->second.getSpent();
-		printf("%li\t%li\t%s\n",spent, i->second.getSpent(),i->second.getFirstName().c_str());
+		printf("%li\t%li\t%i\n",spent, i->second.getSpent(),i->second.getID());
 	}
 	lcd.clear();
 	sprintf(buf, "Persons:    %5i", persons);
