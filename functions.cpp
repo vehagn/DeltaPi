@@ -258,7 +258,7 @@ void printLastCoffee(hd44780 &lcd){
 	coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","r");
 	fread(buf,1,128,coffeeFile);
 	fclose(coffeeFile);
-	while (c != '\0')&(i < 128){
+	while ((c != '\0')&&(i < 128)){
 		c = buf[i++];
 	}
 	buf[i-9] = '\n';
