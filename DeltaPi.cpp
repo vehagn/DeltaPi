@@ -26,8 +26,12 @@ int main(int argc, char* argv[]){
 			transaction(entries, card, lcd);
 		} else if (card == 1){
 			printSummary(entries, lcd);
+		} else if (card == 2){
+			retrieveSQL(entries, lcd);	
 		} else if (card == 5){
 			printTime(lcd);
+		} else if (card == 9){
+			printLastCoffee(lcd);
 		}
 	}while (card != -1);
 	lcd.clear();

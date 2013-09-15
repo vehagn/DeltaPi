@@ -99,8 +99,11 @@ void scanCard(map<const int, Entry>&, int&, hd44780&);
 void printInfo(map<const int, Entry>&, int&, hd44780&);
 void transaction(map<const int, Entry>&, int&, hd44780&);
 
-void printTime(hd44780&);
+void printHelp(hd44780&);
 void printSummary(map<const int, Entry>&, hd44780&);
+void printTime(hd44780&);
+void printLastCoffee(hd44780&);
+
 
 //SQL
 int retrieveSQL(map<const int,Entry> &, hd44780 &lcd);

@@ -180,20 +180,17 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	updateSQL(card, "spent", entries.find(card)->second.getSpent(), lcd);
 }
 
-void printTime(hd44780 &lcd){
-	time_t now;
-	struct tm timeinfo;
-	char buf [64];
-	
-	time(&now);
-	timeinfo = *localtime(&now);
-	strftime(buf,64,"%a %d %b %H:%M:%S \nWeek %V Year %G",&timeinfo);
-	
+void printHelp(hd44780 &lcd){
 	lcd.clear();
+	printfl("0-help 1-summary",lcd);
 	lcd.move(0,1);
-	printfl("Time and date:", lcd);
+	printfl("2-retrieve SQL");
 	lcd.move(0,2);
-	printfl(buf, lcd);	
+	printfl("5-timestamp");
+	lcd.move(0,3);
+	printfl("9-coffee");
+	sleep(5);
+
 }
 void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	map<const int,Entry>::iterator i;
@@ -232,4 +229,34 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	lcd.move(0,3);
 	printfl(buf,lcd);
 	sleep(5);
+}
+void printTime(hd44780 &lcd){
+	time_t now;
+	struct tm timeinfo;
+	char buf [64];
+	
+	time(&now);
+	timeinfo = *localtime(&now);
+	strftime(buf,64,"%a %d %b %H:%M:%S \nWeek %V Year %G",&timeinfo);
+	
+	lcd.clear();
+	lcd.move(0,1);
+	printfl("Timestamp:", lcd);
+	lcd.move(0,2);
+	printfl(buf, lcd);	
+}
+void printLastCoffee(hd44780 &lcd){
+	FILE *coffeeFile;
+	lcd.setAutoscroll(hd44780::VSCROLL);
+	char buf[128];
+	
+	lcd.clear();
+	lcd.move(0,1);
+	printfl("Last coffee:");
+	lcd.move(0,2);
+	coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","r");
+	while(fgets(buf, 128, coffeeFile) != EOF);
+	fclose(coffeeFile);
+	printfl(buf);
+	lcd.setAutoscroll(hd44780::HSCROLL_LINE | hd44780::VSCROLL);
 }
