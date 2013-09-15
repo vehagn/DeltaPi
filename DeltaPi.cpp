@@ -31,7 +31,7 @@ int main(int argc, char* argv[]){
 			time(&now);
 			timeinfo = *localtime(&now);
 			lcd.move(6,2);
-			strftime(buf,64,"HH:MM:SS",&timeinfo);
+			strftime(buf,64,"%H:%M:%S",&timeinfo);
 			printfl(buf, lcd);
 		}
 	}while (card != -1);

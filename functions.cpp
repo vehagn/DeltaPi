@@ -57,7 +57,7 @@ void printfl(string str, hd44780 &lcd){
 
 char* str2char(string s){
 
-	char *c=new char[s.size()+1];
+	char *c=new char[s.size()+1];1
 	c[s.size()]=0;
 	memcpy(c,s.c_str(),s.size());
 
@@ -76,7 +76,10 @@ void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 		stringstream checkIfNumber(input);
 		if (checkIfNumber >> card){
 			if (card == -1){return;}
-			if (card <= 10){return;}
+			if (card <= 10){
+				printfl(" command",lcd);	
+				return;
+			}
 			if (entries.find(card) == entries.end()){
 				moveAndClearLine(0,3,lcd);
 				moveAndClearLine(0,2,lcd);
