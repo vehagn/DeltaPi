@@ -1,7 +1,9 @@
 #include "header.h"
 
 map<const int, Entry> entries;
-//Entry person;
+time_t now;
+struct timeinfo;
+char buf [64];
 
 int main(int argc, char* argv[]){
 
@@ -17,7 +19,7 @@ int main(int argc, char* argv[]){
 	entries.erase(0);
 	
 	int card = 0;
-
+	
 	do{
 		retrieveSQL(entries, lcd);
 		scanCard(entries, card, lcd);
@@ -26,7 +28,10 @@ int main(int argc, char* argv[]){
 			transaction(entries, card, lcd);
 		} else if (card == 5){
 			lcd.clear();
-			lcd.write( 0, 2, align( exec( "date +%H:%m:%S" ), 20, ALIGN_CENTER ) );
+			time(&now);
+			timeinfo = localtime(&now);
+			strftime(buf,64,"HH:MM:SS",&timeinfo);
+			printfl("      %s",buf);
 		}
 	}while (card != -1);
 	lcd.clear();

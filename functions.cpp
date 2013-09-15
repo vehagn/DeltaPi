@@ -63,29 +63,6 @@ char* str2char(string s){
 
 	return c;
 }
-std::string exec( const std::string &cmd ) {
-
-	// Open the process for reading
-	FILE *pfile = popen( cmd.c_str(), "r" );
-
-	if ( !pfile ) return "<failed>";
-
-	// Output of the process and buffer
-	std::string output;
-	char buffer[128];
-
-	// Copy the output of the process
-	while ( !feof( pfile ) ) {
-
-		if ( fgets( buffer, 128, pfile ) != NULL )
-			output.append( buffer );
-	}
-
-	// Close the process
-	pclose( pfile );
-
-	return output;
-}
 
 void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	string input;
