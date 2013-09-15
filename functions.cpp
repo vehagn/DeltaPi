@@ -249,13 +249,16 @@ void printLastCoffee(hd44780 &lcd){
 	FILE *coffeeFile;
 	lcd.setAutoscroll(hd44780::VSCROLL);
 	char buf[128];
+	int i = 0;
 	
 	lcd.clear();
 	lcd.move(0,1);
 	printfl("Last coffee:");
 	lcd.move(0,2);
 	coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","r");
-	while(fgets(buf, 128, coffeeFile) != EOF);
+	while ((c = getc(coffeeFile)) != EOF){
+		buf[i++%128] = c;
+	}
 	fclose(coffeeFile);
 	printfl(buf);
 	lcd.setAutoscroll(hd44780::HSCROLL_LINE | hd44780::VSCROLL);
