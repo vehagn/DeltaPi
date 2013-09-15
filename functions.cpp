@@ -57,7 +57,7 @@ void printfl(string str, hd44780 &lcd){
 
 char* str2char(string s){
 
-	char *c=new char[s.size()+1];1
+	char *c=new char[s.size()+1];
 	c[s.size()]=0;
 	memcpy(c,s.c_str(),s.size());
 
