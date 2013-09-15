@@ -39,11 +39,11 @@ void getLine(char buf[], hd44780 &lcd){
 			lcd.move(xpos,starty);
 			lcd.write(' ');
 			lcd.move(xpos,starty);
-			printf("\b \b");
+			putchar('\b'); putchar(' '); putchar('\b');
 		}else{
 			buf[(i++)%128] = c;
 			lcd.write(c);
-			printf("%c",c);
+			putchar(c);
 		}
 	}while (c != '\n');
 	buf[i%128] = '\0';
