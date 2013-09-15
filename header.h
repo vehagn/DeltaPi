@@ -93,13 +93,14 @@ void moveAndClearLine(int, int, hd44780&);
 char getch();
 void getLine(char[], hd44780&);
 void printfl(string, hd44780&);
-
 char* str2char(string);
-
 
 void scanCard(map<const int, Entry>&, int&, hd44780&);
 void printInfo(map<const int, Entry>&, int&, hd44780&);
 void transaction(map<const int, Entry>&, int&, hd44780&);
+
+void printTime(hd44780&);
+void printSummary(map<const int, Entry>&, hd44780&);
 
 //SQL
 int retrieveSQL(map<const int,Entry> &, hd44780 &lcd);

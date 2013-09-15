@@ -1,9 +1,7 @@
 #include "header.h"
 
 map<const int, Entry> entries;
-time_t now;
-struct tm timeinfo;
-char buf [64];
+
 
 int main(int argc, char* argv[]){
 
@@ -27,12 +25,9 @@ int main(int argc, char* argv[]){
 			printInfo(entries, card, lcd);
 			transaction(entries, card, lcd);
 		} else if (card == 5){
-			lcd.clear();
-			time(&now);
-			timeinfo = *localtime(&now);
-			lcd.move(6,2);
-			strftime(buf,64,"%H:%M:%S",&timeinfo);
-			printfl(buf, lcd);
+			printTime(lcd);
+		} else if (card == 1){
+			
 		}
 	}while (card != -1);
 	lcd.clear();

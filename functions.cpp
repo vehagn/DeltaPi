@@ -180,3 +180,56 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	updateSQL(card, "cash", entries.find(card)->second.getCash(), lcd);
 	updateSQL(card, "spent", entries.find(card)->second.getSpent(), lcd);
 }
+
+void printTime(hd44780 &lcd){
+	time_t now;
+	struct tm timeinfo;
+	char buf [64];
+	
+	time(&now);
+	timeinfo = *localtime(&now);
+	strftime(buf,64,"%H:%M:%S",&timeinfo);
+	
+	lcd.clear();
+	lcd.move(6,2);
+	printfl(buf, lcd);	
+}
+
+void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
+	map<const int,Entry>::iterator i;
+	int persons = 0;
+	int members = 0;
+	int money = 0;
+	int spent = 0;
+	int credit = 0;
+	
+	lcd.clear();
+	printfl("Database summary.\nGathering info...",lcd);
+	
+	for (i = entries->begin(); i != entries->end(); i++){
+		persons++;
+		spent += i->second.getSpent();
+		if (i->second.getTab()){
+			if (i->second.getCash() >= 0){
+				money += i->second.getCash();
+			}else{
+				credit -= i->second.getCash();
+			}		
+		}else{
+			money += i->second.getCash();
+		}
+		if (i->second.isMember()){
+			members++;
+		}		
+	}
+	lcd.clear();
+	sprintf(buf, "Persons: %i(%i)", persons, members);
+	printfl(buf,lcd);
+	sprintf(buf, "Tot Money:  %i kr", money);
+	printfl(buf,lcd);
+	sprintf(buf, "Tot Credit: %i kr", credit);
+	printfl(buf,lcd);
+	sprintf(buf, "Tot Spent:  %i kr", spent);
+	printfl(buf,lcd);
+	time::sleep(5);
+}
