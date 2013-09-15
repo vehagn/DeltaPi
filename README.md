@@ -24,9 +24,9 @@ sudo chmod 4755 ./DeltaPi
 #Startup on boot
 $ nano ~/startup.sh
 
- #!/bin/bash<br>
+ #!/bin/sh<br>
 sleep 5<br>
-/etc/local/DeltaPi<br>
+/usr/local/DeltaPi<br>
 sleep 2<br>
 shutdown -h now
 
