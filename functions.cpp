@@ -1,7 +1,7 @@
 #include "header.h"
 
 void moveAndClearLine(int i, int j, hd44780 &lcd){
-	lcd.move(i, j);
+	lcd.move(i,j);
 	lcd.write("                    ");
 	lcd.move(i,j);
 }
@@ -27,8 +27,12 @@ void getLine(char buf[], hd44780 &lcd){
 	lcd.setCursor(hd44780::CURSOR_BLINKING);
 	do{
 		c = getch();
-		buf[(i++)%128] = c;
-		lcd.write(c);
+		if c == '\b'{
+			i--;
+		}else{
+			buf[(i++)%128] = c;
+			lcd.write(c);
+		}
 	}while (c != '\n');
 	buf[i%128] = '\0';
 	lcd.setCursor(hd44780::NO_CURSOR);
@@ -82,7 +86,7 @@ void printInfo(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	lcd.clear(); lcd.move(0, 0);
 	sprintf(buf, "%s", entries.find(card)->second.getFirstName().c_str());
 	printfl(buf, lcd);
-	lcd.move(0, 1);
+	lcd.move(0,1);
 	sprintf(buf, "Balance: %ikr", entries.find(card)->second.getCash());
 	printfl(buf, lcd);
 }
@@ -94,7 +98,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	printfl("Amount:", lcd);
 	moveAndClearLine(0,3,lcd);
 	printfl("Prefix + to deposit.", lcd);
-	lcd.move(7,2);
+	lcd.move(8,2);
 	getLine(buf, lcd);
 	input = buf;
 
