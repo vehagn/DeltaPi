@@ -30,7 +30,8 @@ int main(int argc, char* argv[]){
 			lcd.clear();
 			time(&now);
 			timeinfo = *localtime(&now);
-			strftime(buf,64,"      HH:MM:SS",&timeinfo);
+			lcd.move(6,2);
+			strftime(buf,64,"HH:MM:SS",&timeinfo);
 			printfl(buf, lcd);
 		}
 	}while (card != -1);

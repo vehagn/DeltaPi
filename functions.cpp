@@ -75,7 +75,8 @@ void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 		input = buf;
 		stringstream checkIfNumber(input);
 		if (checkIfNumber >> card){
-			if (card == -1){return;}		
+			if (card == -1){return;}
+			if (card <= 10){return;}
 			if (entries.find(card) == entries.end()){
 				moveAndClearLine(0,3,lcd);
 				moveAndClearLine(0,2,lcd);
