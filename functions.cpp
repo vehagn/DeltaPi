@@ -42,7 +42,7 @@ void getLine(char buf[], hd44780 &lcd){
 		}else{
 			buf[(i++)%128] = c;
 			lcd.write(c);
-			write(1, c, 1);
+			write(1, &c, 1);
 		}
 	}while (c != '\n');
 	buf[i%128] = '\0';
