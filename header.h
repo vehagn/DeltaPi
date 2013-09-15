@@ -22,7 +22,6 @@
 #include <rpi-hw/utils.hpp>
 #include <rpi-hw/time.hpp>
 #include <rpi-hw/gpio.hpp>
-#define hd44780 hd44780base
 #include <rpi-hw/display/hd44780.hpp>
 
 /* MySQL Connector/C++ specific headers */
@@ -51,14 +50,6 @@ using namespace sql;
 using namespace rpihw::iface;
 using namespace rpihw::display;
 using namespace rpihw::utils;
-
-#undef hd44780
-class hd44780 : hd44780base
-{
-	public:
-		uint8_t getxpos(){return m_pos_x;}
-		uint8_t getypos(){return m_pos_y;}
-};
 
 const int maxCredit = 200; //Maximum allowed credit.
 const int maxAmount = 500; //Maximum allowed transfer.
