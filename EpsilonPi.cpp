@@ -27,7 +27,6 @@ int main(int argc, char* argv[]){
 	FILE *coffeeLog;
 	time_t coffeeTime = 0;
 	time_t coffeePress = 0;
-	//time(&coffeePress);
 	int coffeePots = 0;
 	
 	time_t startTime = 0;
@@ -39,7 +38,7 @@ int main(int argc, char* argv[]){
    	lcd.init(20, 4);
 	lcd.clear();
 	
-	lcd.move(0, 1);
+	lcd.move(0,1);
 	lcd.write("EpsilonPi ver. 0.7.1");
 	
 	while (true){
