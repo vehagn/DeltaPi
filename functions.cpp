@@ -25,11 +25,11 @@ void getLine(char buf[], hd44780 &lcd){
 	char c;
 	int i = 0;
 	lcd.setCursor(hd44780::CURSOR_BLINKING);
-	uint8_t startx = lcd.getXpos();
-	uint8_t starty = lcd.getYpos();	
+	uint8_t startx = lcd.getXCursor();
+	uint8_t starty = lcd.getYCursor();	
 	uint8_t xpos;
 	do{
-		xpos = lcd.getXpos();
+		xpos = lcd.getXCursor();
 		c = getch();
 		if ((int)c == 127){
 			if (i > 0){
@@ -40,7 +40,6 @@ void getLine(char buf[], hd44780 &lcd){
 			lcd.move(xpos,starty);
 			lcd.write(' ');
 			lcd.move(xpos,starty);
-			
 		}else{
 			buf[(i++)%128] = c;
 			lcd.write(c);
@@ -207,24 +206,27 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	
 	for (i = entries.begin(); i != entries.end(); i++){
 		persons++;
-		spent += i->second.getSpent();
-		if (i->second.getTab()){
-			if (i->second.getCash() >= 0){
-				money += i->second.getCash();
+		spent += i.second.getSpent();
+		if (i.second.getTab()){
+			if (i.second.getCash() >= 0){
+				money += i.second.getCash();
 			}else{
-				credit -= i->second.getCash();
+				credit -= i.second.getCash();
 			}		
 		}else{
-			money += i->second.getCash();
+			money += i.second.getCash();
 		}	
 	}
 	lcd.clear();
 	sprintf(buf, "Persons: %i", persons);
 	printfl(buf,lcd);
 	sprintf(buf, "Tot Money:  %i kr", money);
+	lcd.move(0,1);
 	printfl(buf,lcd);
 	sprintf(buf, "Tot Credit: %i kr", credit);
+	lcd.move(0,2);
 	printfl(buf,lcd);
 	sprintf(buf, "Tot Spent:  %i kr", spent);
+	lcd.move(0,3);
 	printfl(buf,lcd);
 }
