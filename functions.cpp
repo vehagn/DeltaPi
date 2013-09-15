@@ -194,14 +194,13 @@ void printTime(hd44780 &lcd){
 	lcd.move(6,2);
 	printfl(buf, lcd);	
 }
-
 void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	map<const int,Entry>::iterator i;
 	int persons = 0;
-	int members = 0;
 	int money = 0;
 	int spent = 0;
 	int credit = 0;
+	char buf[128];
 	
 	lcd.clear();
 	printfl("Database summary.\nGathering info...",lcd);
@@ -217,13 +216,10 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 			}		
 		}else{
 			money += i->second.getCash();
-		}
-		if (i->second.isMember()){
-			members++;
-		}		
+		}	
 	}
 	lcd.clear();
-	sprintf(buf, "Persons: %i(%i)", persons, members);
+	sprintf(buf, "Persons: %i", persons);
 	printfl(buf,lcd);
 	sprintf(buf, "Tot Money:  %i kr", money);
 	printfl(buf,lcd);
@@ -231,5 +227,4 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	printfl(buf,lcd);
 	sprintf(buf, "Tot Spent:  %i kr", spent);
 	printfl(buf,lcd);
-	time::sleep(5);
 }

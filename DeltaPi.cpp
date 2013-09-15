@@ -24,10 +24,10 @@ int main(int argc, char* argv[]){
 		if (card > 10){
 			printInfo(entries, card, lcd);
 			transaction(entries, card, lcd);
+		} else if (card == 1){
+			printSummary(&entries, lcd);
 		} else if (card == 5){
 			printTime(lcd);
-		} else if (card == 1){
-			
 		}
 	}while (card != -1);
 	lcd.clear();
