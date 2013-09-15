@@ -11,14 +11,15 @@ char getch(){
         
         tcgetattr(STDIN_FILENO,&old_tio);
         new_tio=old_tio;
-        new_tio.c_lflag &= (~ICANON | ~ECHO);
+        new_tio.c_lflag &= (~ICANON);
+		new_tio.c_oflag &= (~ECHO);
         tcsetattr(STDIN_FILENO,TCSANOW,&new_tio);
 
         if (read(0, &buf, 1) < 0)
                 perror ("read()");
 
-         tcsetattr(STDIN_FILENO,TCSANOW,&old_tio);
-         return (buf);     
+        tcsetattr(STDIN_FILENO,TCSANOW,&old_tio);
+        return (buf);     
 	
 }
 void getLine(char buf[], hd44780 &lcd){
