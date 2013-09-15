@@ -182,13 +182,13 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 
 void printHelp(hd44780 &lcd){
 	lcd.clear();
-	printfl("0-help 1-summary",lcd);
+	printfl("0-help 1-summary", lcd);
 	lcd.move(0,1);
-	printfl("2-retrieve SQL");
+	printfl("2-retrieve SQL", lcd);
 	lcd.move(0,2);
-	printfl("5-timestamp");
+	printfl("5-timestamp", lcd);
 	lcd.move(0,3);
-	printfl("9-coffee");
+	printfl("9-coffee", lcd);
 	sleep(5);
 
 }
