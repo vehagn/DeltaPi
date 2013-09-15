@@ -20,6 +20,7 @@ Entry::Entry(int cardID, string lastName, string firstName, bool tab, int cash, 
 	this->lastName = lastName;
 	this->tab = tab;
 	this->cash = cash;
+	this->spent = spent;
 	this->comment = comment;
 }
 int Entry::getID(){
