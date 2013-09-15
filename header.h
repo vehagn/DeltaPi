@@ -86,9 +86,6 @@ public:
 	void withdrawCash(int);
 	void increaseSpent(int);
 	void openTab(bool);
-
-	/*void printBalance();
-	void setBalance(string);*/
 };
 
 //Functions
@@ -103,21 +100,6 @@ char* str2char(string);
 void scanCard(map<const int, Entry>&, int&, hd44780&);
 void printInfo(map<const int, Entry>&, int&, hd44780&);
 void transaction(map<const int, Entry>&, int&, hd44780&);
-/*void openTab(string, map<const int,Entry> *);
-
-void beerMode(string, map<const int,Entry> *);
-void exportHTML(map<const int,Entry> *);
-
-
-int beerScan(map<const int,Entry> &, int);
-int getCard(map<const int,Entry> *);
-int checkLogin(time_t *,int*);
-bool checkAlnum(string);*/
-
-
-
-/*void connectToTheWired(LPCTSTR pszURL);
-void talkToTheWired(LPCTSTR pszURL);*/
 
 //SQL
 int retrieveSQL(map<const int,Entry> &, hd44780 &lcd);

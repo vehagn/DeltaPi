@@ -28,7 +28,6 @@ void getLine(char buf[], hd44780 &lcd){
 	uint8_t startx = lcd.getXpos();
 	uint8_t starty = lcd.getYpos();	
 	uint8_t xpos;
-	//printf("Raw input: ");
 	do{
 		xpos = lcd.getXpos();
 		c = getch();
@@ -49,7 +48,6 @@ void getLine(char buf[], hd44780 &lcd){
 		}
 	}while (c != '\n');
 	buf[i%128] = '\0';
-	//printf("\nFinal input: %s\n",buf);
 	lcd.setCursor(hd44780::NO_CURSOR);
 }
 void printfl(string str, hd44780 &lcd){
@@ -64,6 +62,29 @@ char* str2char(string s){
 	memcpy(c,s.c_str(),s.size());
 
 	return c;
+}
+std::string exec( const std::string &cmd ) {
+
+	// Open the process for reading
+	FILE *pfile = popen( cmd.c_str(), "r" );
+
+	if ( !pfile ) return "<failed>";
+
+	// Output of the process and buffer
+	std::string output;
+	char buffer[128];
+
+	// Copy the output of the process
+	while ( !feof( pfile ) ) {
+
+		if ( fgets( buffer, 128, pfile ) != NULL )
+			output.append( buffer );
+	}
+
+	// Close the process
+	pclose( pfile );
+
+	return output;
 }
 
 void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
@@ -153,7 +174,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 				sprintf(buf, "%i kr withdrawn.", *amount);
 				printfl(buf, lcd);
 				moveAndClearLine(0,3,lcd);
-				sprintf(buf, "New balance:%i kr", entries.find(card)->second.getCash());
+				sprintf(buf, "New balance: %i kr", entries.find(card)->second.getCash());
 				printfl(buf, lcd);
 			}else{
 				moveAndClearLine(0,3,lcd);
@@ -178,55 +199,6 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	updateSQL(card, "cash", entries.find(card)->second.getCash(), lcd);
 	updateSQL(card, "spent", entries.find(card)->second.getSpent(), lcd);
 }
-
-/*void beerMode(map<const int,Entry> *entries){
-	string input;
-	int card = -1;
-
-	do{
-		cout << endl << "Scan card: ";
-		getline(cin,input);
-
-       // card = beerScan(entries,card);
-        if (card > 0){
-            //entries->find(card)->second.printLine();
-            cout << "Current balance: "; entries->find(card)->second.printBalance();
-            cout << "\n\nAmount (use \"+amount\" to deposit): ";
-            getline(cin,input);
-            entries->find(card)->second.setBalance(input);
-            cout << "\nNew balance: ";  entries->find(card)->second.printBalance(); cout << endl;
-            updateSQL(card,"cash",entries->find(card)->second.getCash());
-            updateSQL(card,"spent",entries->find(card)->second.getSpent());
-        }else{
-			cout << "Incorrect input, type 'help' for more information" << endl;
-		}
-	}while (true);
-}*/
-/*int beerScan(map<const int,Entry> &entries, int card){
-	string cmd;
-	if (card == 0){		
-		while (true) {
-			cout << endl << "Input: " << endl;
-			getline(cin,cmd);
-			stringstream checkIfNumber(cmd);
-			cout << endl;
-			if (checkIfNumber >> card){
-				break;
-			}
-			cout << "Invalid Card ID, please scan again" << endl;
-			return -1;
-		}
-	}else{
-		if (entries->find(card) == entries->end()){
-			printf("Card ID not found!\n");
-			return -1;
-		}else{
-			return card;
-		}
-	}return 0;
-}*/
-
-/*void connectToTheWired(LPCTSTR pszURL){
 	CInternetSession session(_T("sessionID"));
 	CStdioFile* pFile = NULL;
 	CHAR szBuff[1024];
