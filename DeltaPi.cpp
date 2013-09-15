@@ -26,7 +26,7 @@ int main(int argc, char* argv[]){
 			transaction(entries, card, lcd);
 		} else if (card == 5){
 			lcd.clear();
-			dev.write( 0, 2, utils::align( exec( "date +%H:%m:%S" ), 20, utils::ALIGN_CENTER ) );
+			lcd.write( 0, 2, align( exec( "date +%H:%m:%S" ), 20, ALIGN_CENTER ) );
 		}
 	}while (card != -1);
 	lcd.clear();
