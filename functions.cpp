@@ -38,7 +38,7 @@ void getLine(char buf[], hd44780 &lcd){
 			lcd.move(xpos,starty);
 			lcd.write(' ');
 			lcd.move(xpos,starty);
-			if i
+			if (i > 0)
 				write(1, "\b \b", 3);
 		}else{
 			buf[(i++)%128] = c;
