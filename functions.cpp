@@ -69,7 +69,7 @@ void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 
 	do{
 		moveAndClearLine(0,0,lcd);
-		printfl("Scan:", lcd);
+		printfl("Scan: ", lcd);
 		getLine(buf, lcd);
 		input = buf;
 		stringstream checkIfNumber(input);
@@ -187,12 +187,12 @@ void printTime(hd44780 &lcd){
 	
 	time(&now);
 	timeinfo = *localtime(&now);
-	strftime(buf,64,"%H:%M:%S",&timeinfo);
+	strftime(buf,64,"%H:%M:%S\n%a. %d. %b. W%V %g",&timeinfo);
 	
 	lcd.clear();
 	lcd.move(0,1);
-	printfl("Current time:", lcd);
-	lcd.move(6,2);
+	printfl("Current time and date:", lcd);
+	lcd.move(0,2);
 	printfl(buf, lcd);	
 }
 void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
