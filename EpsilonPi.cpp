@@ -51,7 +51,7 @@ int main(int argc, char* argv[]){
 				fprintf(officeFile,"0");
 				fclose(officeFile);
 				lcd.move(0,3);
-				lcd.write("Office open!        ");
+				lcd.write("    Office open!    ");
 				lcd.move(6,0);
 			}
 		}else{
@@ -62,7 +62,7 @@ int main(int argc, char* argv[]){
 				fprintf(officeFile,"1024");
 				fclose(officeFile);
 				lcd.move(0,3);
-				lcd.write("Office closed!      ");
+				lcd.write("   Office closed!   ");
 				lcd.move(6,0);
 			}
 		}
@@ -94,7 +94,7 @@ int main(int argc, char* argv[]){
 				fclose(coffeeLog);
 				
 				lcd.move(0,3);
-				lcd.write("Coffee time!        ");
+				lcd.write("    Coffee time!    ");
 				lcd.move(6,0);
 			}	
 		}else{
