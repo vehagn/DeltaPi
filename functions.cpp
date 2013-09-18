@@ -269,10 +269,11 @@ void changeBacklight(rpihw::gpio &io, bool &backlight, hd44780 &lcd){
 
 	if (backlight){
 		io.write(23, rpihw::gpio::LOW);
-		*backlight = false;
+		backlight = false;
 		printfl("Backlight: OFF", lcd);
 	}else{
 		io.write(23, rpihw::gpio::HIGH);
-		*backlight = true;
+		backlight = true;
 		printfl("Backlight: ON", lcd);
 	}
+}
