@@ -206,7 +206,7 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	
 	for (i = entries.begin(); i != entries.end(); i++){
 		persons++;
-		if (i->second.getTab()){tabs++}
+		if (i->second.getTab()){tabs++;}
 		if (i->second.getCash() >= 0){
 			money += i->second.getCash();
 		}else{
@@ -262,11 +262,16 @@ void printLastCoffee(hd44780 &lcd){
 	buf[i-10] = '\n';
 	printfl(buf, lcd);
 }
-void changeBacklight(bool &backlight){
+void changeBacklight(rpihw::gpio &io; bool &backlight, hd44780 &lcd){
+	lcd.clear();
+	lcd.move(0,1);
+
 	if (backlight){
 		io.write(23, rpihw::gpio::LOW);
 		*backlight = false;
+		printfl("Backlight: OFF", lcd);
 	}else{
 		io.write(23, rpihw::gpio::HIGH);
 		*backlight = true;
+		printfl("Backlight: ON", lcd);
 	}

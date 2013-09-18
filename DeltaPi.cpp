@@ -9,6 +9,7 @@ int main(int argc, char* argv[]){
    	lcd.init(20, 4);
 	lcd.setAutoscroll(hd44780::HSCROLL_LINE | hd44780::VSCROLL);
 	
+	rpihw::gpio io;
 	io.setup(23, rpihw::gpio::OUTPUT);
 	io.write(23, rpihw::gpio::HIGH); bool backlight = true;
 
@@ -44,7 +45,7 @@ int main(int argc, char* argv[]){
 		} else if (card == 6){
 			printLastCoffee(lcd);
 		} else if (card == 9){
-			changeBacklight(&backlight);
+			changeBacklight(io, &backlight, lcd);
 		}
 	}while (card != -1);
 	lcd.clear();
