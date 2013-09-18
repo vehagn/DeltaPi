@@ -184,7 +184,7 @@ void printHelp(hd44780 &lcd){
 	lcd.clear();
 	printfl("0-help 1-summary", lcd);
 	lcd.move(0,1);
-	printfl("2-retrieve SQL", lcd);
+	printfl("3-retrieve SQL", lcd);
 	lcd.move(0,2);
 	printfl("4-timestamp 6-coffee", lcd);
 	lcd.move(0,3);
