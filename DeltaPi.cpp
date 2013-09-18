@@ -11,7 +11,7 @@ int main(int argc, char* argv[]){
 	
 	rpihw::gpio io;
 	io.setup(23, rpihw::gpio::OUTPUT);
-	io.write(23, rpihw::gpio::HIGH); bool backlight = true;
+	io.write(23, rpihw::gpio::HIGH); bool *backlight = new bool(true);
 
 	uint8_t blank[8]		= {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 	lcd.defChar(hd44780::CCHAR2, blank);
@@ -38,17 +38,18 @@ int main(int argc, char* argv[]){
 		} else if (card == 2){
 			lcd.clear();
 			lcd.move(0,1);
-			printfl("Retrieving database");
+			printfl("Retrieving database", lcd);
 			retrieveSQL(entries, lcd);	
 		} else if (card == 4){
 			printTime(lcd);
 		} else if (card == 6){
 			printLastCoffee(lcd);
 		} else if (card == 9){
-			changeBacklight(io, &backlight, lcd);
+			changeBacklight(io, backlight, lcd);
 		}
 	}while (card != -1);
 	lcd.clear();
+	delete backlight;
 	printfl("  Closing DeltaPi\n\n      Goodbye!", lcd);
 	
 	return 0;

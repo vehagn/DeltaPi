@@ -263,17 +263,17 @@ void printLastCoffee(hd44780 &lcd){
 	printfl(buf, lcd);
 }
 
-void changeBacklight(rpihw::gpio &io, bool &backlight, hd44780 &lcd){
+void changeBacklight(rpihw::gpio &io, bool *backlight, hd44780 &lcd){
 	lcd.clear();
 	lcd.move(0,1);
 
-	if (backlight){
+	if (*backlight){
 		io.write(23, rpihw::gpio::LOW);
-		backlight = false;
+		*backlight = false;
 		printfl("Backlight: OFF", lcd);
 	}else{
 		io.write(23, rpihw::gpio::HIGH);
-		backlight = true;
+		*backlight = true;
 		printfl("Backlight: ON", lcd);
 	}
 }
