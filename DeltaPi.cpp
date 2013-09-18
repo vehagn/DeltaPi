@@ -25,6 +25,8 @@ int main(int argc, char* argv[]){
 	printfl("DeltaPi ver. 0.7.6",lcd);
 	
 	do{
+		moveAndClearLine(0,0,lcd);
+		lcd.write("Retrieving database");
 		retrieveSQL(entries, lcd);
 		scanCard(entries, card, lcd);
 		if (card > 10){
@@ -52,7 +54,7 @@ int main(int argc, char* argv[]){
 	
 	printfl("  Closing DeltaPi", lcd);
 	lcd.move(6,2);
-	lcd.write("Goodbye!   ",100);
+	lcd.write("Goodbye!     ",500);
 	io.write(23, rpihw::gpio::LOW);
 	
 	delete backlight;

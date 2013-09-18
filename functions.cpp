@@ -69,7 +69,7 @@ void scanCard(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 
 	do{
 		moveAndClearLine(0,0,lcd);
-		printfl("Scan: ", lcd);
+		printfl("Scan:", lcd);
 		getLine(buf, lcd);
 		input = buf;
 		stringstream checkIfNumber(input);

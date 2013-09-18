@@ -39,7 +39,7 @@ int main(int argc, char* argv[]){
 	lcd.clear();
 	
 	lcd.move(0,1);
-	lcd.write("EpsilonPi ver. 0.7.1");
+	lcd.write("EpsilonPi ver. 0.7.2");
 	
 	while (true){
 		if (office){
@@ -51,7 +51,7 @@ int main(int argc, char* argv[]){
 				fclose(officeFile);
 				lcd.move(0,3);
 				lcd.write("    Office open!    ");
-				lcd.move(6,0);
+				lcd.move(5,0);
 			}
 		}else{
 			io.write(4, rpihw::gpio::LOW);
@@ -62,7 +62,7 @@ int main(int argc, char* argv[]){
 				fclose(officeFile);
 				lcd.move(0,3);
 				lcd.write("   Office closed!   ");
-				lcd.move(6,0);
+				lcd.move(5,0);
 			}
 		}
 		
@@ -94,7 +94,7 @@ int main(int argc, char* argv[]){
 				
 				lcd.move(0,3);
 				lcd.write("    Coffee time!    ");
-				lcd.move(6,0);
+				lcd.move(5,0);
 			}	
 		}else{
 			io.write(22, rpihw::gpio::LOW);
