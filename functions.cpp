@@ -262,7 +262,8 @@ void printLastCoffee(hd44780 &lcd){
 	buf[i-10] = '\n';
 	printfl(buf, lcd);
 }
-void changeBacklight(rpihw::gpio &io; bool &backlight, hd44780 &lcd){
+
+void changeBacklight(rpihw::gpio &io, bool &backlight, hd44780 &lcd){
 	lcd.clear();
 	lcd.move(0,1);
 
