@@ -186,9 +186,9 @@ void printHelp(hd44780 &lcd){
 	lcd.move(0,1);
 	printfl("2-retrieve SQL", lcd);
 	lcd.move(0,2);
-	printfl("5-timestamp", lcd);
+	printfl("4-timestamp 6-coffee", lcd);
 	lcd.move(0,3);
-	printfl("9-coffee", lcd);
+	printfl("9-backlight", lcd);
 	sleep(5);
 
 }
@@ -198,6 +198,7 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	long money = 0;
 	long spent = 0;
 	long credit = 0;
+	int tabs = 0;
 	char buf[128];
 	
 	lcd.clear();
@@ -205,17 +206,15 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	
 	for (i = entries.begin(); i != entries.end(); i++){
 		persons++;
-		if (i->second.getTab()){
-			if (i->second.getCash() >= 0){
-				money += i->second.getCash();
-			}else{
-				credit -= i->second.getCash();
-			}		
-		}else{
+		if (i->second.getTab()){tabs++}
+		if (i->second.getCash() >= 0){
 			money += i->second.getCash();
+		}else{
+			credit -= i->second.getCash();
 		}
 		spent += i->second.getSpent();
 	}
+	
 	lcd.clear();
 	sprintf(buf, "Persons:    %5i", persons);
 	printfl(buf,lcd);
@@ -263,3 +262,11 @@ void printLastCoffee(hd44780 &lcd){
 	buf[i-10] = '\n';
 	printfl(buf, lcd);
 }
+void changeBacklight(bool &backlight){
+	if (backlight){
+		io.write(23, rpihw::gpio::LOW);
+		*backlight = false;
+	}else{
+		io.write(23, rpihw::gpio::HIGH);
+		*backlight = true;
+	}

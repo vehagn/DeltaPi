@@ -103,6 +103,7 @@ void printHelp(hd44780&);
 void printSummary(map<const int, Entry>&, hd44780&);
 void printTime(hd44780&);
 void printLastCoffee(hd44780&);
+void changeBacklight(bool&);
 
 
 //SQL
