@@ -22,13 +22,15 @@ int main(int argc, char* argv[]){
 	int card = 0;
 	
 	lcd.move(0,2);
-	printfl("DeltaPi ver. 0.7.6",lcd);
+	printfl("DeltaPi ver. 0.7.7",lcd);
 	
 	do{
 		moveAndClearLine(0,0,lcd);
 		lcd.write("Retrieving database");
 		retrieveSQL(entries, lcd);
 		scanCard(entries, card, lcd);
+		if !(*backlight)
+			changeBacklight(io, backlight, lcd);
 		if (card > 10){
 			printInfo(entries, card, lcd);
 			transaction(entries, card, lcd);
