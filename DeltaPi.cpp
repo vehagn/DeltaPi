@@ -29,7 +29,7 @@ int main(int argc, char* argv[]){
 		lcd.write("Retrieving database");
 		retrieveSQL(entries, lcd);
 		scanCard(entries, card, lcd);
-		if !(*backlight)
+		if (!(*backlight))
 			changeBacklight(io, backlight, lcd);
 		if (card > 10){
 			printInfo(entries, card, lcd);
