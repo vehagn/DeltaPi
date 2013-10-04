@@ -47,10 +47,10 @@ int main(int argc, char* argv[]){
 			if (office_prev != office){
 				office_prev = office;
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
-				fprintf(officeFile,"0");
+				fprintf(officeFile,"1024");
 				fclose(officeFile);
 				lcd.move(0,3);
-				lcd.write("    Office open!    ");
+				lcd.write("   Office closed!   ");
 				lcd.move(5,0);
 			}
 		}else{
@@ -58,10 +58,10 @@ int main(int argc, char* argv[]){
 			if (office_prev != office){
 				office_prev = office;
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
-				fprintf(officeFile,"1024");
+				fprintf(officeFile,"0");
 				fclose(officeFile);
 				lcd.move(0,3);
-				lcd.write("   Office closed!   ");
+				lcd.write("    Office open!    ");
 				lcd.move(5,0);
 			}
 		}
