@@ -43,7 +43,7 @@ int main(int argc, char* argv[]){
 	
 	while (true){
 		if (office){
-			io.write(4, rpihw::gpio::HIGH);
+			io.write(4, rpihw::gpio::LOW);
 			if (office_prev != office){
 				office_prev = office;
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
@@ -54,7 +54,7 @@ int main(int argc, char* argv[]){
 				lcd.move(5,0);
 			}
 		}else{
-			io.write(4, rpihw::gpio::LOW);
+			io.write(4, rpihw::gpio::HIGH);
 			if (office_prev != office){
 				office_prev = office;
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
