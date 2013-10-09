@@ -10,8 +10,6 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	
 	FILE *dbFile;
 	char buf[128];
-	char c = 'a';
-	int i = 0;
 	
 	dbFile = fopen("database.txt","r");
 	if (dbFile == NULL) perror ("Couldn't find database.txt");
@@ -30,8 +28,6 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	*DATABASE = buf;
 	
 	fclose(dbFile);
-}
-	
 }
 
 int retrieveSQL(map<const int,Entry> &entries, hd44780 &lcd){
