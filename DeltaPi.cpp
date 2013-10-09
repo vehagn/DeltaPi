@@ -15,6 +15,7 @@ int main(int argc, char* argv[]){
 	uint8_t blank[8]		= {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 	lcd.defChar(hd44780::CCHAR2, blank);
 	
+	getDatabaseDetails();
 	retrieveSQL(entries, lcd);
 	entries.erase(0);
 	
