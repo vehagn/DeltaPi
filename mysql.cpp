@@ -79,6 +79,7 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	fgets(buf, 128, dbFile);
 	*PASSWORD = buf;
 	PASSWORD->pop_back();
+	cout << "PW: " << *PASSWORD << "!\n";
 	
 	fgets(buf, 128, dbFile);
 	*DATABASE = buf;
