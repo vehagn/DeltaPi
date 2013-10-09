@@ -17,6 +17,7 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	
 	fgets(buf, 128, dbFile);
 	*DBHOST = buf;
+	cout << "DBHOST:" << *DBHOST << endl;
 	
 	fgets(buf, 128, dbFile);
 	*USER = buf;
