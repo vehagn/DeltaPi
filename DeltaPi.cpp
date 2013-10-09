@@ -1,10 +1,11 @@
 #include "header.h"
 
 map<const int, Entry> entries;
-string DBHOST = "deltahouse.mysql.domeneshop.no"; //Database host
-string USER = "deltahouse"; //Database user
-string PASSWORD = "kUJvfr4K"; //Database password
-string DATABASE = "deltahouse"; //Database directory
+
+string DBHOST;// = "deltahouse.mysql.domeneshop.no"; //Database host
+string USER;// = "deltahouse"; //Database user
+string PASSWORD;// = "kUJvfr4K"; //Database password
+string DATABASE;// = "deltahouse"; //Database directory
 
 int main(int argc, char* argv[]){
 
@@ -19,7 +20,7 @@ int main(int argc, char* argv[]){
 	uint8_t blank[8]		= {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 	lcd.defChar(hd44780::CCHAR2, blank);
 	
-	//getDatabaseDetails();
+	getDatabaseDetails(&DBHOST, &USER, &PASSWORD, &DATABASE);
 	retrieveSQL(entries, lcd);
 	entries.erase(0);
 	
