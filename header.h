@@ -108,6 +108,6 @@ void changeBacklight(rpihw::gpio&, bool*, hd44780&);
 
 
 //SQL
-void getDatabaseDetails(string*, string*, string*, string*);
+bool getDatabaseDetails(string*, string*, string*, string*);
 int retrieveSQL(map<const int,Entry> &, hd44780 &lcd);
 int updateSQL(int, string, int, hd44780 &lcd);

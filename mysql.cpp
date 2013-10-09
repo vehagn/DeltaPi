@@ -1,20 +1,72 @@
 #include "header.h"
 
-void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *DATABASE){
-	
-	*DBHOST = "deltahouse.mysql.domeneshop.no"; //Database host
-	/*
-	*USER = "deltahouse"; //Database user
-	*PASSWORD = "kUJvfr4K"; //Database password
-	*DATABASE = "deltahouse"; //Database directory
-	*/
+char key = 'a';
+
+string str2hex(const string& input){
+    static const char* const lut = "0123456789ABCDEF";
+    size_t len = input.length();
+
+    string output;
+    output.reserve(2 * len);
+    for (size_t i = 0; i < len; ++i)
+    {
+        const char c = input[i];
+        output.push_back(lut[c >> 4]);
+        output.push_back(lut[c & 15]);
+    }
+    return output;
+}
+
+string hex2str(const string& input){
+    static const char* const lut = "0123456789ABCDEF";
+    size_t len = input.length();
+    if (len & 1) throw invalid_argument("odd length");
+
+    string output;
+    output.reserve(len / 2);
+    for (size_t i = 0; i < len; i += 2)
+    {
+        char a = input[i];
+        const char* p = lower_bound(lut, lut + 16, a);
+        if (*p != a) throw invalid_argument("not a hex digit");
+
+        char b = input[i + 1];
+        const char* q = lower_bound(lut, lut + 16, b);
+        if (*q != b) throw invalid_argument("not a hex digit");
+
+        output.push_back(((p - lut) << 4) | (q - lut));
+    }
+    return output;
+}
+
+string encrypt(string input){
+	string encryptThis = input;
+	//[REDACTED]
+	return str2hex(encryptThis);
+}
+
+string decrypt(string input){
+
+	string tmp;
+	tmp = hex2str(input);
+	input = tmp;
+
+	string decryptThis = input;
+	//[REDACTED]
+	return decryptThis;
+}
+
+bool getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *DATABASE){
 	
 	FILE *dbFile;
 	char buf[128];
+	string crypt;
 	
 	dbFile = fopen("database.txt","r");
 	if (dbFile == NULL) perror ("Couldn't find database.txt");
 	fgets(buf, 128, dbFile);
+	crypt = buf;
+	crypt.pop_back();
 	
 	fgets(buf, 128, dbFile);
 	*DBHOST = buf;
@@ -32,6 +84,31 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	*DATABASE = buf;
 	
 	fclose(dbFile);
+	
+	if crypt == "decrypted"{
+		dbFile = fopen("database.txt","w");
+		
+		strncpy(buf, "encrypted\n", 128);
+		fputs(buf, dbFile);
+		
+		strncpy(buf, encrypt(*DBHOST), 128);
+		fputs(buf, dbFile); fputc('\n', dbFile);
+		
+		strncpy(buf, encrypt(*USER), 128);
+		fputs(buf, dbFile); fputc('\n', dbFile);
+		
+		strncpy(buf, encrypt(*PASSWORD), 128);
+		fputs(buf, dbFile); fputc('\n', dbFile);
+		
+		strncpy(buf, encrypt(*DATABASE), 128);
+		fputs(buf, dbFile); fputc('\n', dbFile);
+		
+	}else if crypt == "encrypted"{
+		*DBHOST   = decrypt(*DBHOST);
+		*USER     = decrypt(*USER);
+		*PASSWORD = decrypt(*PASSWORD);
+		*DATABASE = decrypt(*DATABASE);
+	}
 }
 
 int retrieveSQL(map<const int,Entry> &entries, hd44780 &lcd){
