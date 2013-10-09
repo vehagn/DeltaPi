@@ -91,16 +91,16 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 		strncpy(buf, "encrypted\n", 128);
 		fputs(buf, dbFile);
 		
-		strncpy(buf, encrypt(*DBHOST), 128);
+		strncpy(buf, encrypt(*DBHOST).c_str(), 128);
 		fputs(buf, dbFile); fputc('\n', dbFile);
 		
-		strncpy(buf, encrypt(*USER), 128);
+		strncpy(buf, encrypt(*USER).c_str(), 128);
 		fputs(buf, dbFile); fputc('\n', dbFile);
 		
-		strncpy(buf, encrypt(*PASSWORD), 128);
+		strncpy(buf, encrypt(*PASSWORD).c_str(), 128);
 		fputs(buf, dbFile); fputc('\n', dbFile);
 		
-		strncpy(buf, encrypt(*DATABASE), 128);
+		strncpy(buf, encrypt(*DATABASE).c_str(), 128);
 		fputs(buf, dbFile); fputc('\n', dbFile);
 		
 		fclose(dbFile);
