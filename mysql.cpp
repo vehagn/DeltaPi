@@ -7,15 +7,12 @@ int retrieveSQL(map<const int,Entry> &entries, hd44780 &lcd){
 	try {
 		Driver *driver;
 		Connection *con;
-		//Statement *stmt;
 		PreparedStatement *pstmt;
 		ResultSet *res;
 
 		/* Create a connection */
-		//driver = get_driver_instance();  
    		driver = get_driver_instance();
 		con = driver->connect(DBHOST, USER, PASSWORD);
-		/* Connect to the MySQL test database */
 		con->setSchema(DATABASE);
 
 		pstmt = con->prepareStatement("SELECT * FROM dreg_persons");
@@ -48,6 +45,7 @@ int retrieveSQL(map<const int,Entry> &entries, hd44780 &lcd){
 	}
 	return EXIT_SUCCESS;
 }
+
 int updateSQL(int id, string field, int int_value, hd44780 &lcd){
 	
 	int n;
@@ -62,11 +60,8 @@ int updateSQL(int id, string field, int int_value, hd44780 &lcd){
 		map<const int,Entry>::iterator it;
 
 		/* Create a connection */
-		//driver = get_driver_instance();
    		driver = get_driver_instance();
 		con = driver->connect(DBHOST, USER, PASSWORD);
-		
-		/* Connect to the MySQL test database */
 		con->setSchema(DATABASE);
 
 		if (field == "cash") {n = cash;}
@@ -100,6 +95,5 @@ int updateSQL(int id, string field, int int_value, hd44780 &lcd){
 		lcd.clear();
 		lcd.write("Error updating SQL\ndatabase!\nAre you connected to\nthe internet?",50);
 	}
-
 	return EXIT_SUCCESS;
 }

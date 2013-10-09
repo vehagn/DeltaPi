@@ -2,6 +2,11 @@
 
 map<const int, Entry> entries;
 
+string DBHOST = "deltahouse.mysql.domeneshop.no" //Database host
+string USER = "deltahouse" //Database user
+string PASSWORD = "kUJvfr4K" //Database password
+string DATABASE = "deltahouse" //Database directory
+
 
 int main(int argc, char* argv[]){
 
