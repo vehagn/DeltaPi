@@ -40,14 +40,11 @@
 #define PASSWORD "kUJvfr4K" //Database password
 #define DATABASE "deltahouse" //Database directory
 */
-extern string DBHOST, USER, PASSWORD, DATABASE;
 
 /*
 TO DO:
 update database connection info (encrypted file)
 */
-
-
 
 using namespace std;
 using namespace sql;
@@ -55,10 +52,10 @@ using namespace rpihw::iface;
 using namespace rpihw::display;
 using namespace rpihw::utils;
 
+extern string DBHOST, USER, PASSWORD, DATABASE;
 
 const int maxCredit = 200; //Maximum allowed credit.
 const int maxAmount = 500; //Maximum allowed transfer.
-
 
 //Entry
 class Entry{
