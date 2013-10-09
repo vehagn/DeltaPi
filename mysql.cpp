@@ -20,6 +20,7 @@ string str2hex(const string& input){
 string hex2str(const string& input){
     static const char* const lut = "0123456789ABCDEF";
     size_t len = input.length();
+	cout << "hex2str:" << *input << "!\n"; 
     if (len & 1) throw invalid_argument("odd length");
 
     string output;
