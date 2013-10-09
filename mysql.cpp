@@ -103,6 +103,8 @@ bool getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 		strncpy(buf, encrypt(*DATABASE), 128);
 		fputs(buf, dbFile); fputc('\n', dbFile);
 		
+		fclose(dbFile);
+		
 	}else if crypt == "encrypted"{
 		*DBHOST   = decrypt(*DBHOST);
 		*USER     = decrypt(*USER);
