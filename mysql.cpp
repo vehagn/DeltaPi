@@ -1,8 +1,9 @@
 #include "header.h"
 
 void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *DATABASE){
-	/*
+	
 	*DBHOST = "deltahouse.mysql.domeneshop.no"; //Database host
+	/*
 	*USER = "deltahouse"; //Database user
 	*PASSWORD = "kUJvfr4K"; //Database password
 	*DATABASE = "deltahouse"; //Database directory
@@ -16,8 +17,9 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	fgets(buf, 128, dbFile);
 	
 	fgets(buf, 128, dbFile);
+	cout << "DBHOST: " << *DBHOST << "! \n";
 	*DBHOST = buf;
-	cout << "DBHOST:" << *DBHOST << endl;
+	cout << "DBHOST: " << *DBHOST << "! \n";
 	
 	fgets(buf, 128, dbFile);
 	*USER = buf;
