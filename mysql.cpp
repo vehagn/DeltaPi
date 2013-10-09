@@ -102,6 +102,7 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 		fputs(buf, dbFile); fputc('\n', dbFile);
 		
 		strncpy(buf, encrypt(*DATABASE).c_str(), 128);
+		fputs(buf, dbFile);
 		
 		fclose(dbFile);
 		
