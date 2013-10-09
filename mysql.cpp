@@ -1,10 +1,37 @@
 #include "header.h"
 
 void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *DATABASE){
+	/*
 	*DBHOST = "deltahouse.mysql.domeneshop.no"; //Database host
 	*USER = "deltahouse"; //Database user
 	*PASSWORD = "kUJvfr4K"; //Database password
 	*DATABASE = "deltahouse"; //Database directory
+	*/
+	
+	FILE *dbFile;
+	char buf[128];
+	char c = 'a';
+	int i = 0;
+	
+	dbFile = fopen("database.txt","r");
+	if (dbFile == NULL) perror ("Couldn't find database.txt");
+	fgets(buf, 128, dbFile);
+	
+	fgets(buf, 128, dbFile);
+	*DBHOST = buf;
+	
+	fgets(buf, 128, dbFile);
+	*USER = buf;
+	
+	fgets(buf, 128, dbFile);
+	*PASSWORD = buf;
+	
+	fgets(buf, 128, dbFile);
+	*DATABASE = buf;
+	
+	fclose(dbFile);
+}
+	
 }
 
 int retrieveSQL(map<const int,Entry> &entries, hd44780 &lcd){
