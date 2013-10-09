@@ -11,8 +11,6 @@ sudo apt-get install libboost-all-dev
 MySQL connector<br>
 C++ 1.1.3
 
-Curl
-
 #Root access to shared libraries (for MySQL connector)
 sudo bash -c "echo /usr/local/lib/ > /etc/ld.so.conf.d/local.conf"<br>
 sudo /sbin/ldconfig
@@ -28,6 +26,7 @@ $ nano ~/startup.sh
 sleep 5<br>
 /usr/local/DeltaPi<br>
 sleep 2<br>
+/usr/local/EpsilonPi<br>
 shutdown -h now
 
 $ chmod ugo+x startup.sh<br>
@@ -35,7 +34,7 @@ $ sudo chown root:USERNAME /sbin/shutdown && sudo chmod 4770 /sbin/shutdown
 
 $ nano ~/.bashrc
 
- # Run the startup bash script:<br>
+#Run the startup bash script:<br>
 echo starting DeltaPi<br>
 bash startup.sh
 
@@ -63,3 +62,11 @@ https://www.digitalocean.com/community/articles/how-to-set-up-apache-virtual-hos
 
 Web port: 80<br>
 DNS port: 53
+
+#Database
+Place database.txt in same folder as DeltaPi. Write the following:
+decrypted<br>
+'Host'<br>
+'User'<br>
+'Password'<br>
+'Database'<br>
