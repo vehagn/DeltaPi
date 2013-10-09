@@ -40,6 +40,8 @@
 #define PASSWORD "kUJvfr4K" //Database password
 #define DATABASE "deltahouse" //Database directory
 */
+extern string DBHOST, USER, PASSWORD, DATABASE;
+
 /*
 TO DO:
 update database connection info (encrypted file)
