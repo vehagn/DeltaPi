@@ -65,6 +65,7 @@ DNS port: 53
 
 #Database
 Place database.txt in same folder as DeltaPi. Write the following:
+
 decrypted<br>
 'Host'<br>
 'User'<br>
