@@ -56,7 +56,7 @@ string decrypt(string input){
 	return decryptThis;
 }
 
-bool getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *DATABASE){
+void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *DATABASE){
 	
 	FILE *dbFile;
 	char buf[128];
@@ -85,7 +85,7 @@ bool getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	
 	fclose(dbFile);
 	
-	if crypt == "decrypted"{
+	if (crypt == "decrypted"){
 		dbFile = fopen("database.txt","w");
 		
 		strncpy(buf, "encrypted\n", 128);
@@ -105,7 +105,7 @@ bool getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 		
 		fclose(dbFile);
 		
-	}else if crypt == "encrypted"{
+	}else if (crypt == "encrypted"){
 		*DBHOST   = decrypt(*DBHOST);
 		*USER     = decrypt(*USER);
 		*PASSWORD = decrypt(*PASSWORD);
