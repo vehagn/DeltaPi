@@ -15,11 +15,6 @@ int main(int argc, char* argv[]){
 
 	uint8_t blank[8]		= {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 	lcd.defChar(hd44780::CCHAR2, blank);
-
-	DBHOST = "deltahouse.mysql.domeneshop.no" //Database host
-	USER = "deltahouse" //Database user
-	PASSWORD = "kUJvfr4K" //Database password
-	DATABASE = "deltahouse" //Database directory
 	
 	map<const int, Entry> entries;
 	retrieveSQL(entries, lcd);

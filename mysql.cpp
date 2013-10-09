@@ -1,5 +1,12 @@
 #include "header.h"
 
+void getDatabaseDetails(){
+	DBHOST = "deltahouse.mysql.domeneshop.no"; //Database host
+	USER = "deltahouse"; //Database user
+	PASSWORD = "kUJvfr4K"; //Database password
+	DATABASE = "deltahouse"; //Database directory
+}
+
 int retrieveSQL(map<const int,Entry> &entries, hd44780 &lcd){
 
 	Entry person;
