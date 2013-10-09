@@ -19,20 +19,20 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	fgets(buf, 128, dbFile);
 	cout << "DBHOST: " << *DBHOST << "! \n";
 	*DBHOST = buf;
-	DBHOST->erase(DBHOST->end());
+	DBHOST->pop_back();
 	cout << "DBHOST: " << *DBHOST << "! \n";
 	
 	fgets(buf, 128, dbFile);
 	*USER = buf;
-	USER->erase(USER->end());
+	USER->pop_back();
 	
 	fgets(buf, 128, dbFile);
 	*PASSWORD = buf;
-	PASSWORD->erase(PASSWORD->end());
+	PASSWORD->pop_back();
 	
 	fgets(buf, 128, dbFile);
 	*DATABASE = buf;
-	DATABASE->erase(DATABASE->end());
+	DATABASE->pop_back();
 	
 	fclose(dbFile);
 }
