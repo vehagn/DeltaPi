@@ -17,10 +17,8 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	fgets(buf, 128, dbFile);
 	
 	fgets(buf, 128, dbFile);
-	cout << "DBHOST: " << *DBHOST << "! \n";
 	*DBHOST = buf;
 	DBHOST->pop_back();
-	cout << "DBHOST: " << *DBHOST << "! \n";
 	
 	fgets(buf, 128, dbFile);
 	*USER = buf;
@@ -32,7 +30,6 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	
 	fgets(buf, 128, dbFile);
 	*DATABASE = buf;
-	DATABASE->pop_back();
 	
 	fclose(dbFile);
 }
