@@ -20,7 +20,6 @@ string str2hex(const string& input){
 string hex2str(const string& input){
     static const char* const lut = "0123456789ABCDEF";
     size_t len = input.length();
-	cout << "hex2str: " << input << "!\n";
     if (len & 1) throw invalid_argument("odd length");
 
     string output;
@@ -105,12 +104,13 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 		fputs(buf, dbFile);
 		
 		fclose(dbFile);
-		
 	}else if (crypt == "encrypted"){
 		*DBHOST   = decrypt(*DBHOST);
 		*USER     = decrypt(*USER);
 		*PASSWORD = decrypt(*PASSWORD);
 		*DATABASE = decrypt(*DATABASE);
+	}else{
+		fprintf("ERROR: This is not the database-info you are looking for!");
 	}
 }
 
