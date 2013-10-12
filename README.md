@@ -49,7 +49,7 @@ comment out a line:<br>
 "1:2345:respawn:/sbin/ getty 115200 tty1"  => "#1:2345:respawn:/sbin/ getty 115200 tty1"
 
 add:<br>
-1:2345:respawn:/bin/login -f USERNAME tty1</dev/tty1>/dev/tty1 2>&1
+1:2345:respawn:/bin/login -f USERNAME tty1</dev/tty1 >/dev/tty1 2>&1
 
 #Webserver
 sudo addgroup www-data<br>
