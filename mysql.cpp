@@ -62,8 +62,8 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	char buf[128];
 	string crypt;
 	
-	dbFile = fopen("database.txt","r");
-	if (dbFile == NULL) perror ("Couldn't find database.txt");
+	dbFile = fopen("database.conf","r");
+	if (dbFile == NULL) perror ("Couldn't find database.conf");
 	fgets(buf, 128, dbFile);
 	crypt = buf;
 	crypt.pop_back();
@@ -86,7 +86,7 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	fclose(dbFile);
 	
 	if (crypt == "decrypted"){
-		dbFile = fopen("database.txt","w");
+		dbFile = fopen("database.conf","w");
 		
 		strncpy(buf, "encrypted\n", 128);
 		fputs(buf, dbFile);
@@ -110,7 +110,7 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 		*PASSWORD = decrypt(*PASSWORD);
 		*DATABASE = decrypt(*DATABASE);
 	}else{
-		fprintf("ERROR: This is not the database-info you are looking for!");
+		printf("ERROR: This is not the database.conf you are looking for!");
 	}
 }
 
