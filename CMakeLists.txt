@@ -9,17 +9,12 @@ add_definitions(-Wall -ansi -pedantic -pedantic-errors -std=c++11)
 # Find dependencies
 find_package(RpiHw REQUIRED)
 find_package(Freetype REQUIRED)
-find_package(GraphicsMagick++ REQUIRED)
 find_package(Boost REQUIRED)
 
 # Set the path to the header files
 include_directories(${RpiHw_INCLUDE_DIRS})
 include_directories(${MYSQLCPPCONN_SOURCE_DIR})
 include_directories(${Boost_INCLUDE_DIRS})
-
-link_directories(${MYSQLCPPCONN_SOURCE_DIR}/cppconn)
-link_directories(${MYSQL_DIR}/lib/opt)
-set(MY_TARGET_LINK_LIBRARIES mysqlcppconn)
 
 # Add librares
 add_library(mysql mysql.cpp)
