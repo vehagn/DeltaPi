@@ -17,7 +17,9 @@ include_directories(${RpiHw_INCLUDE_DIRS})
 include_directories(${MYSQLCPPCONN_SOURCE_DIR})
 include_directories(${Boost_INCLUDE_DIRS})
 
-#set(MY_TARGET_LINK_LIBRARIES mysqlcppconn)
+link_directories(${MYSQLCPPCONN_SOURCE_DIR}/cppconn)
+link_directories(${MYSQL_DIR}/lib/opt)
+set(MY_TARGET_LINK_LIBRARIES mysqlcppconn)
 
 # Add librares
 add_library(mysql mysql.cpp)
