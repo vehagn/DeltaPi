@@ -10,7 +10,8 @@ Boost 1.49.0<br>
 sudo apt-get install libboost-all-dev
 
 MySQL connector<br>
-C 6.1.2
+sudo apt-get install libmysqlcppconn-dev
+C 6.1.2<br>
 C++ 1.1.3
 
 #Root access to shared libraries (for MySQL connector)
