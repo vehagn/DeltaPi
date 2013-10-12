@@ -4,11 +4,13 @@ DeltaPiBeer
 #Dependencies
 Rpi-hw 0.4.1<br>
 https://github.com/Wicker25/Rpi-hw
+gcc 4.7
 
 Boost 1.49.0<br> 
 sudo apt-get install libboost-all-dev
 
 MySQL connector<br>
+C 6.1.2
 C++ 1.1.3
 
 #Root access to shared libraries (for MySQL connector)
