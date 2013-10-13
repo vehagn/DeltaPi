@@ -1,7 +1,5 @@
 #include "header.h"
 
-char key = 'a';
-
 string str2hex(const string& input){
     static const char* const lut = "0123456789ABCDEF";
     size_t len = input.length();
@@ -40,8 +38,26 @@ string hex2str(const string& input){
 }
 
 string encrypt(string input){
-	string encryptThis = input;
-	//[REDACTED]
+	string encryptThis;
+	char pad;
+	srand ((unsigned) time(NULL));
+
+	pad = rand()%26 + 'a';
+	encryptThis = pad;
+	encryptThis.append(input);
+
+	pad = rand()%26 + 'a';
+	encryptThis += pad;
+
+	pad = rand()%26 + 'a';
+	encryptThis += pad;
+
+	for( int i=0; encryptThis[i] != '\0'; ++i ){	
+		++encryptThis[i];
+		encryptThis[i] = encryptThis[i]^(int(key)+i)%255;
+
+	}
+
 	return str2hex(encryptThis);
 }
 
@@ -51,19 +67,32 @@ string decrypt(string input){
 	tmp = hex2str(input);
 	input = tmp;
 
-	string decryptThis = input;
-	//[REDACTED]
+	string decryptThis = input.substr(0,input.size()-2);
+	for( int i=0; decryptThis[i] != '\0'; ++i ){
+
+		decryptThis[i] = decryptThis[i]^(int(key)+i)%255;
+		--decryptThis[i];
+	}
+
+	decryptThis.erase(0,1);
+
 	return decryptThis;
 }
 
 void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *DATABASE){
-	
 	FILE *dbFile;
 	char buf[128];
 	string crypt;
 	
 	dbFile = fopen("database.conf","r");
+<<<<<<< HEAD
 	if (dbFile == NULL) perror ("Couldn't find database.conf");
+=======
+	if (dbFile == NULL){
+		perror ("Couldn't open database.conf");
+		return;
+	}
+>>>>>>> .
 	fgets(buf, 128, dbFile);
 	crypt = buf;
 	crypt.pop_back();

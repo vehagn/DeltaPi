@@ -27,7 +27,7 @@ int main(int argc, char* argv[]){
 	int card = 0;
 	
 	lcd.move(0,2);
-	printfl("DeltaPi ver. 0.7.7",lcd);
+	printfl("DeltaPi ver. 0.8.1",lcd);
 	
 	do{
 		moveAndClearLine(0,0,lcd);
