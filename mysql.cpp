@@ -37,7 +37,8 @@ string hex2str(const string& input){
 }
 
 string encrypt(string input){
-	string encryptThis;
+	string encryptThis = input;	
+	/*string encryptThis;
 	char pad;
 	srand ((unsigned) time(NULL));
 
@@ -55,16 +56,17 @@ string encrypt(string input){
 		++encryptThis[i];
 		encryptThis[i] = encryptThis[i]^(int(key)+i)%255;
 
-	}
+	}*/
 
 	return str2hex(encryptThis);
 }
 string decrypt(string input){
-
 	string tmp;
 	tmp = hex2str(input);
 	input = tmp;
-
+	
+	string decryptThis = input;
+	/*
 	string decryptThis = input.substr(0,input.size()-2);
 	for( int i=0; decryptThis[i] != '\0'; ++i ){
 
@@ -73,7 +75,8 @@ string decrypt(string input){
 	}
 
 	decryptThis.erase(0,1);
-
+	*/
+	
 	return decryptThis;
 }
 
