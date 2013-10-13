@@ -14,7 +14,6 @@ string str2hex(const string& input){
     }
     return output;
 }
-
 string hex2str(const string& input){
     static const char* const lut = "0123456789ABCDEF";
     size_t len = input.length();
@@ -60,7 +59,6 @@ string encrypt(string input){
 
 	return str2hex(encryptThis);
 }
-
 string decrypt(string input){
 
 	string tmp;
@@ -85,14 +83,12 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	string crypt;
 	
 	dbFile = fopen("database.conf","r");
-<<<<<<< HEAD
-	if (dbFile == NULL) perror ("Couldn't find database.conf");
-=======
+
 	if (dbFile == NULL){
 		perror ("Couldn't open database.conf");
 		return;
 	}
->>>>>>> .
+	
 	fgets(buf, 128, dbFile);
 	crypt = buf;
 	crypt.pop_back();
@@ -188,7 +184,6 @@ int retrieveSQL(map<const int,Entry> &entries, hd44780 &lcd){
 	}
 	return EXIT_SUCCESS;
 }
-
 int updateSQL(int id, string field, int int_value, hd44780 &lcd){
 	
 	int n;

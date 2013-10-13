@@ -39,7 +39,7 @@ int main(int argc, char* argv[]){
 	lcd.clear();
 	
 	lcd.move(0,1);
-	lcd.write("EpsilonPi ver. 0.7.3");
+	lcd.write("EpsilonPi ver. 0.7.4");
 	
 	while (true){
 		if (office){
@@ -49,7 +49,6 @@ int main(int argc, char* argv[]){
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				if (officeFile == NULL){
 					perror ("Couldn't open office.txt");
-					return;
 				}
 				fprintf(officeFile,"1024");
 				fclose(officeFile);
@@ -64,7 +63,6 @@ int main(int argc, char* argv[]){
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				if (officeFile == NULL){
 					perror ("Couldn't open office.txt");
-					return;
 				}
 				fprintf(officeFile,"0");
 				fclose(officeFile);
@@ -95,7 +93,6 @@ int main(int argc, char* argv[]){
 				coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","w");
 				if (officeFile == NULL){
 					perror ("Couldn't open coffee.txt");
-					return;
 				}
 				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
 				fclose(coffeeFile);
@@ -103,7 +100,6 @@ int main(int argc, char* argv[]){
 				coffeeLog = fopen("/var/www/pi.deltahouse.no/public_html/coffee_log.txt","a+");
 				if (officeFile == NULL){
 					perror ("Couldn't open coffee_log.txt");
-					return;
 				}
 				fprintf(coffeeLog,"%i:%s\n",coffeePots,buf);
 				fclose(coffeeLog);
