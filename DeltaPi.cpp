@@ -2,10 +2,10 @@
 
 map<const int, Entry> entries;
 
-string DBHOST;// = "deltahouse.mysql.domeneshop.no"; //Database host
-string USER;// = "deltahouse"; //Database user
-string PASSWORD;// = "kUJvfr4K"; //Database password
-string DATABASE;// = "deltahouse"; //Database directory
+string DBHOST; 		//Database host
+string USER;		//Database user
+string PASSWORD;	//Database password
+string DATABASE;	//Database directory
 
 int main(int argc, char* argv[]){
 
