@@ -11,11 +11,10 @@
 #include <stdlib.h>
 #include <string>
 #include <time.h>
-#include <string.h>
 #include <termios.h>
 #include <unistd.h>
+#include <err.h>
 
-//#include <afxinet.h> WINDOWS FILE!!!
 
 /* Rpi-hw headers */
 #include <rpi-hw.hpp>
