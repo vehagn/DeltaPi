@@ -20,6 +20,7 @@ int main(int argc, char* argv[]){
 	bool office = false;
 	bool office_prev = !office;
 	FILE *officeFile;
+	time_t officeTime = 0;
 	
 	bool coffee = true;
 	bool coffee_prev = !coffee;
@@ -39,19 +40,21 @@ int main(int argc, char* argv[]){
 	lcd.clear();
 	
 	lcd.move(0,1);
-	lcd.write("EpsilonPi ver. 0.7.4");
+	lcd.write("EpsilonPi ver. 0.7.5");
 	
 	while (true){
-		if (office){
+		if ((office) && (int)difftime(time(NULL),officeTime) <= 45*60)){
 			io.write(4, rpihw::gpio::LOW);
+			time(&officeTime);
 			if (office_prev != office){
 				office_prev = office;
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				if (officeFile == NULL){
 					perror ("Couldn't open office.txt");
+				}else{
+					fprintf(officeFile,"1024");
+					fclose(officeFile);
 				}
-				fprintf(officeFile,"1024");
-				fclose(officeFile);
 				lcd.move(0,3);
 				lcd.write("   Office closed!   ");
 				lcd.move(5,0);
@@ -63,9 +66,10 @@ int main(int argc, char* argv[]){
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				if (officeFile == NULL){
 					perror ("Couldn't open office.txt");
+				}else{
+					fprintf(officeFile,"0");
+					fclose(officeFile);
 				}
-				fprintf(officeFile,"0");
-				fclose(officeFile);
 				lcd.move(0,3);
 				lcd.write("    Office open!    ");
 				lcd.move(5,0);
@@ -93,17 +97,18 @@ int main(int argc, char* argv[]){
 				coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","w");
 				if (officeFile == NULL){
 					perror ("Couldn't open coffee.txt");
+				}else{
+					fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
+					fclose(coffeeFile);
 				}
-				fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
-				fclose(coffeeFile);
 				
 				coffeeLog = fopen("/var/www/pi.deltahouse.no/public_html/coffee_log.txt","a+");
 				if (officeFile == NULL){
 					perror ("Couldn't open coffee_log.txt");
+				}else{
+					fprintf(coffeeLog,"%i:%s\n",coffeePots,buf);
+					fclose(coffeeLog);
 				}
-				fprintf(coffeeLog,"%i:%s\n",coffeePots,buf);
-				fclose(coffeeLog);
-				
 				lcd.move(0,3);
 				lcd.write("    Coffee time!    ");
 				lcd.move(5,0);
