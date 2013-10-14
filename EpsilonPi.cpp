@@ -1,6 +1,4 @@
 #include "header.h"
-#include <unistd.h>
-#include <err.h>
 
 int main(int argc, char* argv[]){
 	
@@ -43,7 +41,7 @@ int main(int argc, char* argv[]){
 	lcd.write("EpsilonPi ver. 0.7.5");
 	
 	while (true){
-		if ((office) && (int)difftime(time(NULL),officeTime) <= 45*60)){
+		if ((office) && ((int)difftime(time(NULL),officeTime) <= 45*60)){
 			io.write(4, rpihw::gpio::LOW);
 			time(&officeTime);
 			if (office_prev != office){
@@ -121,7 +119,8 @@ int main(int argc, char* argv[]){
 		}
 		
 		office = io.read(11);
-		coffee = io.read(10);		
+		coffee = io.read(10);
+		usleep(500);
 	}	
 	return 0;
 }
