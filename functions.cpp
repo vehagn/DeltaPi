@@ -254,13 +254,14 @@ void printLastCoffee(hd44780 &lcd){
 	lcd.move(0,1);
 	printfl("Last coffee: ", lcd);
 	coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","r");
-	if (officeFile == NULL){
+	if (coffeeFile == NULL){
 		perror ("Couldn't open coffee.txt");
 		lcd.write("Err open coffee.txt");
 		return;
+	}else{
+		fread(buf,1,128,coffeeFile);
+		fclose(coffeeFile);
 	}
-	fread(buf,1,128,coffeeFile);
-	fclose(coffeeFile);
 	while ((c != '\0')&&(i < 128)){
 		c = buf[i++];
 	}
