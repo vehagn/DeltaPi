@@ -111,8 +111,7 @@ int main(int argc, char* argv[]){
 					fclose(coffeeLog);
 				}
 				lcd.move(0,3);
-				buf = sprintf("  Brewed today: %02i",coffeePots);
-				lcd.write(buf);
+				lcd.write("  Brewed today: %2i", coffeePots);
 				lcd.move(5,0);
 			}	
 		}else{
