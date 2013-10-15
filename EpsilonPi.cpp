@@ -93,7 +93,7 @@ int main(int argc, char* argv[]){
 				strftime(buf,64,"%d. %B %Y %T",timeinfo);
 				
 				coffeeFile = fopen("/var/www/pi.deltahouse.no/public_html/coffee.txt","w");
-				if (officeFile == NULL){
+				if (coffeeFile == NULL){
 					perror ("Couldn't open coffee.txt");
 				}else{
 					fprintf(coffeeFile,"%i\n%s",coffeePots,buf);
@@ -101,7 +101,7 @@ int main(int argc, char* argv[]){
 				}
 				
 				coffeeLog = fopen("/var/www/pi.deltahouse.no/public_html/coffee_log.txt","a+");
-				if (officeFile == NULL){
+				if (coffeeLog == NULL){
 					perror ("Couldn't open coffee_log.txt");
 				}else{
 					fprintf(coffeeLog,"%i:%s\n",coffeePots,buf);
