@@ -110,6 +110,7 @@ void getDatabaseDetails(string *DBHOST, string *USER, string *PASSWORD, string *
 	
 	fgets(buf, 128, dbFile);
 	*DATABASE = buf;
+        DATABASE->pop_back();
 	
 	fclose(dbFile);
 	
