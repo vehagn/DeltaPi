@@ -1,0 +1,1 @@
+/usr/bin/c++   -g    CMakeFiles/EpsilonPi.dir/EpsilonPi.cpp.o  -o EpsilonPi -rdynamic libclasses.a libfunctions.a libmysql.a -lmysqlcppconn -lrpihw -lGraphicsMagick++ 

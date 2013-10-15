@@ -1,0 +1,1 @@
+/usr/bin/c++   -g    CMakeFiles/DeltaPi.dir/DeltaPi.cpp.o  -o DeltaPi -rdynamic libclasses.a libfunctions.a libmysql.a -lmysqlcppconn -lrpihw -lGraphicsMagick++ 

@@ -41,11 +41,14 @@ int main(int argc, char* argv[]){
 	lcd.write("EpsilonPi ver. 0.7.5");
 	
 	while (true){
-		if ((office) && ((int)difftime(time(NULL),officeTime) >= 30*60)){
-			io.write(4, rpihw::gpio::LOW);
+		if (!office){	//There is light.
 			time(&officeTime);
-			if (office_prev != office){
+		}
+
+		if ((int)difftime(time(NULL),officeTime) <= 10){
+			if ((office_prev != office)){
 				office_prev = office;
+				io.write(4, rpihw::gpio::LOW);
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				if (officeFile == NULL){
 					perror ("Couldn't open office.txt");
@@ -58,9 +61,9 @@ int main(int argc, char* argv[]){
 				lcd.move(5,0);
 			}
 		}else{
-			io.write(4, rpihw::gpio::HIGH);
 			if (office_prev != office){
 				office_prev = office;
+				io.write(4, rpihw::gpio::HIGH);
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				if (officeFile == NULL){
 					perror ("Couldn't open office.txt");
@@ -74,12 +77,12 @@ int main(int argc, char* argv[]){
 			}
 		}
 		
-		if (!coffee){
+		if (!coffee){	//Coffee button is pressed.
 			time(&coffeeTime);
 		}	
 		if ((int)difftime(time(NULL),coffeeTime) <= 60*60){
 			if ((coffee_prev != coffee) && (int)difftime(coffeeTime,coffeePress) >= 30){
-			io.write(22, rpihw::gpio::HIGH);
+				io.write(22, rpihw::gpio::HIGH);
 				char buf [64];
 				coffee_prev = coffee;
 				time(&coffeePress);
@@ -108,12 +111,13 @@ int main(int argc, char* argv[]){
 					fclose(coffeeLog);
 				}
 				lcd.move(0,3);
-				lcd.write("    Coffee time!    ");
+				buf = sprintf("  Brewed today: %02i",coffeePots);
+				lcd.write(buf);
 				lcd.move(5,0);
 			}	
 		}else{
-			io.write(22, rpihw::gpio::LOW);
 			if (coffee_prev != coffee){
+				io.write(22, rpihw::gpio::LOW);
 				coffee_prev = coffee;
 			}
 		}
