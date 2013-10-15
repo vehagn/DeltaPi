@@ -41,7 +41,7 @@ int main(int argc, char* argv[]){
 	lcd.write("EpsilonPi ver. 0.7.5");
 	
 	while (true){
-		if ((office) && ((int)difftime(time(NULL),officeTime) <= 45*60)){
+		if ((office) && ((int)difftime(time(NULL),officeTime) >= 30*60)){
 			io.write(4, rpihw::gpio::LOW);
 			time(&officeTime);
 			if (office_prev != office){
