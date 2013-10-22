@@ -15,7 +15,7 @@ int main(int argc, char* argv[]){
 	io.setup(10, rpihw::gpio::INPUT);
 	io.setup(22, rpihw::gpio::OUTPUT);
 	
-	bool office = false;
+	bool office = io.read(11);
 	bool office_prev = !office;
 	FILE *officeFile;
 	time_t officeTime = 0;
@@ -44,10 +44,9 @@ int main(int argc, char* argv[]){
 		if (!office){	//There is light.
 			time(&officeTime);
 		}
-
-		if ((int)difftime(time(NULL),officeTime) <= 10){
-			if ((office_prev != office)){
-				office_prev = office;
+		if ((int)difftime(time(NULL),officeTime) >= 30*60){
+			if (office_prev != office){
+				office_prev = true;
 				io.write(4, rpihw::gpio::LOW);
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				if (officeFile == NULL){
@@ -62,7 +61,7 @@ int main(int argc, char* argv[]){
 			}
 		}else{
 			if (office_prev != office){
-				office_prev = office;
+				office_prev = false;
 				io.write(4, rpihw::gpio::HIGH);
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				if (officeFile == NULL){
@@ -123,7 +122,7 @@ int main(int argc, char* argv[]){
 		
 		office = io.read(11);
 		coffee = io.read(10);
-		usleep(500);
+		usleep(5000);
 	}	
 	return 0;
 }
