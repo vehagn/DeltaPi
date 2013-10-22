@@ -33,12 +33,12 @@ int main(int argc, char* argv[]){
 	int startDay = localtime(&startTime)->tm_yday;
 	struct tm * timeinfo;
 	
-	hd44780 lcd(14, 15, 24, 25, 8, 7);
-   	lcd.init(20, 4);
-	lcd.clear();
+	//hd44780 lcd(14, 15, 24, 25, 8, 7);
+   	//lcd.init(20, 4);
+	//lcd.clear();
 	
-	lcd.move(0,1);
-	lcd.write("EpsilonPi ver. 0.7.5");
+	//lcd.move(0,1);
+	//lcd.write("EpsilonPi ver. 0.7.5");
 	
 	while (true){
 		if (!office){	//There is light.
@@ -55,9 +55,9 @@ int main(int argc, char* argv[]){
 					fprintf(officeFile,"1024");
 					fclose(officeFile);
 				}
-				lcd.move(0,3);
-				lcd.write("   Office closed!   ");
-				lcd.move(5,0);
+				//lcd.move(0,3);
+				//lcd.write("   Office closed!   ");
+				//lcd.move(5,0);
 			}
 		}else{
 			if (office_prev != office){
@@ -71,9 +71,9 @@ int main(int argc, char* argv[]){
 					fprintf(officeFile,"0");
 					fclose(officeFile);
 				}
-				lcd.move(0,3);
-				lcd.write("    Office open!    ");
-				lcd.move(5,0);
+				//lcd.move(0,3);
+				//lcd.write("    Office open!    ");
+				//lcd.move(5,0);
 			}
 		}
 		
@@ -110,9 +110,9 @@ int main(int argc, char* argv[]){
 					fprintf(coffeeLog,"%i:%s\n",coffeePots,buf);
 					fclose(coffeeLog);
 				}
-				lcd.move(0,3);
-				lcd.write("  Brewed today: %2i", coffeePots);
-				lcd.move(5,0);
+				//lcd.move(0,3);
+				//lcd.write("  Brewed today: %2i", coffeePots);
+				//lcd.move(5,0);
 			}	
 		}else{
 			if (coffee_prev != coffee){
