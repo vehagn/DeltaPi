@@ -63,6 +63,7 @@ int main(int argc, char* argv[]){
 			if (office_prev != office){
 				office_prev = false;
 				io.write(4, rpihw::gpio::HIGH);
+				sleep(1);
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				if (officeFile == NULL){
 					perror ("Couldn't open office.txt");
@@ -122,7 +123,7 @@ int main(int argc, char* argv[]){
 		
 		office = io.read(11);
 		coffee = io.read(10);
-		usleep(5000);
+		sleep(1);
 	}	
 	return 0;
 }
