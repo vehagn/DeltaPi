@@ -27,7 +27,7 @@ int main(int argc, char* argv[]){
 	int card = 0;
 	
 	lcd.move(0,2);
-	printfl("DeltaPi ver. 0.8.1",lcd);
+	printfl("DeltaPi ver. 0.8.2",lcd);
 	
 	do{
 		moveAndClearLine(0,0,lcd);
@@ -37,12 +37,16 @@ int main(int argc, char* argv[]){
 		if (!(*backlight))
 			changeBacklight(io, backlight, lcd);
 		if (card > 10){
+			lcd.write("Retrieving database");
+			retrieveSQL(entries, lcd);
 			printInfo(entries, card, lcd);
 			transaction(entries, card, lcd);
 		}
 		else if (card == 0){
 			printHelp(lcd);
 		}else if (card == 1){
+			lcd.write("Retrieving database");
+			retrieveSQL(entries, lcd);
 			printSummary(entries, lcd);
 		} else if (card == 3){
 			lcd.clear();
@@ -61,7 +65,7 @@ int main(int argc, char* argv[]){
 	
 	printfl("  Closing DeltaPi", lcd);
 	lcd.move(6,2);
-	lcd.write("Goodbye!     ",500);
+	lcd.write("Goodbye!    .",500);
 	io.write(23, rpihw::gpio::LOW);
 	
 	delete backlight;
