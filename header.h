@@ -34,17 +34,6 @@
 #include <cppconn/metadata.h>
 #include <cppconn/resultset_metadata.h>
 #include <cppconn/warning.h>
-/*
-#define DBHOST "deltahouse.mysql.domeneshop.no" //Database host
-#define USER "deltahouse" //Database user
-#define PASSWORD "kUJvfr4K" //Database password
-#define DATABASE "deltahouse" //Database directory
-*/
-
-/*
-TO DO:
-update database connection info (encrypted file)
-*/
 
 using namespace std;
 using namespace sql;
