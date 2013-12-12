@@ -52,7 +52,7 @@ int main(int argc, char* argv[]){
 				if (officeFile == NULL){
 					perror ("Couldn't open office.txt");
 				}else{
-					fprintf(officeFile,"1024");
+					fprintf(officeFile,"off");
 					fclose(officeFile);
 				}
 				//lcd.move(0,3);
@@ -68,7 +68,7 @@ int main(int argc, char* argv[]){
 				if (officeFile == NULL){
 					perror ("Couldn't open office.txt");
 				}else{
-					fprintf(officeFile,"0");
+					fprintf(officeFile,"on");
 					fclose(officeFile);
 				}
 				//lcd.move(0,3);
