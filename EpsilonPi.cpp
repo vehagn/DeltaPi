@@ -38,7 +38,7 @@ int main(int argc, char* argv[]){
 	//lcd.clear();
 	
 	//lcd.move(0,1);
-	//lcd.write("EpsilonPi ver. 0.7.5");
+	//lcd.write("EpsilonPi ver. 0.7.6");
 	
 	while (true){
 		if (!office){	//There is light.
