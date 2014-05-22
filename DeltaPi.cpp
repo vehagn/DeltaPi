@@ -37,6 +37,7 @@ int main(int argc, char* argv[]){
 		if (!(*backlight))
 			changeBacklight(io, backlight, lcd);
 		if (card > 10){
+			moveAndClearLine(0,1,lcd);
 			lcd.write("Retrieving database");
 			retrieveSQL(entries, lcd);
 			printInfo(entries, card, lcd);
