@@ -30,7 +30,7 @@ int main(int argc, char* argv[]){
 	printfl("DeltaPi ver. 0.8.3",lcd);
 	
 	do{
-		moveAndClearLine(0,1,lcd);
+		moveAndClearLine(0,0,lcd);
 		lcd.write("Retrieving database");
 		retrieveSQL(entries, lcd);
 		scanCard(entries, card, lcd);
