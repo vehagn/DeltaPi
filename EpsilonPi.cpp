@@ -44,7 +44,7 @@ int main(int argc, char* argv[]){
 		if (!office){	//There is light.
 			time(&officeTime);
 		}
-		if ((int)difftime(time(NULL),officeTime) >= 30*60){
+		if ((int)difftime(time(NULL),officeTime) >= 10){ //Check to close office every 10s
 			if (office_prev != office){
 				office_prev = true;
 				io.write(4, rpihw::gpio::LOW);
@@ -80,7 +80,7 @@ int main(int argc, char* argv[]){
 		if (!coffee){	//Coffee button is pressed.
 			time(&coffeeTime);
 		}	
-		if ((int)difftime(time(NULL),coffeeTime) <= 60*60){
+		if ((int)difftime(time(NULL),coffeeTime) <= 45*60){ //Coffee light stays on for 30*60 s
 			if ((coffee_prev != coffee) && (int)difftime(coffeeTime,coffeePress) >= 30){
 				io.write(22, rpihw::gpio::HIGH);
 				char buf [64];
