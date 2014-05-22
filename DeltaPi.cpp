@@ -27,10 +27,10 @@ int main(int argc, char* argv[]){
 	int card = 0;
 	
 	lcd.move(0,2);
-	printfl("DeltaPi ver. 0.8.2",lcd);
+	printfl("DeltaPi ver. 0.8.3",lcd);
 	
 	do{
-		moveAndClearLine(0,0,lcd);
+		moveAndClearLine(0,1,lcd);
 		lcd.write("Retrieving database");
 		retrieveSQL(entries, lcd);
 		scanCard(entries, card, lcd);
