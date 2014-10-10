@@ -55,7 +55,7 @@ private:
 	string comment;
 	int cash;
 	long spent;
-	bool tab;
+	int tab;
 public:
 	Entry();
 	~Entry();
@@ -70,7 +70,7 @@ public:
 
 	int getCash();
 	long getSpent();
-	bool getTab();
+	int getTab();
 	
 	void depositCash(int);
 	void withdrawCash(int);
