@@ -59,7 +59,7 @@ private:
 public:
 	Entry();
 	~Entry();
-	Entry(int, string, string, bool, int, long, string);
+	Entry(int, string, string, int, int, long, string);
 
 	void setInfo(map<const int,Entry> *);
 	int getID();
