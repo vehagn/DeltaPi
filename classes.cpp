@@ -14,7 +14,7 @@ Entry::Entry(){
 Entry::~Entry(){
 
 }
-Entry::Entry(int cardID, string lastName, string firstName, bool tab, int cash, long spent, string comment){
+Entry::Entry(int cardID, string lastName, string firstName, int tab, int cash, long spent, string comment){
 	this->cardId = cardID;
 	this->firstName = firstName;
 	this->lastName = lastName;
@@ -35,7 +35,7 @@ string Entry::getFirstName(){
 string Entry::getLastName(){
 	return this->lastName;
 }
-bool Entry::getTab(){
+int Entry::getTab(){
 	return this->tab;
 }
 int Entry::getCash(){
