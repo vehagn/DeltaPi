@@ -123,7 +123,7 @@ int main(int argc, char* argv[]){
 		
 		office = io.read(11);
 		coffee = io.read(10);
-		//sleep(1);
+		usleep(10);
 	}	
 	return 0;
 }
