@@ -80,7 +80,7 @@ int main(int argc, char* argv[]){
 		if (!coffee){	//Coffee button is pressed.
 			time(&coffeeTime);
 		}	
-		if ((int)difftime(time(NULL),coffeeTime) <= 45*60){ //Coffee light stays on for 30*60 s
+		if ((int)difftime(time(NULL),coffeeTime) <= 30*60){ //Coffee light stays on for 30*60 s
 			if ((coffee_prev != coffee) && (int)difftime(coffeeTime,coffeePress) >= 30){
 				io.write(22, rpihw::gpio::HIGH);
 				char buf [64];
@@ -123,7 +123,7 @@ int main(int argc, char* argv[]){
 		
 		office = io.read(11);
 		coffee = io.read(10);
-		sleep(1);
+		//sleep(1);
 	}	
 	return 0;
 }
