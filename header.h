@@ -39,7 +39,6 @@ using namespace sql;
 using namespace rpihw::iface;
 using namespace rpihw::display;
 using namespace rpihw::utils;
-using namespace rpihw::gpio;
 
 extern string DBHOST, USER, PASSWORD, DATABASE;
 
