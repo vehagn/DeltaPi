@@ -1,6 +1,5 @@
 #include "header.h"
 
-
 void moveAndClearLine(int i, int j, hd44780 &lcd){
 	lcd.move(i,j);
 	lcd.write("                    ");
