@@ -5,7 +5,7 @@ int main(int argc, char* argv[]){
 	if(daemon(0,0) == -1)
 		err(1, NULL);
 	
-	rpihw::gpio io;
+	rpihw::gpio &io = rpihw::gpio::get();
 	
 	//Office ports
 	io.setup(11, rpihw::INPUT);
