@@ -36,6 +36,7 @@
 
 using namespace std;
 using namespace sql;
+using namespace rpihw;
 using namespace rpihw::iface;
 using namespace rpihw::display;
 using namespace rpihw::utils;
