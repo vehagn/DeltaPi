@@ -13,9 +13,9 @@ int main(int argc, char* argv[]){
    	lcd.init(20, 4);
 	lcd.setAutoscroll(hd44780::HSCROLL_LINE | hd44780::VSCROLL);
 	
-	rpihw::gpio io;
-	io.setup(23, rpihw::gpio::OUTPUT);
-	io.write(23, rpihw::gpio::HIGH); bool *backlight = new bool(true);
+	rpihw::gpio &io = gpio::get();
+	io.setup(23, OUTPUT);
+	io.write(23, HIGH); bool *backlight = new bool(true);
 
 	uint8_t blank[8]		= {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 	lcd.defChar(hd44780::CCHAR2, blank);
