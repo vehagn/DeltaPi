@@ -16,14 +16,6 @@
 #include <unistd.h>
 #include <err.h>
 
-#ifndef LOW
-	#define LOW 0
-#endif
-#ifndef HIGH
-	#define HIGH 1
-#endif
-
-
 /* Rpi-hw headers */
 #include <rpi-hw.hpp>
 #include <rpi-hw/utils.hpp>
