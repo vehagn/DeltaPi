@@ -32,7 +32,7 @@ sleep 2<br>
 /usr/local/EpsilonPi<br>
 shutdown -h now
 
-$ chmod ugo+x startup.sh<br>
+$ chmod 771 startup.sh<br>
 $ sudo chown root:USERNAME /sbin/shutdown && sudo chmod 4770 /sbin/shutdown
 
 $ nano ~/.bashrc
