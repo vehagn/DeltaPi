@@ -1,1 +1,0 @@
-/usr/bin/c++   -O3 -DNDEBUG    CMakeFiles/EpsilonPi.dir/EpsilonPi.cpp.o  -o EpsilonPi -rdynamic libclasses.a libfunctions.a libmysql.a -lmysqlcppconn -lrpihw -lGraphicsMagick++ 

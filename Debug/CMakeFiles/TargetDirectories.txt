@@ -1,5 +1,0 @@
-/home/delta/DeltaPi/Debug/CMakeFiles/DeltaPi.dir
-/home/delta/DeltaPi/Debug/CMakeFiles/EpsilonPi.dir
-/home/delta/DeltaPi/Debug/CMakeFiles/classes.dir
-/home/delta/DeltaPi/Debug/CMakeFiles/functions.dir
-/home/delta/DeltaPi/Debug/CMakeFiles/mysql.dir
