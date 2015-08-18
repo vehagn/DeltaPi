@@ -190,7 +190,7 @@ int retrieveSQL(map<const int,Entry> &entries, hd44780 &lcd){
 }
 int updateSQL(int id, string field, int int_value, hd44780 &lcd){
 	
-	int n;
+	int n = -1;
 	enum FIELDS{
 		cash,
 		spent};
