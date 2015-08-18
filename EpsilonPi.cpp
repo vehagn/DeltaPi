@@ -8,12 +8,12 @@ int main(int argc, char* argv[]){
 	rpihw::gpio io;
 	
 	//Office ports
-	io.setup(11, rpihw::gpio::INPUT);
-	io.setup(4, rpihw::gpio::OUTPUT);
+	io.setup(11, rpihw::INPUT);
+	io.setup(4, rpihw::OUTPUT);
 	
 	//Coffee ports
-	io.setup(10, rpihw::gpio::INPUT);
-	io.setup(22, rpihw::gpio::OUTPUT);
+	io.setup(10, rpihw::INPUT);
+	io.setup(22, rpihw::OUTPUT);
 	
 	bool office = io.read(11);
 	bool office_prev = !office;
@@ -47,7 +47,7 @@ int main(int argc, char* argv[]){
 		if ((int)difftime(time(NULL),officeTime) >= 10){ //Check to close office every 10s
 			if (office_prev != office){
 				office_prev = true;
-				io.write(4, rpihw::gpio::LOW);
+				io.write(4, rpihw::LOW);
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				if (officeFile == NULL){
 					perror ("Couldn't open office.txt");
@@ -62,7 +62,7 @@ int main(int argc, char* argv[]){
 		}else{
 			if (office_prev != office){
 				office_prev = false;
-				io.write(4, rpihw::gpio::HIGH);
+				io.write(4, rpihw::HIGH);
 				sleep(1);
 				officeFile = fopen("/var/www/pi.deltahouse.no/public_html/office.txt","w");
 				if (officeFile == NULL){
@@ -82,7 +82,7 @@ int main(int argc, char* argv[]){
 		}	
 		if ((int)difftime(time(NULL),coffeeTime) <= 30*60){ //Coffee light stays on for 30*60 s
 			if ((coffee_prev != coffee) && (int)difftime(coffeeTime,coffeePress) >= 30){
-				io.write(22, rpihw::gpio::HIGH);
+				io.write(22, rpihw::HIGH);
 				char buf [64];
 				coffee_prev = coffee;
 				time(&coffeePress);
@@ -116,7 +116,7 @@ int main(int argc, char* argv[]){
 			}	
 		}else{
 			if (coffee_prev != coffee){
-				io.write(22, rpihw::gpio::LOW);
+				io.write(22, rpihw::LOW);
 				coffee_prev = coffee;
 			}
 		}
