@@ -25,11 +25,11 @@ void getLine(char buf[], hd44780 &lcd){
 	char c;
 	int i = 0;
 	lcd.setCursor(hd44780::CURSOR_BLINKING);
-	uint8_t startx = lcd.getXCursor();
-	uint8_t starty = lcd.getYCursor();	
+	uint8_t startx = lcd.getCursorX();
+	uint8_t starty = lcd.getCursorY();	
 	uint8_t xpos;
 	do{
-		xpos = lcd.getXCursor();
+		xpos = lcd.getCursorX();
 		c = getch();
 		if ((int)c == 127){
 			if (i > 0){
