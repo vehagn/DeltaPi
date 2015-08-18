@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include <string>
 #include <string.h>
-//#include <time.h>
+#include <time.h>
 #include <termios.h>
 #include <unistd.h>
 #include <err.h>
@@ -36,7 +36,6 @@
 
 using namespace std;
 using namespace sql;
-using namespace rpihw;
 using namespace rpihw::iface;
 using namespace rpihw::display;
 using namespace rpihw::utils;
