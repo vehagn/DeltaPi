@@ -1,10 +1,5 @@
 #include "header.h"
-#ifndef LOW
-#define LOW 0
-#endif
-#ifndef HIGH
-#define HIGH 1
-#endif
+
 
 void moveAndClearLine(int i, int j, hd44780 &lcd){
 	lcd.move(i,j);
