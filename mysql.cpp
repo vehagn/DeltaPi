@@ -219,6 +219,7 @@ int updateSQL(int id, string field, int int_value, hd44780 &lcd){
 			pstmt->setInt(1,int_value);
 			break;
 		default:
+			pstmt = con->prepareStatement("");
 			printf("SQL identifier not recognized!\n");
 			break;
 		}
