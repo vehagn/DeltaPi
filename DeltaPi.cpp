@@ -66,7 +66,7 @@ int main(int argc, char* argv[]){
 	
 	printfl("  Closing DeltaPi", lcd);
 	lcd.move(6,2);
-	lcd.write("Goodbye!    .",(uint)500);
+	lcd.write("Goodbye!    .",128);
 	io.write(23, rpihw::LOW);
 	
 	delete backlight;
