@@ -67,8 +67,9 @@ Web port: 80<br>
 DNS port: 53
 
 #Database
-Place database.txt in same folder as DeltaPi. Write the following:
+Place database.conf in same run directory as DeltaPi. (in ~/ following the setup.sh) 
 
+The syntax is as follows:
 decrypted<br>
 'Host'<br>
 'User'<br>
