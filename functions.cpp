@@ -103,7 +103,7 @@ void printInfo(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	sprintf(buf, "%s", entries.find(card)->second.getFirstName().c_str());
 	printfl(buf, lcd);
 	lcd.move(0,1);
-	sprintf(buf, "Balance: %ikr", entries.find(card)->second.getCash());
+	sprintf(buf, "Balance: %i Δ", entries.find(card)->second.getCash());
 	printfl(buf, lcd);
 }
 void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
@@ -113,7 +113,7 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 	moveAndClearLine(0,2,lcd);
 	printfl("Amount:", lcd);
 	moveAndClearLine(0,3,lcd);
-	printfl("Prefix + to deposit.", lcd);
+	printfl("Prefix + to donate Δ", lcd);
 	lcd.move(8,2);
 	getLine(buf, lcd);
 	input = buf;
@@ -124,10 +124,10 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 			entries.find(card)->second.depositCash(*amount);
 			moveAndClearLine(0,1,lcd);
 			moveAndClearLine(0,2,lcd);
-			sprintf(buf, "%ikr deposited.", *amount);
+			sprintf(buf, "%i Δ donated.", *amount);
 			printfl(buf, lcd);
 			moveAndClearLine(0,3,lcd);
-			sprintf(buf, "New balance: %ikr", entries.find(card)->second.getCash());
+			sprintf(buf, "New tokens: %i Δ", entries.find(card)->second.getCash());
 			printfl(buf, lcd);
 			printf("\n");
 		}else if(buf[1] == '0'){
@@ -151,15 +151,15 @@ void transaction(map<const int, Entry> &entries, int &card, hd44780 &lcd){
 				entries.find(card)->second.increaseSpent(*amount);
 				moveAndClearLine(0,1,lcd);
 				moveAndClearLine(0,2,lcd);
-				sprintf(buf, "%i kr withdrawn.", *amount);
+				sprintf(buf, "%i Δ used.", *amount);
 				printfl(buf, lcd);
 				moveAndClearLine(0,3,lcd);
-				sprintf(buf, "New balance: %i kr", entries.find(card)->second.getCash());
+				sprintf(buf, "New balance: %i Δ", entries.find(card)->second.getCash());
 				printfl(buf, lcd);
 			}else{
 				moveAndClearLine(0,3,lcd);
 				moveAndClearLine(0,2,lcd);
-				printfl("Not enough money!",lcd);
+				printfl("Not enough Δ!",lcd);
 			}
 		}else if (buf[0] == '0'){
 			moveAndClearLine(0,1,lcd);
@@ -218,13 +218,13 @@ void printSummary(map<const int, Entry> &entries, hd44780 &lcd){
 	lcd.clear();
 	sprintf(buf, "Persons:    %5i", persons);
 	printfl(buf,lcd);
-	sprintf(buf, "Tot Money:  %5li kr", money);
+	sprintf(buf, "Tot tokens: %5li Δ", money);
 	lcd.move(0,1);
 	printfl(buf,lcd);
-	sprintf(buf, "Tot Credit: %5li kr", credit);
+	sprintf(buf, "Tot credit: %5li Δ", credit);
 	lcd.move(0,2);
 	printfl(buf,lcd);
-	sprintf(buf, "Tot Spent:  %5li kr", spent);
+	sprintf(buf, "Tot used:   %5li Δ", spent);
 	lcd.move(0,3);
 	printfl(buf,lcd);
 	sleep(5);

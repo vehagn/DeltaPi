@@ -42,8 +42,8 @@ using namespace rpihw::utils;
 
 extern string DBHOST, USER, PASSWORD, DATABASE;
 
-const int maxCredit = 200; //Maximum allowed credit.
-const int maxAmount = 500; //Maximum allowed transfer.
+const int maxCredit =  2; //Maximum allowed credit.
+const int maxAmount = 10; //Maximum allowed transfer.
 
 //Entry
 class Entry{
