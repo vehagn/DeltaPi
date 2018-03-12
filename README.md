@@ -70,7 +70,7 @@ DNS port: 53
 # Database
 Place database.conf in same run directory as DeltaPi. (in ~/ following the setup.sh) 
 
-The syntax is as follows:
+The syntax is as follows:<br>
 ``decrypted`` <br>
 ``'Host'`` <br>
 ``'User'`` <br>
